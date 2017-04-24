@@ -46,3 +46,13 @@ $ sudo dpkg -i libopencv4tegra-repo_l4t-r21_2.4.10.1_armhf.deb
 $ sudo apt-get update
 $ sudo apt-get install libopencv4tegra libopencv4tegra-dev
 ```  
+  
+## Install ROS - Indigo  
+ROS Indigo 버젼 설치가이드: http://wiki.ros.org/indigo/Installation/UbuntuARM  
+설치할 패키지 목록은 다음과 같다.  
+```
+$sudo apt-get install ros-indigo-ros-base python-rosdep python-rosinstall
+```  
+  
+## Install ZED SDK  
+ZED 스테레오 카메라 SDK-v1.2를 [다운로드](https://www.stereolabs.com/developers/release/1.2/) 한다.
