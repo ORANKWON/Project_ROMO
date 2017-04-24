@@ -46,7 +46,7 @@ $ source ~/.bashrc
 다음 명령어를 이용하여 OpenCV4Tegra를 설치한다.  
 
 ```
-$ cd /home/ubuntu/Desktop/packages_for_caffe
+$ cd /home/ubuntu/Desktop/pkg4caffe
 
 $ sudo dpkg -i libopencv4tegra-repo_l4t-r21_2.4.10.1_armhf.deb
 $ sudo apt-get update
