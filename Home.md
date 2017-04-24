@@ -1,7 +1,7 @@
 # Welcome to the IdeaFestival2017 wiki!  
 기억력의 한계로..나중을 위해 개발 과정의 삽질 및 성공 내용 기록함.   
 ## Jetson TK1 flash 방법  
-![](http://kr.nvidia.com/content/tegra/images/jetson/jetson-tk1.png)  
+![Jetson TK1](http://kr.nvidia.com/content/tegra/images/jetson/jetson-tk1.png)  
 준비사항: Ubuntu 14.04 버젼이 설치된 host PC(인터넷 연결 필요)  
 리눅스 pc가 없는 경우 윈도우즈 상에서 vmware나 virtualbox로도 flash 가능..  
 단, Jetpack을 이용한 설치는 경험상 비추.. [github에 정리된 방법](https://gist.github.com/jetsonhacks/2717a41f7e60a3405b34)을 참고하여 성공하였음.  
@@ -61,7 +61,8 @@ $sudo apt-get install ros-indigo-ros-base python-rosdep python-rosinstall
 ```  
   
 ## Install ZED SDK  
-ZED 스테레오 카메라 SDK-v1.2를 [다운로드](https://www.stereolabs.com/developers/release/1.2/) 한다.  
+![ZED - Stereolabs](https://www.stereolabs.com/img/product/ZED_product_main.jpg)  
+ZED 스테레오 카메라 SDK-v1.2를 [다운로드](https://www.stereolabs.com/developers/release/1.2/) 한다. Jetson TK1에 대한 공식적인 지원은 v1.2에서 종료(TX1은 지속)되었다.
   
   
 ## 참고 사이트  
