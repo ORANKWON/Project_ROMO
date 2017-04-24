@@ -9,9 +9,18 @@
 https://gist.github.com/jetsonhacks/2717a41f7e60a3405b34
   
 마지막 flash 단계에서 eMMC 16GB 용량을 모두 사용하고 싶으면 '-S 14580MiB' 옵션을 추가할 것  
-```sudo ./flash.sh -S 14580MiB jetson-tk1 mmcblk0p1```  
-  
 
+```
+sudo ./flash.sh -S 14580MiB jetson-tk1 mmcblk0p1
+```  
+  
+Flash작업이 종료되면 재부팅을 한다. 소스코드 및 개발에 필요한 라이브러리 설치를 위하 저장소를 추가하자.  
+  
+```
+sudo apt-add-repository universe
+sudo apt-add-repository multiverse
+sudo apt-get update
+```  
 
 ## Install CUDA 6.5 & OpenCV4Tegra
 CUDA 패키지 및 OpenCV를 설치과정은 아래 링크를 참고하였다.  
