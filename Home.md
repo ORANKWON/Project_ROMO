@@ -61,4 +61,8 @@ $sudo apt-get install ros-indigo-ros-base python-rosdep python-rosinstall
 ```  
   
 ## Install ZED SDK  
-ZED 스테레오 카메라 SDK-v1.2를 [다운로드](https://www.stereolabs.com/developers/release/1.2/) 한다.
+ZED 스테레오 카메라 SDK-v1.2를 [다운로드](https://www.stereolabs.com/developers/release/1.2/) 한다.  
+  
+  
+## 참고 사이트  
+1. http://myzharbot.robot-home.it/blog/software/configuration-nvidia-jetson-tk1/
