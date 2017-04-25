@@ -67,8 +67,41 @@ ros-indigo-image-transport ros-indigo-image-transport-plugins
 ![ZED - Stereolabs](https://www.stereolabs.com/img/product/ZED_product_main.jpg)  
 ZED 스테레오 카메라 SDK-v1.2를 [다운로드](https://www.stereolabs.com/developers/release/1.2/) 한다. Jetson TK1에 대한 공식적인 지원은 v1.2에서 종료(TX1은 지속)되었다.  
 ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/)에서 확인할 수 있다.  
-다운로드 받은 ZED-ROS-wrapper를 ~/catkin_ws/src 폴더에 복사한다. 빌드전에  CMakeLists.txt 파일을 Jetson TK1 환경에 맞도록 아래와 같이 수정한다.
+다운로드 받은 ZED-ROS-wrapper를 ~/catkin_ws/src 폴더에 복사한다. CMakeLists.txt 파일을 열어 다음 부분을 찾는다.  
+```
+find_package(ZED 2.0 REQUIRED) 
+
+##For Jetson, OpenCV4Tegra is based on OpenCV2.4
+exec_program(uname ARGS -p OUTPUT_VARIABLE CMAKE_SYSTEM_NAME2)
+if ( CMAKE_SYSTEM_NAME2 MATCHES "aarch64" ) # Jetson TX1
+    SET(OCV_VERSION "2.4")
+    SET(CUDA_VERSION "8.0")
+    SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
+else() # Ubuntu Desktop
+    SET(OCV_VERSION "3.1")
+    SET(CUDA_VERSION "8.0")
+endif()
+```  
   
+아래와 같이 수정한다.  
+```  
+find_package(ZED 1.2 REQUIRED) # Jetson TK1
+
+##For Jetson, OpenCV4Tegra is based on OpenCV2.4
+exec_program(uname ARGS -p OUTPUT_VARIABLE CMAKE_SYSTEM_NAME2)
+if ( CMAKE_SYSTEM_NAME2 MATCHES "aarch64" ) # Jetson TX1
+    SET(OCV_VERSION "2.4")
+    SET(CUDA_VERSION "8.0")
+    SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
+elseif ( CMAKE_SYSTEM_NAME2 MATCHES "armv7l" ) # Jetson TK1
+    SET(OCV_VERSION "2.4")
+    SET(CUDA_VERSION "6.5")
+    SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
+else() # Ubuntu Desktop
+    SET(OCV_VERSION "3.1")
+    SET(CUDA_VERSION "8.0")
+endif()
+```
   
 ## 참고 사이트  
 1. http://myzharbot.robot-home.it/blog/software/configuration-nvidia-jetson-tk1/  
