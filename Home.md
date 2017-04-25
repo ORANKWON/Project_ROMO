@@ -24,23 +24,23 @@ CUDA 패키지 및 OpenCV4Tegra(2.4.10)를 [NVIDIA 개발자 사이트](https://
 다음 명령어로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 
 ```
-$ sudo dpkg -i cuda-repo-l4t-r21.2-6-5-prod_6.5-34_armhf.deb
-$ sudo apt-get update
-$ sudo apt-get install cuda-toolkit-6-5
-$ sudo usermod -a -G video $USER
+$sudo dpkg -i cuda-repo-l4t-r21.2-6-5-prod_6.5-34_armhf.deb
+$sudo apt-get update
+$sudo apt-get install cuda-toolkit-6-5
+$sudo usermod -a -G video $USER
 
-$ echo "# Add CUDA bin & library paths:" >> ~/.bashrc
-$ echo "export PATH=/usr/local/cuda/bin:$PATH" >> ~/.bashrc
-$ echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
-$ source ~/.bashrc
+$echo "# Add CUDA bin & library paths:" >> ~/.bashrc
+$echo "export PATH=/usr/local/cuda/bin:$PATH" >> ~/.bashrc
+$echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
+$source ~/.bashrc
 ```  
   
 다음 명령어로 OpenCV4Tegra를 설치한다.  
 
 ```
-$ sudo dpkg -i libopencv4tegra-repo_l4t-r21_2.4.10.1_armhf.deb
-$ sudo apt-get update
-$ sudo apt-get install libopencv4tegra libopencv4tegra-dev
+$sudo dpkg -i libopencv4tegra-repo_l4t-r21_2.4.10.1_armhf.deb
+$sudo apt-get update
+$sudo apt-get install libopencv4tegra libopencv4tegra-dev
 ```  
   
 설치가 완료된 이후 아래 명령어를 실행
@@ -50,7 +50,7 @@ $sudo apt-get upgrade
 ```  
 
 ## Install ROS - Indigo  
-ROS Indigo [설치가이드](http://wiki.ros.org/indigo/Installation/UbuntuARM)의 순서대로 설치를 진행하고 패키지 설치 단계에서 아래의 목록을 설치한다.  
+ARM version ROS Indigo [설치가이드](http://wiki.ros.org/indigo/Installation/UbuntuARM)의 순서대로 설치를 진행하고 패키지 설치 단계에서 아래의 목록을 설치한다.  
 (ROS Indigo 버젼에서 설치가능한 패키지 목록은 [여기서](http://repositories.ros.org/status_page/ros_indigo_arm.html) 확인할 수 있다.)
 ```
 $sudo apt-get install ros-indigo-ros-base python-rosdep python-rosinstall ros-indigo-pcl_ros ros-indigo-urdf  
