@@ -20,11 +20,7 @@ sudo apt-get update
 ```  
 
 ## Install CUDA 6.5 & OpenCV4Tegra
-CUDA 패키지 및 OpenCV를 설치과정은 아래 링크를 참고하였다.  
-
-<https://huangying-zhan.github.io/2016/08/16/Caffe-installation-and-practice-on-Jetson-TK1.html>  
-
-CUDA ToolKit & OpenCV4Tegra 다운로드: [NVIDIA 개발자 사이트](https://developer.nvidia.com/linux-tegra-rel-21)  
+CUDA 패키지 및 OpenCV4Tegra(2.4.10)를 [NVIDIA 개발자 사이트](https://developer.nvidia.com/linux-tegra-rel-21)에서 다운로드 한후에 [설치가이드](https://huangying-zhan.github.io/2016/08/16/Caffe-installation-and-practice-on-Jetson-TK1.html)를 따라 설치한다.  
   
 다음 명령어를 이용하여 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 
@@ -60,10 +56,10 @@ $sudo apt-get upgrade
 ```  
 
 ## Install ROS - Indigo  
-ROS Indigo 버젼 설치가이드: http://wiki.ros.org/indigo/Installation/UbuntuARM  
-설치할 패키지 목록은 다음과 같다.  
+ROS Indigo [설치가이드](http://wiki.ros.org/indigo/Installation/UbuntuARM)의 순서대로 설치를 진행하고 패키지 설치 단계에서 아래의 목록을 설치한다.  
+(ROS Indigo 버젼에서 설치가능한 패키지 목록은 [여기서](http://repositories.ros.org/status_page/ros_indigo_arm.html) 확인할 수 있다.)
 ```
-$sudo apt-get install ros-indigo-ros-base python-rosdep python-rosinstall
+$sudo apt-get install ros-indigo-ros-base python-rosdep python-rosinstall ros-indigo-pcl_ros ros-indigo-urdf ros-indigo-image-transport ros-indigo-image-transport-plugins
 ```  
   
 ## Install ZED SDK  
