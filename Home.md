@@ -50,16 +50,22 @@ $sudo apt-get upgrade
 ```  
 
 ## Install ROS - Indigo  
-ARM version ROS Indigo [설치가이드](http://wiki.ros.org/indigo/Installation/UbuntuARM)의 순서대로 설치를 진행하고 패키지 설치 단계에서 아래의 목록을 설치한다.  
+ARM-ROS Indigo [설치가이드](http://wiki.ros.org/indigo/Installation/UbuntuARM)의 순서대로 설치를 진행하고 패키지 설치 단계에서 아래의 목록을 설치한다.  
 (ROS Indigo 버젼에서 설치가능한 패키지 목록은 [여기서](http://repositories.ros.org/status_page/ros_indigo_arm.html) 확인할 수 있다.)
 ```
 $sudo apt-get install ros-indigo-ros-base python-rosdep python-rosinstall ros-indigo-pcl_ros ros-indigo-urdf  
 ros-indigo-image-transport ros-indigo-image-transport-plugins
 ```  
   
-## Install ZED SDK  
+## Install ZED SDK & ROS integration
 ![ZED - Stereolabs](https://www.stereolabs.com/img/product/ZED_product_main.jpg)  
-ZED 스테레오 카메라 SDK-v1.2를 [다운로드](https://www.stereolabs.com/developers/release/1.2/) 한다. Jetson TK1에 대한 공식적인 지원은 v1.2에서 종료(TX1은 지속)되었다.  
+ZED 스테레오 카메라 SDK-v1.2를 [다운로드](https://www.stereolabs.com/developers/release/1.2/) 한다. Jetson TK1에 대한 공식적인 지원은 v1.2에서 종료(TX1은 지속)되었다. 다운로드한 SDK를 아래 명령으로 설치한다. 
+```
+$ chmod +x ZED_SDK_JTK1_v*.run
+$ ./ZED_SDK_JTK1_v*.run
+```  
+  
+
 ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/)에서 확인할 수 있다.  
 다운로드 받은 ZED-ROS-wrapper를 ~/catkin_ws/src 폴더에 복사한다. CMakeLists.txt 파일을 열어 다음 부분을 찾는다.  
 ```
