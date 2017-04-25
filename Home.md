@@ -53,6 +53,12 @@ $ sudo apt-get update
 $ sudo apt-get install libopencv4tegra libopencv4tegra-dev
 ```  
   
+설치가 완료된 이후 아래 명령어를 실행
+```
+$sudo apt-get update  
+$sudo apt-get upgrade
+```  
+
 ## Install ROS - Indigo  
 ROS Indigo 버젼 설치가이드: http://wiki.ros.org/indigo/Installation/UbuntuARM  
 설치할 패키지 목록은 다음과 같다.  
@@ -66,4 +72,5 @@ ZED 스테레오 카메라 SDK-v1.2를 [다운로드](https://www.stereolabs.com
   
   
 ## 참고 사이트  
-1. http://myzharbot.robot-home.it/blog/software/configuration-nvidia-jetson-tk1/
+1. http://myzharbot.robot-home.it/blog/software/configuration-nvidia-jetson-tk1/  
+2. https://www.stereolabs.com/blog/index.php/2015/09/24/getting-started-with-jetson-tk1-and-zed/
