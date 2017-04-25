@@ -8,26 +8,22 @@
 마지막 flash 단계에서 eMMC 16GB 용량을 모두 사용하고 싶으면 '-S 14580MiB' 옵션을 추가할 것  
 
 ```
-sudo ./flash.sh -S 14580MiB jetson-tk1 mmcblk0p1
+$sudo ./flash.sh -S 14580MiB jetson-tk1 mmcblk0p1
 ```  
   
 Flash작업이 종료되면 재부팅을 한다. 소스코드 및 개발에 필요한 라이브러리 설치를 위하 저장소를 추가하자.  
   
 ```
-sudo apt-add-repository universe
-sudo apt-add-repository multiverse
-sudo apt-get update
+$sudo apt-add-repository universe
+$sudo apt-add-repository multiverse
+$sudo apt-get update
 ```  
 
 ## Install CUDA 6.5 & OpenCV4Tegra
-CUDA 패키지 및 OpenCV4Tegra(2.4.10)를 [NVIDIA 개발자 사이트](https://developer.nvidia.com/linux-tegra-rel-21)에서 다운로드 한후에 [설치가이드](https://huangying-zhan.github.io/2016/08/16/Caffe-installation-and-practice-on-Jetson-TK1.html)를 따라 설치한다.  
-  
-다음 명령어를 이용하여 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
+CUDA 패키지 및 OpenCV4Tegra(2.4.10)를 [NVIDIA 개발자 사이트](https://developer.nvidia.com/linux-tegra-rel-21)에서 다운로드 한다.  
+다음 명령어로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 
 ```
-$ mkdir /home/ubuntu/pkg4caffe
-$ cd /home/ubuntu/pkg4caffe
-
 $ sudo dpkg -i cuda-repo-l4t-r21.2-6-5-prod_6.5-34_armhf.deb
 $ sudo apt-get update
 $ sudo apt-get install cuda-toolkit-6-5
@@ -39,11 +35,9 @@ $ echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib:$LD_LIBRARY_PATH" >> ~/.bashr
 $ source ~/.bashrc
 ```  
   
-다음 명령어를 이용하여 OpenCV4Tegra를 설치한다.  
+다음 명령어로 OpenCV4Tegra를 설치한다.  
 
 ```
-$ cd /home/ubuntu/Desktop/pkg4caffe
-
 $ sudo dpkg -i libopencv4tegra-repo_l4t-r21_2.4.10.1_armhf.deb
 $ sudo apt-get update
 $ sudo apt-get install libopencv4tegra libopencv4tegra-dev
@@ -106,3 +100,4 @@ endif()
 ## 참고 사이트  
 1. http://myzharbot.robot-home.it/blog/software/configuration-nvidia-jetson-tk1/  
 2. https://www.stereolabs.com/blog/index.php/2015/09/24/getting-started-with-jetson-tk1-and-zed/
+3. https://huangying-zhan.github.io/2016/08/16/Caffe-installation-and-practice-on-Jetson-TK1.html
