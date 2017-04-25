@@ -58,15 +58,14 @@ ros-indigo-image-transport ros-indigo-image-transport-plugins
   
 ## Install ZED SDK & ROS integration
 ![ZED - Stereolabs](https://www.stereolabs.com/img/product/ZED_product_main.jpg)  
-ZED 스테레오 카메라 SDK-v1.2를 [다운로드](https://github.com/stereolabs/zed-ros-wrapper/releases/tag/v1.2.0) 한다. Jetson TK1에 대한 공식적인 지원은 v1.2에서 종료(TX1은 지속)되었다. 다운로드한 SDK를 아래 명령으로 설치한다. 
+ZED 스테레오 카메라의 Jetson TK1 SDK-v1.2를 [다운로드](https://www.stereolabs.com/developers/release/1.2/) 한다. Jetson TK1에 대한 공식적인 지원은 v1.2에서 종료(TX1은 지속)되었다. 다운로드한 SDK를 아래 명령으로 설치한다. 
 ```
 $ chmod +x ZED_SDK_JTK1_v*.run
 $ ./ZED_SDK_JTK1_v*.run
 ```  
   
 
-ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/)에서 확인할 수 있다.  
-다운로드한 zed-ros-wrapper를 ~/catkin_ws/src 폴더에 복사하고 다음 명령을 수행한다.
+ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/)에서 확인할 수 있다.  SDK v1.2와 호환되는 ros-wrapper는 [GitHub](https://github.com/stereolabs/zed-ros-wrapper/releases/tag/v1.2.0)에서 다운로드할 수 있으며 다운로드한 zed-ros-wrapper를 ~/catkin_ws/src 폴더에 복사하고 다음 명령을 수행한다.
 ```
 $ cd ~/catkin_ws
 $ catkin_make
