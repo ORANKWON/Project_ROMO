@@ -70,8 +70,26 @@ ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https:/
 $ cd ~/catkin_ws
 $ catkin_make
 $ source ./devel/setup.bash
-```
+```  
   
+성공적으로 컴파일이 되었다면 아래 명령으로 어플리케이션을 실행시켜 본다.  
+```
+roslaunch zed_wrapper zed.launch
+```  
+  
+[Tips] 만일 아래와 같은 메시지가 출력된다면 zed firmware가 최신버젼이 아니라는 의미이다.
+```
+## ZED Firmware version is not up-to-date with current ZED SDK.
+## VGA mode will be not consistent
+## You have to update the firmware with the latest version (v1142) using the ZED Explorer
+```  
+  
+이 경우에는 메시지에 나와 있듯이 ZED Explorer를 우선 실행시킨다. 우측 상단의 톱니바퀴 형태의 아이콘을 클릭 > Firmware 탭에서 업데이트 시켜준다. 업데이트에 필요한 바이너리 파일(zed_fw_vXXXX_spi.bin)은 ZED SDK가 설치된 아래 경로에서 찾을 수 있다.  
+```
+/usr/local/zed/firmware
+```  
+
+
 ## 참고 사이트  
 1. http://myzharbot.robot-home.it/blog/software/configuration-nvidia-jetson-tk1/  
 2. https://www.stereolabs.com/blog/index.php/2015/09/24/getting-started-with-jetson-tk1-and-zed/
