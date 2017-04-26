@@ -56,9 +56,9 @@ $ sudo apt-get install ros-indigo-ros-base python-rosdep python-rosinstall ros-i
 ros-indigo-image-transport ros-indigo-image-transport-plugins ros-indigo-robot-state-publisher
 ```  
   
-ROS visualization을 위해서 다음 패키지도 설치한다(옵션사항)  
+ROS visualization을 위한 rqt 및 rviz 패키지도 설치한다(옵션사항)  
 ```
-$sudo apt-get install ros-indigo-rqt ros-indigo-rqt-image-view ros-indigo-rviz ros-indigo-robot-model
+$sudo apt-get install ros-indigo-rqt* ros-indigo-rviz ros-indigo-robot-model
 ```
   
 만약 rviz 실행시 Segmentation fault 오류가 발생하며 실행이 안될 경우 아래를 수행한다.
