@@ -58,16 +58,21 @@ ros-indigo-image-transport ros-indigo-image-transport-plugins ros-indigo-robot-s
   
 ROS visualization을 위해서 다음 패키지도 설치한다(옵션사항)  
 ```
-$sudo apt-get install ros-indigo-rqt ros-indigo-rqt-image-view ros-indigo-rviz
+$sudo apt-get install ros-indigo-rqt ros-indigo-rqt-image-view ros-indigo-rviz ros-indigo-robot-model
 ```
   
-rviz를 Jetson TK1에서 사용하기 위해 아래를 수행한다.
+만약 rviz 실행시 Segmentation fault 오류가 발생하며 실행이 안될 경우 아래를 수행한다.
 ```
 echo "unset GTK_IM_MODULE" >> ~/.bashrc
 source ~/.bashrc
 ```
-   
   
+위의 명령으로도 rviz가 실행이 안되면 [libpcre3_8.35](http://ports.ubuntu.com/pool/main/p/pcre3/libpcre3_8.35-7.1ubuntu1_armhf.deb)을 업데이트 한다.  
+```
+$ sudo dpkg -i libpcre3_8.35-7.1ubuntu1_armhf.deb
+$ sudo apt-get update
+```  
+ 
   
 ## Install ZED SDK & ROS integration
 ![ZED - Stereolabs](https://www.stereolabs.com/img/product/ZED_product_main.jpg)  
