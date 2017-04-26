@@ -61,6 +61,13 @@ ROS visualization을 위해서 다음 패키지도 설치한다(옵션사항)
 $sudo apt-get install ros-indigo-rqt ros-indigo-rqt-image-view ros-indigo-rviz
 ```
   
+rviz를 Jetson TK1에서 사용하기 위해 아래를 수행한다.
+```
+echo "unset GTK_IM_MODULE" >> ~/.bashrc
+source ~/.bashrc
+```
+   
+  
   
 ## Install ZED SDK & ROS integration
 ![ZED - Stereolabs](https://www.stereolabs.com/img/product/ZED_product_main.jpg)  
