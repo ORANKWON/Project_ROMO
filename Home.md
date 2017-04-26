@@ -50,11 +50,17 @@ $ sudo apt-get upgrade
 ```  
 
 ## Install ROS - Indigo  
-ARM 버젼의 ROS Indigo [설치가이드](http://wiki.ros.org/indigo/Installation/UbuntuARM)에 따라 순서대로 설치를 진행하고 패키지 설치 단계에서 아래의 목록을 설치한다. (ROS Indigo 버젼에서 설치가능한 패키지 목록은 [여기서](http://repositories.ros.org/status_page/ros_indigo_arm.html) 확인할 수 있다.)
+ARM 버젼의 ROS Indigo [설치가이드](http://wiki.ros.org/indigo/Installation/UbuntuARM)에 따라 순서대로 설치를 진행하고 패키지 설치 단계에서 아래의 목록을 설치한다. (ROS Indigo 버젼에서 설치가능한 패키지 목록은 [여기서](http://repositories.ros.org/status_page/ros_indigo_arm.html) 확인할 수 있다)
 ```
 $ sudo apt-get install ros-indigo-ros-base python-rosdep python-rosinstall ros-indigo-pcl_ros ros-indigo-urdf  
-ros-indigo-image-transport ros-indigo-image-transport-plugins ros-indigo-robot-state-publisher ros-indigo-rqt ros-indigo-rviz
+ros-indigo-image-transport ros-indigo-image-transport-plugins ros-indigo-robot-state-publisher
 ```  
+  
+ROS visualization을 위해서 다음 패키지도 설치한다(옵션사항)  
+```
+$sudo apt-get install ros-indigo-rqt ros-indigo-rqt-image-view ros-indigo-rviz
+```
+  
   
 ## Install ZED SDK & ROS integration
 ![ZED - Stereolabs](https://www.stereolabs.com/img/product/ZED_product_main.jpg)  
