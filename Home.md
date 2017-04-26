@@ -111,3 +111,4 @@ roslaunch zed_wrapper zed.launch
 2. https://www.stereolabs.com/blog/index.php/2015/09/24/getting-started-with-jetson-tk1-and-zed/
 3. https://huangying-zhan.github.io/2016/08/16/Caffe-installation-and-practice-on-Jetson-TK1.html
 4. https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/
+5. http://kirumang.tistory.com/27
