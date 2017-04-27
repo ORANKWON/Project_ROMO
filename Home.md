@@ -21,8 +21,7 @@ $ sudo apt-add-repository multiverse
 $ sudo apt-get update
 ```  
 
-## Install CUDA 6.5 & OpenCV4Tegra
-CUDA 패키지 및 OpenCV4Tegra(2.4.10)를 [NVIDIA 개발자 사이트](https://developer.nvidia.com/linux-tegra-rel-21)에서 다운로드 한다.  
+## Install CUDA, OpenCV4Tegra, cuDNN  
 다음 명령어로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 
 ```
