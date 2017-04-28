@@ -60,7 +60,7 @@ $ source ~/.bashrc
 다음 명령어로 OpenCV4Tegra를 설치한다.  
 
 ```
-$ sudo dpkg -i libopencv4tegra-repo_l4t-r21_2.4.10.1_armhf.deb
+$ sudo dpkg -i libopencv4tegra-repo_2.4.13_armhf_l4t_r21.deb
 $ sudo apt-get update
 $ sudo apt-get install libopencv4tegra libopencv4tegra-dev
 ```  
