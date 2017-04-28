@@ -50,21 +50,23 @@ $ sudo dpkg -i cuda-repo-l4t-r21.5-6-5-local_6.5-53_armhf.deb
 $ sudo apt-get update
 $ sudo apt-get install cuda-toolkit-6-5 -y
 $ sudo usermod -a -G video $USER(기본설치의 경우 'ubuntu')
-
-$ echo "# Add CUDA bin & library paths:" >> ~/.bashrc
-$ echo "export PATH=/usr/local/cuda/bin:$PATH" >> ~/.bashrc
-$ echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
-$ source ~/.bashrc
 ```  
   
 다음 명령어로 OpenCV4Tegra를 설치한다.  
-
 ```
 $ sudo dpkg -i libopencv4tegra-repo_2.4.13_armhf_l4t_r21.deb
 $ sudo apt-get update
 $ sudo apt-get install libopencv4tegra libopencv4tegra-dev
 ```  
   
+cuDNN은 별도의 패키지 다운로드 및 설치 과정이 없다. 다운로드한 파일의 압축을 풀고 라이브러리 및 헤더 파일이 포함된 폴더(cudnn-6.5-linux-ARMv7-v2)를 /home 경로에 복사하고 아래 명령을 수행한다.
+```
+$ echo "# Add CUDA bin & library paths:" >> ~/.bashrc
+$ echo "export PATH=/usr/local/cuda/bin:$PATH" >> ~/.bashrc
+$ echo "export LD_LIBRARY_PATH=/home/ubuntu/cudnn-6.5-linux-ARMv7-v2:/usr/local/cuda/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
+$ source ~/.bashrc
+```
+    
 설치가 완료된 이후 아래 명령어를 실행하자
 ```
 $ sudo apt-get update  
