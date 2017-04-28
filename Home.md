@@ -1,5 +1,5 @@
 # Welcome to the IdeaFestival2017 wiki!  
-기억력의 한계로..나중을 위해 개발 과정의 삽질 및 성공 내용 기록함.   
+기억력의 한계로.. 나중을 위해 개발 과정의 삽질 및 성공 내용 기록함.   
 ## Jetson TK1 flash 방법  
 ![Jetson TK1](http://kr.nvidia.com/content/tegra/images/jetson/jetson-tk1.png)  
 준비사항: Ubuntu 14.04 버젼이 설치된 host PC(인터넷 연결 필요)  
@@ -20,6 +20,8 @@ $ sudo apt-add-repository universe
 $ sudo apt-add-repository multiverse
 $ sudo apt-get update
 ```  
+  
+[Note] 
 
 ## Install CUDA, OpenCV4Tegra, cuDNN  
 다음 명령어로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
