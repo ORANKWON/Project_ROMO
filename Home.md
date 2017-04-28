@@ -21,7 +21,8 @@ $ sudo apt-add-repository multiverse
 $ sudo apt-get update
 ```  
   
-[Note] 
+[Note] 처음 설치된 경우 한글입력이 안되는 상태이므로 <http://ledgku.tistory.com/24>를 참고한다.  
+
 
 ## Install CUDA, OpenCV4Tegra, cuDNN  
 다음 명령어로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
