@@ -25,14 +25,31 @@ $ sudo apt-get update
 
 
 ## Install CUDA, OpenCV4Tegra, cuDNN  
-다음 명령어로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
-![](https://cloud.githubusercontent.com/assets/23667624/25509576/f52895c0-2bf4-11e7-846a-4d9b4f00f83c.png)
-![](https://cloud.githubusercontent.com/assets/23667624/25509577/f75328ec-2bf4-11e7-9d63-91a99c3d32cb.png)
+Jetson TK1 R21.5에서 지원하는 라이브러리 버젼은 다음과 같다.  
 ```
-$ sudo dpkg -i cuda-repo-l4t-r21.2-6-5-prod_6.5-34_armhf.deb
+CUDA 6.5 (6.5.53)
+OpenCV4Tegra 2.4 (2.4.13)
+cuDNN v2
+```
+  
+R21.4까지는 라이브러리들의 패키지 다운로드 경로를 제공하였는데 최신 버젼부터는 제공을 하지 않는다(구글링을 해보니 NVIDIA에서 Jetpack을 통해 일괄적으로 제공하는 것으로 정책을 변경한 것 같다). 그래도 방법은 다 있다ㅋㅋ  
+바로 Jetpack을 통해서 위의 라이브러리 패키지 파일을 다운로드 하는 것인데 안타깝게도 Jetson 보드에서는 Jetpack이 실행되지 않으니 Linux host PC에서 다운로드할 수 밖에 없다. 자세한 방법은 아래 참조..    
+
+먼저 NVIDIA 개발자 사이트의 [Jetpack Archivce](https://developer.nvidia.com/embedded/jetpack-archive)에서 설치하고자 하는 버젼을 선택해서 다운로드한다(2.3.1버젼으로 진행하였음). 자세한 설치 방법은 [공식 설치가이드](http://docs.nvidia.com/jetpack-l4t/index.html#developertools/mobile/jetpack/l4t/2.3/jetpack_l4t_install.htm)를 참고하자.  
+  
+다운로드 받을 항목을 선택하는 과정에서 필요한 것만 선택할 수 있다(OS는 이미 flash 했으니 다운받을 필요없다)  
+단, flash OS 항목을 체크하게 되면 다운로드 및 인스톨 완료후 flash 단계로 넘어가니 'no action'으로 설정하자. 
+![](https://cloud.githubusercontent.com/assets/23667624/25509576/f52895c0-2bf4-11e7-846a-4d9b4f00f83c.png)  
+  
+다운로드를 완료하면 아래 그림과 같이 'jetpack_download'폴더에 라이브러리 패키지 파일(*.deb)들이 생긴 것을 확인할 수 있다. CUDA, OpenCV4Tegra, cuDNN 파일만 USB 등을 이용해서 TK1 보드에 복사하자.
+![](https://cloud.githubusercontent.com/assets/23667624/25509577/f75328ec-2bf4-11e7-9d63-91a99c3d32cb.png)
+  
+이제 다음 명령어로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
+```
+$ sudo dpkg -i cuda-repo-l4t-r21.5-6-5-local_6.5-53_armhf.deb
 $ sudo apt-get update
-$ sudo apt-get install cuda-toolkit-6-5
-$ sudo usermod -a -G video $USER
+$ sudo apt-get install cuda-toolkit-6-5 -y
+$ sudo usermod -a -G video $USER(기본설치의 경우 'ubuntu')
 
 $ echo "# Add CUDA bin & library paths:" >> ~/.bashrc
 $ echo "export PATH=/usr/local/cuda/bin:$PATH" >> ~/.bashrc
