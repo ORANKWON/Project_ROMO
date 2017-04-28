@@ -24,6 +24,7 @@ $ sudo apt-get update
 ## Install CUDA, OpenCV4Tegra, cuDNN  
 다음 명령어로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 ![](https://cloud.githubusercontent.com/assets/23667624/25509576/f52895c0-2bf4-11e7-846a-4d9b4f00f83c.png)
+![](https://cloud.githubusercontent.com/assets/23667624/25509577/f75328ec-2bf4-11e7-9d63-91a99c3d32cb.png)
 ```
 $ sudo dpkg -i cuda-repo-l4t-r21.2-6-5-prod_6.5-34_armhf.deb
 $ sudo apt-get update
