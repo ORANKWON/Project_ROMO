@@ -147,3 +147,4 @@ roslaunch zed_wrapper zed.launch
 4. https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/
 5. http://kirumang.tistory.com/27
 6. https://github.com/ros-visualization/rviz/issues/955
+7. http://researchmap.jp/jojgwe7tm-2001408/
