@@ -23,6 +23,17 @@ $ sudo apt-get update
   
 [Note] 처음 설치된 경우 한글입력이 안되는 상태이므로 <http://ledgku.tistory.com/24>를 참고한다.  
 
+## Grinch kernal 업데이트  
+NVIDIA에서 제공하는 Jetson TK1 커널의 경우 일반적인 Ubuntu에 포함되어 있는 다양한 기능이 빠져있는데 대표적인 것이 WiFi나 USB 테더링 등이다. Grinch 커널은 이러한 부분을 추가 및 수정한 버젼이라 생각하면 된다. 다음 주소에서 다운로드 받을 수 있다.  
+  
+http://www.jarzebski.pl/files/jetsontk1/  
+  
+j[jetsonhacks GitHub](https://github.com/jetsonhacks/installGrinch)에서는 Grinch 커널의 다운로드 및 설치를 자동으로 해주는 스크립트를 제공한다. 쉘 스크립트를 다운로드 받은 후 아래 명령으로 실행하면 잠시후 완료된다. 완료후 재부팅하면 적용 완료!
+```    
+./installGrinch.sh
+```
+  
+이제 안드로이드 핸드폰의 테더링 기능으로 인터넷에 연결하거나 WiFi카드, 동글 등을 통해서 인터넷 접속이 가능하다. TK1보드에는 mini PCIe 인터페이스가 제공되고 여기에 호환되는 Wifi 카드는 대표적으로 [Intel Dual band Wireless N7260](http://www.aliexpress.com/item/Dual-band-Wireless-N-7260HMWAN-7260-7260hmw-an-Wifi-Bluetooth-4-0-Card-for-intel-HP/32248515541.html) 등이 있다.  
 
 ## Install CUDA, OpenCV4Tegra, cuDNN  
 Jetson TK1 R21.5에서 지원하는 라이브러리 버젼은 다음과 같다.  
@@ -135,3 +146,4 @@ roslaunch zed_wrapper zed.launch
 3. https://huangying-zhan.github.io/2016/08/16/Caffe-installation-and-practice-on-Jetson-TK1.html
 4. https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/
 5. http://kirumang.tistory.com/27
+6. https://github.com/ros-visualization/rviz/issues/955
