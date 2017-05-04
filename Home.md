@@ -87,7 +87,7 @@ $ sudo apt-get upgrade
 ## Install ROS - Indigo  
 ARM 버젼의 ROS Indigo [설치가이드](http://wiki.ros.org/indigo/Installation/UbuntuARM)에 따라 순서대로 설치를 진행하고 ros-indigo-desktop 패키지를 설치한다. (ROS Indigo 버젼에서 설치가능한 패키지 목록은 [여기서](http://repositories.ros.org/status_page/ros_indigo_arm.html) 확인할 수 있다)
 ```
-$ sudo apt-get install ros-indigo-desktop
+$ sudo apt-get install ros-indigo-desktop ros-indigo-pcl-ros
 ```  
   
 만약 rviz 실행시 Segmentation fault 오류가 발생하며 실행이 안될 경우 아래를 수행한다.
