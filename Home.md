@@ -28,7 +28,7 @@ NVIDIA에서 제공하는 Jetson TK1 커널의 경우 일반적인 Ubuntu에 포
   
 http://www.jarzebski.pl/files/jetsontk1/  
   
-j[jetsonhacks GitHub](https://github.com/jetsonhacks/installGrinch)에서는 Grinch 커널의 다운로드 및 설치를 자동으로 해주는 스크립트를 제공한다. 쉘 스크립트를 다운로드 받은 후 아래 명령으로 실행하면 잠시후 완료된다. 완료후 재부팅하면 적용 완료!
+[jetsonhacks GitHub](https://github.com/jetsonhacks/installGrinch)에서는 Grinch 커널의 다운로드 및 설치를 자동으로 해주는 스크립트를 제공한다. 쉘 스크립트를 다운로드 받은 후 아래 명령으로 실행하면 잠시후 완료된다. 완료후 재부팅하면 적용 완료!
 ```    
 ./installGrinch.sh
 ```
