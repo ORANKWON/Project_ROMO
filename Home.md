@@ -92,8 +92,9 @@ $ sudo apt-get install ros-indigo-desktop
   
 만약 rviz 실행시 Segmentation fault 오류가 발생하며 실행이 안될 경우 아래를 수행한다.
 ```
-echo "unset GTK_IM_MODULE" >> ~/.bashrc
-source ~/.bashrc
+$ echo "# for using RVIZ" >> ~/.bashrc
+$ echo "unset GTK_IM_MODULE" >> ~/.bashrc
+$ source ~/.bashrc
 ```
   
 위의 명령으로도 rviz가 실행이 안되면 [libpcre3_8.35](http://ports.ubuntu.com/pool/main/p/pcre3/libpcre3_8.35-7.1ubuntu1_armhf.deb)을 업데이트 한다.  
