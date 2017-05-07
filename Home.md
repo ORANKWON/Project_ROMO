@@ -119,7 +119,11 @@ $ cd ~/catkin_ws
 $ catkin_make
 $ source ./devel/setup.bash
 ```  
-  
+부팅시 매번 설정하는 것이 번거롭다면 아래와 같이 설정해두자.
+```
+$ echo "source /home/ubuntu/catkin_ws/devel/setup.bash" >> ~/.bashrc 
+```
+
 성공적으로 컴파일이 되었다면 아래 명령으로 어플리케이션을 실행시켜 본다.  
 ```
 roslaunch zed_wrapper zed.launch
@@ -132,9 +136,7 @@ roslaunch zed_wrapper zed.launch
 ## You have to update the firmware with the latest version (v1142) using the ZED Explorer
 ```  
   
-이 경우에는 메시지에 나와 있듯이 ZED Explorer를 우선 실행시킨다.  
-우측 상단의 톱니바퀴 형태의 아이콘을 클릭 > Firmware 탭에서 업데이트 시켜준다.  
-단, 확인결과 펌웨어 업데이트는 Jetson TK1에서 할 수 없고 Windows나 Ubuntu같은 데스크탑 환경에서만 가능하다!  
+이 경우에는 메시지에 나와 있듯이 ZED Explorer를 우선 실행시키고 우측 상단의 톱니바퀴 형태의 아이콘을 클릭 > Firmware 탭에서 업데이트 시켜준다. (확인결과 펌웨어 업데이트는 Jetson TK1에서 할 수 없고 Windows나 Ubuntu같은 데스크탑 환경에서만 가능하다)  
 업데이트에 필요한 바이너리 파일(zed_fw_vXXXX_spi.bin)은 ZED SDK가 설치된 아래 경로에서 찾을 수 있다.  
 ```
 /usr/local/zed/firmware
