@@ -90,16 +90,20 @@ ARM 버젼의 ROS Indigo [설치가이드](http://wiki.ros.org/indigo/Installati
 $ sudo apt-get install ros-indigo-desktop ros-indigo-pcl-ros
 ```  
   
-만약 rviz 실행시 Segmentation fault 오류가 발생하며 실행이 안될 경우 아래를 수행한다.
+Jetson TK1보드에서 rviz를 실행하기 위해 아래 옵션을 설정한다.
 ```
 $ echo "# for using RVIZ" >> ~/.bashrc
 $ echo "unset GTK_IM_MODULE" >> ~/.bashrc
 $ source ~/.bashrc
 ```
   
-위의 명령으로도 rviz가 실행이 안되면 [libpcre3_8.35](http://ports.ubuntu.com/pool/main/p/pcre3/libpcre3_8.35-7.1ubuntu1_armhf.deb)을 업데이트 한다.  
+만약 그래도 rviz 실행시 Segmentation Fault 메시지가 발생한다면 rviz가 업데이트 되면서 libpcre 라이브러리와 충돌문제이므로 아래 패키지를 다운로드하여 업데이트 한다.  
 ```
-$ sudo dpkg -i libpcre3_8.35-7.1ubuntu1_armhf.deb
+$ wget http://launchpadlibrarian.net/182261128/libpcre3_8.35-3ubuntu1_armhf.deb
+$ wget http://launchpadlibrarian.net/182261132/libpcre3-dev_8.35-3ubuntu1_armhf.deb
+$ wget http://launchpadlibrarian.net/182261135/libpcre3-dbg_8.35-3ubuntu1_armhf.deb
+$ wget http://launchpadlibrarian.net/182261131/libpcrecpp0_8.35-3ubuntu1_armhf.deb
+$ sudo dpkg -i libpcre*8.35*.deb
 $ sudo apt-get update
 ```  
  
