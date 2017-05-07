@@ -97,7 +97,7 @@ $ echo "unset GTK_IM_MODULE" >> ~/.bashrc
 $ source ~/.bashrc
 ```
   
-만약 그래도 rviz 실행시 Segmentation Fault 메시지가 발생한다면 rviz가 업데이트 되면서 libpcre 라이브러리와 충돌문제이므로 아래 패키지를 다운로드하여 업데이트 한다.  
+만약 위와 같이 설정했음에도 rviz 실행시 Segmentation Fault 메시지가 발생한다면 rviz가 업데이트 되면서 libpcre 라이브러리와 충돌문제이므로 아래 패키지를 다운로드하여 업데이트 한다.  
 ```
 $ wget http://launchpadlibrarian.net/182261128/libpcre3_8.35-3ubuntu1_armhf.deb
 $ wget http://launchpadlibrarian.net/182261132/libpcre3-dev_8.35-3ubuntu1_armhf.deb
