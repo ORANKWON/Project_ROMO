@@ -54,13 +54,26 @@ R21.4까지는 라이브러리들의 패키지 다운로드 경로를 제공하�
 다운로드를 완료하면 아래 그림과 같이 'jetpack_download'폴더에 라이브러리 패키지 파일(*.deb)들이 생긴 것을 확인할 수 있다. CUDA, OpenCV4Tegra, cuDNN 파일만 USB 등을 이용해서 TK1 보드에 복사하자.
 ![](https://cloud.githubusercontent.com/assets/23667624/25509577/f75328ec-2bf4-11e7-9d63-91a99c3d32cb.png)
   
-이제 다음 명령어로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
+이제 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 ```
 $ sudo dpkg -i cuda-repo-l4t-r21.5-6-5-local_6.5-53_armhf.deb
 $ sudo apt-get update
 $ sudo apt-get install cuda-toolkit-6-5 -y
-$ sudo usermod -a -G video $USER(기본설치의 경우 'ubuntu')
+$ sudo usermod -a -G video $USER
 ```  
+  
+CUDA의 설치여부는 명령으로 확인할 수 있다.
+```
+nvcc -V
+```
+  
+아래와 같이 출력되면 정상적으로 설치된 것이다.
+```
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2014 NVIDIA Corporation
+Built on Tue_Feb_17_22:53:16_CST_2015
+Cuda compilation tools, release 6.5, V6.5.45
+```
   
 다음 명령어로 OpenCV4Tegra를 설치한다.  
 ```
