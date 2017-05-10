@@ -97,7 +97,7 @@ $ echo "unset GTK_IM_MODULE" >> ~/.bashrc
 $ source ~/.bashrc
 ```
   
-만약 위와 같이 설정했음에도 rviz 실행시 Segmentation Fault 메시지가 발생한다면 rviz가 업데이트 되면서 libpcre 라이브러리와 충돌문제이므로 아래 패키지를 다운로드하여 업데이트 한다.  
+만약 위와 같이 설정했음에도 rviz 실행시 Segmentation Fault 메시지가 발생한다면 rviz가 업데이트 되면서 libpcre 라이브러리와 충돌하는 문제이므로 아래 패키지를 다운로드하여 업데이트 한다.  
 ```
 $ wget http://launchpadlibrarian.net/182261128/libpcre3_8.35-3ubuntu1_armhf.deb
 $ wget http://launchpadlibrarian.net/182261132/libpcre3-dev_8.35-3ubuntu1_armhf.deb
@@ -122,11 +122,7 @@ ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https:/
 $ cd ~/catkin_ws
 $ catkin_make
 $ source ./devel/setup.bash
-```  
-부팅시 매번 설정하는 것이 번거롭다면 아래와 같이 설정해두자.
-```
-$ echo "source /home/ubuntu/catkin_ws/devel/setup.bash" >> ~/.bashrc 
-```
+``` 
 
 성공적으로 컴파일이 되었다면 아래 명령으로 어플리케이션을 실행시켜 본다.  
 ```
