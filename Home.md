@@ -180,7 +180,7 @@ $ sudo gedit /usr/local/bin/disableUSBAutosuspend.sh
 sudo sh -c 'for dev in /sys/bus/usb/devices/*/power/autosuspend; do echo -1 >$dev; done'
 ```
   
-부팅후 자동적으로 실행하기 위해서 /etc/rc.local 파일의 제일 하단('exit 0' 바로 위)에 아래 내용을 입력한다.
+부팅후 스크립트가 자동적으로 실행하기 위해서 /etc/rc.local 파일의 제일 하단('exit 0' 바로 위)에 아래 내용을 입력한다.
 ```
 # disable USB autosuspend
 /usr/local/bin/disableUSBAutosuspend.sh
