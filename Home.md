@@ -62,7 +62,7 @@ $ sudo apt-get install cuda-toolkit-6-5 -y
 $ sudo usermod -a -G video $USER
 ```  
   
-CUDA의 설치여부는 명령으로 확인할 수 있다.
+CUDA의 설치여부는 아래 명령으로 확인할 수 있다.
 ```
 nvcc -V
 ```
@@ -128,8 +128,42 @@ $ chmod +x ZED_SDK_JTK1_v*.run
 $ ./ZED_SDK_JTK1_v*.run
 ```  
   
+ZED 스테레오 카메라는 리소스를 많이 사용하며 특히 Depth와 Point Cloud를 생성하기 위해선 GPU가속을 필요로 한다. 따라서 TK1 보드의 성능을 최대치로 개방(?)하기 위해서 다음 과정을 수행하도록 한다. CPU와 GPU의 성능을 최대로 사용하기 위해서 'maxPerformance.sh'이라는 파일을 생성한다. (여기서는 gedit를 사용하였지만 아무 편집기(vim 등)를 사용해도 무방하다)
+```
+$ sudo gedit /usr/local/bin/maxPerformance.sh
+```
+  
+파일이 열리면 아래 내용을 입력하고 저장후 닫는다.
+```
+#!/bin/sh
 
-ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/)에서 확인할 수 있다.  SDK v1.2와 호환되는 ros-wrapper는 [GitHub](https://github.com/stereolabs/zed-ros-wrapper/releases/tag/v1.2.0)에서 다운로드할 수 있으며 다운로드한 zed-ros-wrapper를 ~/catkin_ws/src 폴더에 복사하고 다음 명령을 수행한다.
+# Set CPU to full performance on NVIDIA Jetson TK1 Development Kit
+if [ $(id -u) != 0 ]; then
+echo "This script requires root permissions"
+echo "$ sudo "$0""
+exit
+fi
+
+# To obtain full performance on the CPU (eg: for performance measurements or benchmarking or when you don't care about power draw), you can disable CPU scaling and force the 4 main CPU cores to always run at max performance until reboot:
+echo 0 > /sys/devices/system/cpu/cpuquiet/tegra_cpuquiet/enable
+echo 1 > /sys/devices/system/cpu/cpu0/online
+echo 1 > /sys/devices/system/cpu/cpu1/online
+echo 1 > /sys/devices/system/cpu/cpu2/online
+echo 1 > /sys/devices/system/cpu/cpu3/online
+echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
+# Clock the GPUs to max speed
+echo 852000000 > /sys/kernel/debug/clock/override.gbus/rate
+echo 1 > /sys/kernel/debug/clock/override.gbus/state
+```
+  
+TK1 보드가 부팅후에 위의 스크립트가 실행되도록 하기 위해서 아래 내용을 /etc/rc.local 파일에 추가한다. (파일을 열어서 제일 하단의 'exit 0' 바로 위에 추가하도록 한다)
+```
+# Turn up the CPU and GPU for max performance
+/usr/local/bin/maxPerformance.sh
+```
+  
+ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/)에서 확인할 수 있다.  SDK v1.2와 호환되는 ros-wrapper는 [GitHub](https://github.com/stereolabs/zed-ros-wrapper/releases/tag/v1.2.0)에서 다운로드할 수 있으며, 다운로드한 zed-ros-wrapper를 ~/catkin_ws/src 폴더에 복사하고 다음 명령을 수행한다.
 ```
 $ cd ~/catkin_ws
 $ catkin_make
