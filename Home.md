@@ -128,7 +128,7 @@ $ chmod +x ZED_SDK_JTK1_v*.run
 $ ./ZED_SDK_JTK1_v*.run
 ```  
   
-ZED 스테레오 카메라는 리소스를 많이 사용하며 특히 Depth와 Point Cloud를 생성하기 위해선 GPU가속을 필요로 한다. 따라서 TK1 보드의 성능을 최대치로 개방(?)하기 위해서 다음 과정을 수행하도록 한다. CPU와 GPU의 성능을 최대로 사용하기 위해서 'maxPerformance.sh'이라는 파일을 생성한다. (여기서는 gedit를 사용하였지만 아무 편집기(vim 등)를 사용해도 무방하다)
+ZED 스테레오 카메라는 리소스를 많이 사용하며 특히 Depth와 Point Cloud를 생성하기 위해선 GPU가속을 필요로 한다. 따라서 TK1 보드의 성능을 최대치로 개방(?)하기 위해서 'maxPerformance.sh'이라는 파일을 생성한다. (여기서는 gedit를 사용하였지만 아무 편집기(vim 등)를 사용해도 무방하다)
 ```
 $ sudo gedit /usr/local/bin/maxPerformance.sh
 ```
@@ -157,10 +157,33 @@ echo 852000000 > /sys/kernel/debug/clock/override.gbus/rate
 echo 1 > /sys/kernel/debug/clock/override.gbus/state
 ```
   
-TK1 보드가 부팅후에 위의 스크립트가 실행되도록 하기 위해서 아래 내용을 /etc/rc.local 파일에 추가한다. (파일을 열어서 제일 하단의 'exit 0' 바로 위에 추가하도록 한다)
+TK1 보드가 부팅후에 위의 스크립트가 실행되도록 하기 위해서 /etc/rc.local 파일에 다음 내용을 추가한다. (파일을 열어서 제일 하단의 'exit 0' 바로 위에 입력한다)
 ```
 # Turn up the CPU and GPU for max performance
 /usr/local/bin/maxPerformance.sh
+```
+  
+ZED 스테레오 카메라는 USB 3.0으로 통신하므로 TK1 보드가 USB 3.0포트를 사용할 수 있도록 아래 명령을 수행한다. (편집기로 /boot/extlinux/extlinux.conf 파일을 직접 열고 수정해도 무방하다)
+```
+$ sudo sed -i 's/usb_port_owner_info=0/usb_port_owner_info=2/' /boot/extlinux/extlinux.conf
+```
+  
+L4T는 기본적으로 에너지 절약모드로 동작하도록 되어 있는데 특히 USB 포트의 경우에는 사용을 하지 않으면 대기모드로 빠지게 된다. 이렇게 되면 연결되어 있는 센서들과의 통신이 제대로 이루어지지 않으므로 autosuspend를 막는 스크립트를 추가하도록 한다. 터미널을 열고 아래 명령으로 'disableUSBautosuspend.sh' 파일을 생성한다.
+```
+$ sudo gedit /usr/local/bin/disableUSBAutosuspend.sh
+```
+  
+파일이 열리면 아래의 내용을 추가후 저장하고 닫는다.
+```
+#!/bin/sh
+
+sudo sh -c 'for dev in /sys/bus/usb/devices/*/power/autosuspend; do echo -1 >$dev; done'
+```
+  
+부팅후 자동적으로 실행하기 위해서 /etc/rc.local 파일의 제일 하단('exit 0' 바로 위)에 아래 내용을 입력한다.
+```
+# disable USB autosuspend
+/usr/local/bin/disableUSBAutosuspend.sh
 ```
   
 ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/)에서 확인할 수 있다.  SDK v1.2와 호환되는 ros-wrapper는 [GitHub](https://github.com/stereolabs/zed-ros-wrapper/releases/tag/v1.2.0)에서 다운로드할 수 있으며, 다운로드한 zed-ros-wrapper를 ~/catkin_ws/src 폴더에 복사하고 다음 명령을 수행한다.
