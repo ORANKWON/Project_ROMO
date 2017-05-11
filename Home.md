@@ -219,15 +219,15 @@ libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev
 liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev  
 ```
   
-먼저 Caffe의 소스코드를 github에서 clone한다. (Home 디렉토리 ~/ 에 소스코드를 복사한다)
+먼저 Caffe의 소스코드를 github에서 clone한다. TK1 보드에서는 cuDNN2 버젼만 지원하므로 최신의 Caffe소스코드로 컴파일하면 에러가 발생한다. 따라서 아래 경로에 있는 cuDNN2버젼용 Caffe 소스코드를 받자. 
 ```
 $ cd ~
-$ git clone https://github.com/BVLC/caffe.git
+$ git clone https://github.com/RadekSimkanic/caffe-for-cudnn-v2.5.48.git
 ```
   
 caffe 폴더로 이동하여 Makefile 설정 및 gcc를 다운로드 한다.
 ```
-$ cd caffe
+$ cd caffe-for-cudnn-v2.5.48
 $ sudo apt-get install gcc-4.6 g++-4.6 gcc-4.6-multilib g++-4.6-multilib
 $ sed -i "s/# CUSTOM_CXX := g++/CUSTOM_CXX := g++-4.6/" Makefile.config
 ```
