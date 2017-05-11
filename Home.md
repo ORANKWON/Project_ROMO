@@ -211,10 +211,73 @@ roslaunch zed_wrapper zed.launch
 ```  
 
 ## Install Caffe  
-Caffe는 Berkeley 대학에서 관리하고 있는 사용자 층이 두터운 딥러닝 라이브러리이며 C++로 직접 구현할 수도 있고 Python과 Matlab 인터페이스도 잘 구현되어 있다. 먼저 아래와 같이 Caffe 구동에 필요한 라이브러리들을 설치한다.  
+Caffe는 Berkeley 대학에서 관리하고 있는 딥러닝 라이브러리이며 google의 tensorflow와 함께 사용자층이 매우 두텁다. C++로 직접 구현할 수도 있고 Python과 Matlab 인터페이스도 잘 구현되어 있다. 먼저 아래와 같이 Caffe 구동에 필요한 라이브러리들을 설치한다.
 ```
 $ sudo apt-get install libprotobuf-dev protobuf-compiler gfortran libboost-dev cmake 
-libleveldb-dev libsnappy-dev libboost-thread-dev libboost-system-dev libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev  
+libleveldb-dev libsnappy-dev libboost-thread-dev libboost-system-dev  
+libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev  
+liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev  
+```
+  
+먼저 Caffe의 소스코드를 github에서 clone한다. (Home 디렉토리 ~/ 에 소스코드를 복사한다)
+```
+$ cd ~
+$ git clone https://github.com/BVLC/caffe.git
+```
+  
+caffe 폴더로 이동하여 Makefile 설정 및 gcc를 다운로드 한다.
+```
+$ cd caffe
+$ sudo apt-get install gcc-4.6 g++-4.6 gcc-4.6-multilib g++-4.6-multilib
+$ sed -i "s/# CUSTOM_CXX := g++/CUSTOM_CXX := g++-4.6/" Makefile.config
+```
+
+컴파일하기 전에 Makefile.config 파일을 수정하도록 한다. gedit와 같은 편집기로 파일을 열고 아래 부분을 찾는다.
+```
+# USE_CUDNN := 1
+```
+  
+cuDNN을 사용하기 위해 주석만 풀어주면 된다.
+```
+USE_CUDNN := 1
+```
+  
+그리고 TK1은 CUDA 6.5만 지원하므로 CUDA architecture를 설정하는 부분을 변경해야 한다. (안그러면 컴파일 할때 에러 발생한다) Makefile.config 파일에서 아래 부분을 찾는다. 
+```
+CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
+		-gencode arch=compute_20,code=sm_21 \
+		-gencode arch=compute_30,code=sm_30 \
+		-gencode arch=compute_35,code=sm_35 \
+		-gencode arch=compute_50,code=sm_50 \
+		-gencode arch=compute_52,code=sm_52 \
+		-gencode arch=compute_60,code=sm_60 \
+		-gencode arch=compute_61,code=sm_61 \
+		-gencode arch=compute_61,code=compute_61
+```
+  
+*_60과 *_61이 붙어있는 항목을 아래와 같이 주석처리한다.
+```
+CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
+		-gencode arch=compute_20,code=sm_21 \
+		-gencode arch=compute_30,code=sm_30 \
+		-gencode arch=compute_35,code=sm_35 \
+		-gencode arch=compute_50,code=sm_50 \
+		-gencode arch=compute_52,code=sm_52 \
+#		-gencode arch=compute_60,code=sm_60 \
+#		-gencode arch=compute_61,code=sm_61 \
+#		-gencode arch=compute_61,code=compute_61
+```
+  
+저장후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 상당히 걸리므로 차 한잔~)
+```
+$ make all -j4
+$ make test -j4
+$ make runtest -j4
+```
+  
+Caffe가 제대로 동작하는지 확인하기 위해서 아래 명령으로 벤치마킹 테스트를 해본다. 출력되는 수행시간 결과는 10번의 iteration의 합이므로 10으로 나누어주면 한 이미지당 영상처리 시간을 구할 수 있다. (TK1의 경우 대략 21~23ms 정도 나오는 듯 싶다)
+```
+$ build/tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
 ```
   
 
