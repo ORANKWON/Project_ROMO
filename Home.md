@@ -219,19 +219,16 @@ libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev
 liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev  
 ```
   
-먼저 Caffe의 소스코드를 github에서 clone한다. TK1 보드에서는 cuDNN2 버젼만 지원하므로 최신의 Caffe소스코드로 컴파일하면 에러가 발생한다. 따라서 아래 경로에 있는 cuDNN2버젼용 Caffe 소스코드를 받자. 
+먼저 Caffe의 소스코드를 github에서 clone한다. TK1 보드에서는 cuDNN2 버젼만 지원하므로 최신의 Caffe소스코드로 컴파일하면 에러가 발생한다. 따라서 아래 경로에 있는 cuDNN2버젼용 Caffe 소스코드를 받고 컴파일 설정을 하자. 
 ```
 $ cd ~
-$ git clone https://github.com/RadekSimkanic/caffe-for-cudnn-v2.5.48.git
-```
-  
-caffe 폴더로 이동하여 Makefile 설정 및 gcc를 다운로드 한다.
-```
+$ git clone https://github.com/RadekSimkanic/caffe-for-cudnn-v2.5.48.git자
 $ cd caffe-for-cudnn-v2.5.48
 $ sudo apt-get install gcc-4.6 g++-4.6 gcc-4.6-multilib g++-4.6-multilib
+$ cp Makefile.config.example Makefile.config
 $ sed -i "s/# CUSTOM_CXX := g++/CUSTOM_CXX := g++-4.6/" Makefile.config
 ```
-
+  
 컴파일하기 전에 Makefile.config 파일을 수정하도록 한다. gedit와 같은 편집기로 파일을 열고 아래 부분을 찾는다.
 ```
 # USE_CUDNN := 1
@@ -240,32 +237,6 @@ $ sed -i "s/# CUSTOM_CXX := g++/CUSTOM_CXX := g++-4.6/" Makefile.config
 cuDNN을 사용하기 위해 주석만 풀어주면 된다.
 ```
 USE_CUDNN := 1
-```
-  
-그리고 TK1은 CUDA 6.5만 지원하므로 CUDA architecture를 설정하는 부분을 변경해야 한다. (안그러면 컴파일 할때 에러 발생한다) Makefile.config 파일에서 아래 부분을 찾는다. 
-```
-CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
-		-gencode arch=compute_20,code=sm_21 \
-		-gencode arch=compute_30,code=sm_30 \
-		-gencode arch=compute_35,code=sm_35 \
-		-gencode arch=compute_50,code=sm_50 \
-		-gencode arch=compute_52,code=sm_52 \
-		-gencode arch=compute_60,code=sm_60 \
-		-gencode arch=compute_61,code=sm_61 \
-		-gencode arch=compute_61,code=compute_61
-```
-  
-*_60과 *_61이 붙어있는 항목을 아래와 같이 주석처리한다.
-```
-CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
-		-gencode arch=compute_20,code=sm_21 \
-		-gencode arch=compute_30,code=sm_30 \
-		-gencode arch=compute_35,code=sm_35 \
-		-gencode arch=compute_50,code=sm_50 \
-		-gencode arch=compute_52,code=sm_52 \
-#		-gencode arch=compute_60,code=sm_60 \
-#		-gencode arch=compute_61,code=sm_61 \
-#		-gencode arch=compute_61,code=compute_61
 ```
   
 저장후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 상당히 걸리므로 차 한잔~)
