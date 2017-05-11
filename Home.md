@@ -210,6 +210,13 @@ roslaunch zed_wrapper zed.launch
 /usr/local/zed/firmware
 ```  
 
+## Install Caffe  
+Caffe는 Berkeley 대학에서 관리하고 있는 사용자 층이 두터운 딥러닝 라이브러리이며 C++로 직접 구현할 수도 있고 Python과 Matlab 인터페이스도 잘 구현되어 있다. 먼저 아래와 같이 Caffe 구동에 필요한 라이브러리들을 설치한다.  
+```
+$ sudo apt-get install libprotobuf-dev protobuf-compiler gfortran libboost-dev cmake 
+libleveldb-dev libsnappy-dev libboost-thread-dev libboost-system-dev libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev  
+```
+  
 
 ## 참고 사이트  
 1. http://myzharbot.robot-home.it/blog/software/configuration-nvidia-jetson-tk1/  
