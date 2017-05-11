@@ -60,6 +60,11 @@ $ sudo dpkg -i cuda-repo-l4t-r21.5-6-5-local_6.5-53_armhf.deb
 $ sudo apt-get update
 $ sudo apt-get install cuda-toolkit-6-5 -y
 $ sudo usermod -a -G video $USER
+  
+$ echo "# Add CUDA bin & library paths:" >> ~/.bashrc
+$ echo "export PATH=/usr/local/cuda/bin:$PATH" >> ~/.bashrc
+$ echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
+$ source ~/.bashrc
 ```  
   
 CUDA의 설치여부는 아래 명령으로 확인할 수 있다.
