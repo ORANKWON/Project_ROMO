@@ -87,7 +87,7 @@ $ sudo apt-get update
 $ sudo apt-get install libopencv4tegra libopencv4tegra-dev
 ```  
   
-cuDNN은 별도의 패키지 다운로드 및 설치 과정이 없다. 다운로드한 파일의 압축을 풀고 라이브러리 및 헤더 파일이 포함된 폴더(cudnn-6.5-linux-ARMv7-v2)로 이동후에 CUDA가 설치된 폴더에 복사하면 편리하다. 그 이유는 CUDA 설치 과정에서 LD_LIBRARY_PATH를 설정하기 때문이다.
+cuDNN은 별도의 패키지 다운로드 및 설치 과정이 없다. 다운로드한 파일의 압축을 풀고 라이브러리 및 헤더 파일이 포함된 폴더(cudnn-6.5-linux-ARMv7-v2)로 이동후에 CUDA가 설치된 폴더에 복사해두면 편리하다. 그 이유는 CUDA 설치 과정에서 LD_LIBRARY_PATH를 설정하기 때문이다.
 ```
 $ cd cudnn-6.5-linux-ARMv7-v2
 $ sudo cp cudnn.h /usr/local/cuda-6.5/include
