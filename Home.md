@@ -243,6 +243,8 @@ cuDNN을 사용하기 위해 주석만 풀어주면 된다.
 USE_CUDNN := 1
 ```
   
+Aaron Schumacher가 [The NVIDIA Jetson TK1 with Caffe on MNIST](http://planspace.org/20150614-the_nvidia_jetson_tk1_with_caffe_on_mnist/)에서 설명한 것처럼 32bit ARM 프로세서인 TK1 보드에서는 ~/caffe-for-cudnn-v2.5.48/src/caffe/util/db_lmdb.cpp파일의 LMDB_MAP_SIZE를 아래와 같이(1099511627776->536870912) 변경해야 컴파일시 에러가 발생하지 않는다.
+  
 저장후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 상당히 걸리므로 차 한잔~)
 ```
 $ make all -j4
