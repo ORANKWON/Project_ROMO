@@ -233,19 +233,18 @@ $ cp Makefile.config.example Makefile.config
 $ sed -i "s/# CUSTOM_CXX := g++/CUSTOM_CXX := g++-4.6/" Makefile.config
 ```
   
-컴파일하기 전에 Makefile.config 파일을 수정하도록 한다. gedit와 같은 편집기로 파일을 열고 아래 부분을 찾는다.
+컴파일하기 전에 gedit와 같은 편집기로 Makefile.config 파일을 오픈한다. pycaffe 및 cuDNN을 사용하기 위해서 아래 부분을 찾아서 주석처리 되어 있는 부분을 해제하도록 한다.
 ```
-# USE_CUDNN := 1
-```
-  
-cuDNN을 사용하기 위해 주석만 풀어주면 된다.
-```
+# In your Makefile.config, make sure to have this line uncommented
+WITH_PYTHON_LAYER := 1
+
+# Unrelatedly, it's also recommended that you use CUDNN
 USE_CUDNN := 1
 ```
   
 Aaron Schumacher가 [The NVIDIA Jetson TK1 with Caffe on MNIST](http://planspace.org/20150614-the_nvidia_jetson_tk1_with_caffe_on_mnist/)에서 설명한 것처럼 32bit ARM 프로세서인 TK1 보드에서는 caffe-for-cudnn-v2.5.48/src/caffe/util/db_lmdb.cpp파일을 열어서 LMDB_MAP_SIZE를 1099511627776에서 536870912로 변경해야 컴파일시 에러가 발생하지 않는다. 변경후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 상당히 걸리므로 차 한잔~)
 ```
-$ make all -j4서
+$ make all -j4
 $ make test -j4
 $ make runtest -j4
 ```
