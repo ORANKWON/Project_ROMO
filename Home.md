@@ -254,7 +254,17 @@ Caffe가 제대로 동작하는지 확인하기 위해서 아래 명령으로 �
 $ build/tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
 ```
   
-
+pycaffe 설치는 아래 과정으로 진행한다.
+```
+$ cd caffe-for-cudnn-v2.5.48/python
+$ sudo apt-get install python-pip
+$ for req in $(cat requirements.txt); do sudo pip install $req; done
+$ cd ../
+$ make all
+$ sudo apt-get install python-numpy
+$ make pycaffe
+```
+  
 ## 참고 사이트  
 1. http://myzharbot.robot-home.it/blog/software/configuration-nvidia-jetson-tk1/  
 2. https://www.stereolabs.com/blog/index.php/2015/09/24/getting-started-with-jetson-tk1-and-zed/
