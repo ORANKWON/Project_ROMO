@@ -274,3 +274,4 @@ $ make pycaffe
 6. https://github.com/ros-visualization/rviz/issues/955
 7. http://researchmap.jp/jojgwe7tm-2001408/
 8. https://github.com/rbgirshick/py-faster-rcnn/issues/236 (py-faster-rcnn 빌드 오류 해결)
+9. https://lastone9182.github.io/2016/09/16/aws-caffe.html
