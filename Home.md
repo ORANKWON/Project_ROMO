@@ -214,13 +214,18 @@ roslaunch zed_wrapper zed.launch
 /usr/local/zed/firmware
 ```  
 
-## Install Caffe & pyCaffe  
+## Install Fast-RCNN with Caffe & pyCaffe support
 Caffe는 Berkeley 대학에서 관리하고 있는 딥러닝 라이브러리이며 google의 tensorflow와 함께 사용자층이 매우 두텁다. C++로 직접 구현할 수도 있고 Python과 Matlab 인터페이스도 잘 구현되어 있다. 먼저 아래와 같이 Caffe 구동에 필요한 라이브러리들을 설치한다.
 ```
 $ sudo apt-get install libprotobuf-dev protobuf-compiler gfortran libboost-dev cmake 
 libleveldb-dev libsnappy-dev libboost-thread-dev libboost-system-dev  
 libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev  
 liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev  
+```
+
+딥러닝 기반 물체 인식을 위해서 py-faster-rcnn을 사용한다. 
+```
+sudo apt-get 
 ```
   
 먼저 Caffe의 소스코드를 github에서 clone한다. TK1 보드에서는 cuDNN2 버젼만 지원하므로 최신의 Caffe소스코드로 컴파일하면 에러가 발생한다. 따라서 아래 경로에 있는 cuDNN2버젼용 Caffe 소스코드를 받고 컴파일 설정을 하자. 
@@ -249,7 +254,7 @@ $ make test -j4
 $ make runtest -j4
 ```
   
-Caffe가 제대로 동작하는지 확인하기 위해서 아래 명령으로 벤치마킹 테스트를 해본다. 출력되는 수행시간 결과는 10번의 iteration의 합이므로 10으로 나누어주면 한 이미지당 영상처리 시간을 구할 수 있다. (TK1의 경우 대략 21~23ms 정도 나오는 듯 싶다)
+Caffe가 제대로 동작하는지 확인하기 위해서 아래 명령으로 벤치마킹 테스트를 해본다. 출력되는 수행시간 결과는 10번의 iteration의 합이므로 10으로 나누어주면 한 이미지당 영상처리 시간을 구할 수 있다. (TK1의 경우 약 23ms 정도 나오는 듯 싶다)
 ```
 $ build/tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
 ```
