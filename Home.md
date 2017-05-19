@@ -225,10 +225,24 @@ libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev
 liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev  
 ```
 
-딥러닝을 이용하여 물체 인식을 하기 위해서 py-faster-rcnn을 사용한다. 우선 Jetson TK1용으로 수정된 faster-rcnn을 git clone하고 폴더로 이동한다.
+다음은 py-faster-rcnn을 설치하는 과정이다.  
+  
+1. Jetson TK1용으로 수정된 faster-rcnn을 git clone한다.
 ```
 $ git clone https://github.com/joeking11829/py-faster-rcnn-tk1.git
-$ cd py-faster-rcnn-tk1
+```
+  
+2.편의상 폴더명을 이후부터 $FRCN 이라 표시한다.  
+  
+3. Cython을 빌드한다.  
+```
+$ cd $FRCN/lib
+$ make
+```
+  
+4. $FRCN내의 caffe 폴더로 이동한다.
+```
+$ cd $FRCN/caffe-for-cudnn
 ```
   
 먼저 Caffe의 소스코드를 github에서 clone한다. TK1 보드에서는 cuDNN2 버젼만 지원하므로 최신의 Caffe소스코드로 컴파일하면 에러가 발생한다. 따라서 아래 경로에 있는 cuDNN2버젼용 Caffe 소스코드를 받고 컴파일 설정을 하자. 
