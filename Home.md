@@ -242,20 +242,25 @@ $ make
   
 4. $FRCN내의 caffe 폴더로 이동한다.
 ```
-$ cd $FRCN/caffe-for-cudnn
+$ cd $FRCN/caffe-fast-rcnn
 ```
   
-먼저 Caffe의 소스코드를 github에서 clone한다. TK1 보드에서는 cuDNN2 버젼만 지원하므로 최신의 Caffe소스코드로 컴파일하면 에러가 발생한다. 따라서 아래 경로에 있는 cuDNN2버젼용 Caffe 소스코드를 받고 컴파일 설정을 하자. 
+5. gcc 4.6버젼을 설치한다.
 ```
-$ cd ~
-$ git clone https://github.com/RadekSimkanic/caffe-for-cudnn-v2.5.48.git
-$ cd caffe-for-cudnn-v2.5.48
 $ sudo apt-get install gcc-4.6 g++-4.6 gcc-4.6-multilib g++-4.6-multilib
+```
+  
+6. Makefile.config를 생성한다.
+```
 $ cp Makefile.config.example Makefile.config
+```
+  
+7. g++4.6을 사용하도록 설정한다.
+```
 $ sed -i "s/# CUSTOM_CXX := g++/CUSTOM_CXX := g++-4.6/" Makefile.config
 ```
   
-컴파일하기 전에 gedit와 같은 편집기로 Makefile.config 파일을 오픈한다. pycaffe 및 cuDNN을 사용하기 위해서 아래 부분을 찾아서 주석처리 되어 있는 부분을 해제하도록 한다.
+8.gedit와 같은 편집기로 Makefile.config 파일을 오픈하고 pycaffe 및 cuDNN을 사용하기 위해서 아래 부분을 찾아서 주석처리 되어 있는 부분을 해제한다.
 ```
 # In your Makefile.config, make sure to have this line uncommented
 WITH_PYTHON_LAYER := 1
@@ -264,7 +269,9 @@ WITH_PYTHON_LAYER := 1
 USE_CUDNN := 1
 ```
   
-Aaron Schumacher가 [The NVIDIA Jetson TK1 with Caffe on MNIST](http://planspace.org/20150614-the_nvidia_jetson_tk1_with_caffe_on_mnist/)에서 설명한 것처럼 32bit ARM 프로세서인 TK1 보드에서는 caffe-for-cudnn-v2.5.48/src/caffe/util/db_lmdb.cpp파일을 열어서 LMDB_MAP_SIZE를 1099511627776에서 536870912로 변경해야 컴파일시 에러가 발생하지 않는다. 변경후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 상당히 걸리므로 차 한잔~)
+9. $FRCN/caffe-fast-rcnn/src/caffe/util/db_lmdb.cpp파일을 수정한다.(참고: Aaron Schumacher의 글[The NVIDIA Jetson TK1 with Caffe on MNIST](http://planspace.org/20150614-the_nvidia_jetson_tk1_with_caffe_on_mnist/) )  
+```
+$ gedit caffe-for-cudnn-v2.5.48/src/caffe/util/db_lmdb.cpp파일을 열어서 LMDB_MAP_SIZE를 1099511627776에서 536870912로 변경해야 컴파일시 에러가 발생하지 않는다. 변경후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 상당히 걸리므로 차 한잔~)
 ```
 $ make all -j4
 $ make test -j4
