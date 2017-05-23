@@ -23,7 +23,7 @@ $ sudo apt-get update
   
 [Note] 처음 설치된 경우 한글입력이 안되는 상태이므로 <http://ledgku.tistory.com/24>를 참고한다.  
 
-## Grinch kernal 업데이트  
+## Grinch kernal 업데이트 (TK1)
 NVIDIA에서 제공하는 Jetson TK1 커널의 경우 일반적인 Ubuntu에 포함되어 있는 다양한 기능이 빠져있는데 대표적인 것이 WiFi나 USB 테더링 등이다. Grinch 커널은 이러한 부분을 추가 및 수정한 버젼이라 생각하면 된다. 다음 주소에서 다운로드 받을 수 있다.  
   
 http://www.jarzebski.pl/files/jetsontk1/  
