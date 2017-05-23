@@ -6,7 +6,7 @@
 리눅스 pc가 없는 경우 윈도우즈 상에서 vmware나 virtualbox로도 가능하다.  
 (단, Jetpack을 이용한 flash는 경험상 비추)  
   
-Flash방법은 [NVIDIA 공식문서](https://github.com/jetsonhacks/2717a41f7e60a3405b34)에 정리된 내용을 참고하여 성공하였음. Linux4Tegra(L4T) 최신버젼(R27.1)의 Board Support Package(BSP)와 Sample File System은 [여기](https://developer.nvidia.com/embedded/linux-tegra)서 다운로드할 수 있다.  
+Flash방법은 [NVIDIA 공식문서](http://developer2.download.nvidia.com/embedded/L4T/r27_Release_v1.0/BSP/l4t_quick_start_guide.txt?2mqXqZYk2lRkqV54f6GeNyhy4RgV9594dHWPQAUAyCjGnRpw6TlhzRpg7OY7eI-bp4AZf-n3gc1x5-SRn0f1DbnSsgdymb93JSA_78ja9w6DJ1Np5VYzeh49E12qJO9W2p7x0GFUfJ0xCDq9FSv1GioO5-RF58lG64c)에 정리된 내용을 참고하여 성공하였음. Linux4Tegra(L4T) 최신버젼(R27.1)의 Board Support Package(BSP)와 Sample File System은 [여기](https://developer.nvidia.com/embedded/linux-tegra)서 다운로드할 수 있다.  
     
 마지막 flash 단계에서 eMMC 32GB 용량을 모두 사용하고 싶으면 '-S 28GiB' 옵션을 추가할 것.
 ```
