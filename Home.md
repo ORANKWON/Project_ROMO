@@ -2,7 +2,7 @@
 기억력의 한계로.. 나중을 위해 개발 과정의 삽질 및 성공 내용 기록함.   
 ## Jetson TX2 flash 방법  
 ![Jetson TX2](https://news.developer.nvidia.com/wp-content/uploads/2017/03/NVIDIA-Jetson-TX2-Developer-Kit.png)  
-준비사항: Ubuntu 16.04 버젼이 설치된 host PC(인터넷 연결 필요)  
+준비사항: Ubuntu 14.04 or 16.04 버젼이 설치된 host PC(인터넷 연결 필요)  
 리눅스 pc가 없는 경우 윈도우즈 상에서 vmware나 virtualbox로도 가능하다.  
 (단, Jetpack을 이용한 flash는 경험상 비추)  
   
