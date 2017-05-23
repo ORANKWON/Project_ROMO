@@ -1,16 +1,16 @@
 # Welcome to the IdeaFestival2017 wiki!  
 기억력의 한계로.. 나중을 위해 개발 과정의 삽질 및 성공 내용 기록함.   
-## Jetson TK1 flash 방법  
-![Jetson TK1](http://kr.nvidia.com/content/tegra/images/jetson/jetson-tk1.png)  
-준비사항: Ubuntu 14.04 버젼이 설치된 host PC(인터넷 연결 필요)  
+## Jetson TX2 flash 방법  
+![Jetson TX2](https://news.developer.nvidia.com/wp-content/uploads/2017/03/NVIDIA-Jetson-TX2-Developer-Kit.png) 
+준비사항: Ubuntu 16.04 버젼이 설치된 host PC(인터넷 연결 필요)  
 리눅스 pc가 없는 경우 윈도우즈 상에서 vmware나 virtualbox로도 가능하다.  
 (단, Jetpack을 이용한 flash는 경험상 비추)  
   
 Flash방법은 NVIDIA 공식문서나 [github](https://gist.github.com/jetsonhacks/2717a41f7e60a3405b34)에 정리된 내용을 참고하여 성공하였음. Linux4Tegra(L4T) 최신버젼(R21.5)의 Board Support Package(BSP)와 Sample File System은 [여기](https://developer.nvidia.com/linux-tegra-r215)서 다운로드할 수 있다.  
     
-마지막 flash 단계에서 eMMC 16GB 용량을 모두 사용하고 싶으면 '-S 14580MiB' 옵션을 추가할 것.
+마지막 flash 단계에서 eMMC 32GB 용량을 모두 사용하고 싶으면 '-S 28GiB' 옵션을 추가할 것.
 ```
-$ sudo ./flash.sh -S 14580MiB jetson-tk1 mmcblk0p1
+$ sudo ./flash.sh -S 28GiB jetson-tk1 mmcblk0p1
 ```  
   
 Flash작업이 종료되면 재부팅을 한다. 소스코드 및 개발에 필요한 라이브러리 설치를 위하 저장소를 추가하자.  
