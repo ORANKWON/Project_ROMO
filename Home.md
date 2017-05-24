@@ -5,7 +5,13 @@
 준비사항: Ubuntu 14.04 or 16.04 버젼이 설치된 host PC(인터넷 연결 필요)  
 리눅스 pc가 없는 경우 윈도우즈 상에서 vmware나 virtualbox로도 가능하다.  
   
-먼저 NVIDIA 개발자 사이트에서 JetPack 3.0 설치 파일을 [다운로드](https://developer.nvidia.com/embedded/jetpack)한다.
+먼저 NVIDIA 개발자 사이트에서 JetPack 3.0 설치 파일을 [다운로드](https://developer.nvidia.com/embedded/jetpack)한다. 그리고 아래와 같이 실행권한을 설정한 후 실행하면 아래와 같은 화면이 나오는데 여기서 TX2 보드를 선택한다.  
+```
+$ chmod +x ./JetPack-L4T-3.0-linux-x64.run
+$ ./JetPack-L4T-3.0-linux-x64.run
+```  
+  
+![](https://cloud.githubusercontent.com/assets/23667624/25509577/f75328ec-2bf4-11e7-9d63-91a99c3d32cb.png)
   
 Flash방법은 [NVIDIA 공식문서](http://developer2.download.nvidia.com/embedded/L4T/r27_Release_v1.0/BSP/l4t_quick_start_guide.txt?2mqXqZYk2lRkqV54f6GeNyhy4RgV9594dHWPQAUAyCjGnRpw6TlhzRpg7OY7eI-bp4AZf-n3gc1x5-SRn0f1DbnSsgdymb93JSA_78ja9w6DJ1Np5VYzeh49E12qJO9W2p7x0GFUfJ0xCDq9FSv1GioO5-RF58lG64c)에 정리된 내용을 참고하여 성공하였음. Linux4Tegra(L4T) 최신버젼(R27.1)의 Board Support Package(BSP)와 Sample File System은 [여기](https://developer.nvidia.com/embedded/linux-tegra)서 다운로드할 수 있다.  
     
@@ -46,7 +52,7 @@ cuDNN v5.1
  
   
 다운로드를 완료하면 아래 그림과 같이 'jetpack_download'폴더에 라이브러리 패키지 파일(*.deb)들이 생긴 것을 확인할 수 있다. CUDA, OpenCV4Tegra, cuDNN 파일만 USB 등을 이용해서 TX2 보드에 복사하자.
-![](https://cloud.githubusercontent.com/assets/23667624/25509577/f75328ec-2bf4-11e7-9d63-91a99c3d32cb.png)
+
   
 이제 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 ```
