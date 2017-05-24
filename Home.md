@@ -36,22 +36,15 @@ http://www.jarzebski.pl/files/jetsontk1/
 이제 안드로이드 핸드폰의 테더링 기능으로 인터넷에 연결하거나 WiFi카드, 동글 등을 통해서 인터넷 접속이 가능하다. TK1보드에는 mini PCIe 인터페이스가 제공되고 여기에 호환되는 Wifi 카드는 대표적으로 [Intel Dual band Wireless N7260](http://www.aliexpress.com/item/Dual-band-Wireless-N-7260HMWAN-7260-7260hmw-an-Wifi-Bluetooth-4-0-Card-for-intel-HP/32248515541.html) 등이 있다.  
 
 ## Install CUDA, OpenCV4Tegra, cuDNN  
-Jetson TK1 R21.5에서 지원하는 라이브러리 버젼은 다음과 같다.  
+Jetson TX2 JetPack 3.0에서 지원하는 라이브러리 버젼은 다음과 같다.  
 ```
-CUDA 6.5 (6.5.53)
+CUDA 8.0 (8.0.33)
 OpenCV4Tegra 2.4 (2.4.13)
-cuDNN v2
+cuDNN v5.1
 ```
+ 
   
-R21.4까지는 라이브러리들의 패키지 다운로드 경로를 제공하였는데 최신 버젼부터는 제공을 하지 않는다(구글링을 해보니 NVIDIA에서 Jetpack을 통해 일괄적으로 제공하는 것으로 정책을 변경한 것 같다). 그래도 방법은 다 있다ㅋㅋ  
-바로 Jetpack을 통해서 위의 라이브러리 패키지 파일을 다운로드 하는 것인데 안타깝게도 Jetson 보드에서는 Jetpack이 실행되지 않으니 Linux host PC에서 다운로드할 수 밖에 없다. 자세한 방법은 아래 참조..    
-
-먼저 NVIDIA 개발자 사이트의 [Jetpack Archivce](https://developer.nvidia.com/embedded/jetpack-archive)에서 설치하고자 하는 버젼을 선택해서 다운로드한다(2.3.1버젼으로 진행하였음). 자세한 설치 방법은 [공식 설치가이드](http://docs.nvidia.com/jetpack-l4t/index.html#developertools/mobile/jetpack/l4t/2.3/jetpack_l4t_install.htm)를 참고하자.  
-  
-다운로드 받을 항목을 선택하는 과정에서 필요한 것만 선택할 수 있다(OS는 이미 flash 했으니 다운받을 필요없다) 단, flash OS 항목을 체크하게 되면 다운로드 및 인스톨 완료후 flash 단계로 넘어가니 'no action'으로 설정하자. 
-![](https://cloud.githubusercontent.com/assets/23667624/25509576/f52895c0-2bf4-11e7-846a-4d9b4f00f83c.png)  
-  
-다운로드를 완료하면 아래 그림과 같이 'jetpack_download'폴더에 라이브러리 패키지 파일(*.deb)들이 생긴 것을 확인할 수 있다. CUDA, OpenCV4Tegra, cuDNN 파일만 USB 등을 이용해서 TK1 보드에 복사하자.
+다운로드를 완료하면 아래 그림과 같이 'jetpack_download'폴더에 라이브러리 패키지 파일(*.deb)들이 생긴 것을 확인할 수 있다. CUDA, OpenCV4Tegra, cuDNN 파일만 USB 등을 이용해서 TX2 보드에 복사하자.
 ![](https://cloud.githubusercontent.com/assets/23667624/25509577/f75328ec-2bf4-11e7-9d63-91a99c3d32cb.png)
   
 이제 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
@@ -75,9 +68,9 @@ nvcc -V
 아래와 같이 출력되면 정상적으로 설치된 것이다.
 ```
 nvcc: NVIDIA (R) Cuda compiler driver
-Copyright (c) 2005-2014 NVIDIA Corporation
-Built on Tue_Feb_17_22:53:16_CST_2015
-Cuda compilation tools, release 6.5, V6.5.45
+Copyright (c) 2005-2016 NVIDIA Corporation
+Built on Fri_Jul_15_14:52:12_CDT_2016
+Cuda compilation tools, release 8.0, V8.0.33
 ```
   
 다음 명령어로 OpenCV4Tegra를 설치한다.  
