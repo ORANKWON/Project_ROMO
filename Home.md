@@ -13,7 +13,7 @@ $ ./JetPack-L4T-3.0-linux-x64.run
   
 ![](https://cloud.githubusercontent.com/assets/23667624/26388538/dddc23be-408f-11e7-92f7-813072f17998.png)
   
-그리고 다음 그림과 같이 필요한 항목한 선택하여 패키지를 다운로드한다. OS flash는 JetPack을 통하지 않고 수동으로 진행할 것이므로 생략하도록 한다. 다운로드를 완료하면 아래 그림과 같이 'jetpack_download'폴더에 라이브러리 패키지 파일(*.deb)들이 생긴 것을 확인할 수 있다.  
+그리고 다음 그림과 같이 필요한 항목을 선택하여 다운로드한다. OS flash는 JetPack을 통하지 않고 수동으로 진행할 것이므로 생략하도록 한다. 다운로드를 완료하면 아래 그림과 같이 'jetpack_download'폴더에 라이브러리 패키지 파일(*.deb)들이 생긴것을 확인할 수 있다.  
 * Root File System
 * Drivers
 * CUDA Toolkit
