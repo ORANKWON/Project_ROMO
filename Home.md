@@ -75,7 +75,7 @@ Cuda compilation tools, release 8.0, V8.0.33
   
 다음 명령어로 OpenCV4Tegra를 설치한다.  
 ```
-$ sudo dpkg -i libopencv4tegra-repo_2.4.13_armhf_l4t_r21.deb
+$ sudo dpkg -i libopencv4tegra-repo_2.4.13-17-g5317135_arm64_l4t-r24.deb
 $ sudo apt-get update
 $ sudo apt-get install libopencv4tegra libopencv4tegra-dev
 ```  
