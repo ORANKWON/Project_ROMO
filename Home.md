@@ -13,7 +13,7 @@ $ ./JetPack-L4T-3.0-linux-x64.run
   
 ![](https://cloud.githubusercontent.com/assets/23667624/26388538/dddc23be-408f-11e7-92f7-813072f17998.png)
   
-그리고 다음 그림과 같이 필요한 항목한 선택하여 패키지를 다운로드한다. OS flash는 JetPack을 통하지 않고 수동으로 진행할 것이므로 생략하도록 한다.  
+그리고 다음 그림과 같이 필요한 항목한 선택하여 패키지를 다운로드한다. OS flash는 JetPack을 통하지 않고 수동으로 진행할 것이므로 생략하도록 한다. 다운로드를 완료하면 아래 그림과 같이 'jetpack_download'폴더에 라이브러리 패키지 파일(*.deb)들이 생긴 것을 확인할 수 있다.  
 * Root File System
 * Drivers
 * CUDA Toolkit
@@ -26,7 +26,7 @@ Jetson TX2의 flash방법은 [NVIDIA 공식문서](http://developer2.download.nv
 $ sudo ./flash.sh -S 28GiB jetson-tx2 mmcblk0p1
 ```  
   
-Flash작업이 종료되면 보드는 자동으로 재부팅을 시작하고 우분투 GUI화면이 표시될 것이다. 소스코드 및 개발에 필요한 라이브러리 설치를 위하 저장소를 추가하자.  
+Flash작업이 종료되면 보드는 자동으로 재부팅을 시작하고 우분투 GUI화면이 표시될 것이다. 위에서 다운로드 받은 CUDA, OpenCV4Tegra, cuDNN 패키지 설치 파일을 USB 등을 이용해서 TX2 보드에 복사하고, 아래 명령으로 저장소를 추가한다.  
 ```
 $ sudo apt-add-repository universe
 $ sudo apt-add-repository multiverse
@@ -34,19 +34,7 @@ $ sudo apt-get update
 ``` 
   
 [Note] 처음 설치된 경우 한글입력이 안되는 상태이므로 <http://ledgku.tistory.com/24>를 참고한다.  
-
-## Grinch kernal 업데이트 (TK1)
-NVIDIA에서 제공하는 Jetson TK1 커널의 경우 일반적인 Ubuntu에 포함되어 있는 다양한 기능이 빠져있는데 대표적인 것이 WiFi나 USB 테더링 등이다. Grinch 커널은 이러한 부분을 추가 및 수정한 버젼이라 생각하면 된다. 다음 주소에서 다운로드 받을 수 있다.  
   
-http://www.jarzebski.pl/files/jetsontk1/  
-  
-[jetsonhacks GitHub](https://github.com/jetsonhacks/installGrinch)에서는 Grinch 커널의 다운로드 및 설치를 자동으로 해주는 스크립트를 제공한다. 쉘 스크립트를 다운로드 받은 후 아래 명령으로 실행하면 잠시후 완료된다. 완료후 재부팅하면 적용 완료!
-```    
-./installGrinch.sh
-```
-  
-이제 안드로이드 핸드폰의 테더링 기능으로 인터넷에 연결하거나 WiFi카드, 동글 등을 통해서 인터넷 접속이 가능하다. TK1보드에는 mini PCIe 인터페이스가 제공되고 여기에 호환되는 Wifi 카드는 대표적으로 [Intel Dual band Wireless N7260](http://www.aliexpress.com/item/Dual-band-Wireless-N-7260HMWAN-7260-7260hmw-an-Wifi-Bluetooth-4-0-Card-for-intel-HP/32248515541.html) 등이 있다.  
-
 ## Install CUDA, OpenCV4Tegra, cuDNN  
 Jetson TX2 JetPack 3.0에서 지원하는 라이브러리 버젼은 다음과 같다.  
 ```
@@ -54,11 +42,7 @@ CUDA 8.0 (8.0.33)
 OpenCV4Tegra 2.4 (2.4.13)
 cuDNN v5.1
 ```
- 
-  
-다운로드를 완료하면 아래 그림과 같이 'jetpack_download'폴더에 라이브러리 패키지 파일(*.deb)들이 생긴 것을 확인할 수 있다. CUDA, OpenCV4Tegra, cuDNN 파일만 USB 등을 이용해서 TX2 보드에 복사하자.
-
-  
+    
 이제 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 ```
 $ sudo dpkg -i cuda-repo-l4t-8-0-local_8.0.34-1_arm64.deb 
