@@ -49,9 +49,9 @@ cuDNN v5.1
   
 이제 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 ```
-$ sudo dpkg -i cuda-repo-l4t-r21.5-6-5-local_6.5-53_armhf.deb
+$ sudo dpkg -i cuda-repo-l4t-8-0-local_8.0.34-1_arm64.deb 
 $ sudo apt-get update
-$ sudo apt-get install cuda-toolkit-6-5 -y
+$ sudo apt-get install cuda-toolkit-8-0 -y
 $ sudo usermod -a -G video $USER
   
 $ echo "# Add CUDA bin & library paths:" >> ~/.bashrc
