@@ -34,9 +34,7 @@ $ sudo apt-get update
 $ sudo apt-get upgrade
 ``` 
   
-위에서 다운로드 받은 CUDA, OpenCV4Tegra, cuDNN 패키지 설치 파일(*.deb)을 USB 등을 이용해서 TX2 보드에 복사하고,   
-
-[Note] 처음 설치된 경우 한글입력이 안되는 상태이므로 <http://ledgku.tistory.com/24>를 참고한다.  
+[Note] 한글 입력을 사용하고 싶은 경우 <http://hochulshin.com/ubuntu-1604-hangul/>를 참고한다.  
   
 ## Install CUDA, OpenCV4Tegra, cuDNN  
 Jetson TX2 JetPack 3.0에서 지원하는 라이브러리 버젼은 다음과 같다.  
@@ -46,7 +44,7 @@ OpenCV4Tegra 2.4 (2.4.13)
 cuDNN v5.1
 ```
     
-이제 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
+앞서 다운로드 받은 CUDA, OpenCV4Tegra, cuDNN 패키지 설치 파일(*.deb)을 USB 등의 저장매체를 이용해 TX2 보드에 복사한다. 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 ```
 $ sudo dpkg -i cuda-repo-l4t-8-0-local_8.0.34-1_arm64.deb 
 $ sudo apt-get update
@@ -86,19 +84,19 @@ $ sudo cp cudnn.h /usr/local/cuda-6.5/include
 $ sudo cp libcudnn* /usr/local/cuda-6.5/lib
 ```
     
-설치가 완료된 이후 아래 명령어를 실행하자
+설치가 완료된 이후 업데이트를 진행한다.
 ```
 $ sudo apt-get update  
 $ sudo apt-get upgrade
 ```  
 
-## Install ROS - Indigo  
-ARM 버젼의 ROS Indigo [설치가이드](http://wiki.ros.org/indigo/Installation/UbuntuARM)에 따라 순서대로 설치를 진행하고 ros-indigo-desktop 패키지를 설치한다. (ROS Indigo 버젼에서 설치가능한 패키지 목록은 [여기서](http://repositories.ros.org/status_page/ros_indigo_arm.html) 확인할 수 있다)
+## Install ROS - Kinetic  
+ARM 버젼의 ROS Kinetic [설치가이드](http://wiki.ros.org/indigo/Installation/UbuntuARM)에 따라 순서대로 설치를 진행한다. 설치할 ROS 패키지는 아래와 같다. 
 ```
 $ sudo apt-get install ros-indigo-desktop ros-indigo-pcl-ros
 ```  
   
-Jetson TK1보드에서 rviz를 실행하기 위해 아래 옵션을 설정한다.
+Jetson TX2보드에서 rviz를 실행하기 위해 아래 옵션을 설정한다.
 ```
 $ echo "# for using RVIZ" >> ~/.bashrc
 $ echo "unset GTK_IM_MODULE" >> ~/.bashrc
