@@ -122,42 +122,13 @@ $ chmod +x ZED_SDK_JTX2_v*.run
 $ ./ZED_SDK_JTX2_v*.run
 ```  
   
-ZED 스테레오 카메라는 리소스를 많이 사용하 따라서 TK1 보드의 성능을 최대치로 개방(?)하기 위해서 'maxPerformance.sh'이라는 파일을 생성한다. (여기서는 gedit를 사용하였지만 아무 편집기(vim 등)를 사용해도 무방하다)
-```
-$ sudo gedit /usr/local/bin/maxPerformance.sh
-```
-  
-파일이 열리면 아래 내용을 입력하고 저장후 닫는다.
-```
-#!/bin/sh
-
-# Set CPU to full performance on NVIDIA Jetson TK1 Development Kit
-if [ $(id -u) != 0 ]; then
-echo "This script requires root permissions"
-echo "$ sudo "$0""
-exit
-fi
-
-# To obtain full performance on the CPU (eg: for performance measurements or benchmarking or when you don't care about power draw), you can disable CPU scaling and force the 4 main CPU cores to always run at max performance until reboot:
-echo 0 > /sys/devices/system/cpu/cpuquiet/tegra_cpuquiet/enable
-echo 1 > /sys/devices/system/cpu/cpu0/online
-echo 1 > /sys/devices/system/cpu/cpu1/online
-echo 1 > /sys/devices/system/cpu/cpu2/online
-echo 1 > /sys/devices/system/cpu/cpu3/online
-echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-
-# Clock the GPUs to max speed
-echo 852000000 > /sys/kernel/debug/clock/override.gbus/rate
-echo 1 > /sys/kernel/debug/clock/override.gbus/state
-```
-  
-TK1 보드가 부팅후에 위의 스크립트가 실행되도록 하기 위해서 /etc/rc.local 파일에 다음 내용을 추가한다. (파일을 열어서 제일 하단의 'exit 0' 바로 위에 입력한다)
+ZED 스테레오 카메라의 성능을 최대로 끌어내기 위해서 ZED SDK에서 제공하는 스크립트를 부팅때 자동으로 실행시키도록 설정한다. 편집기로 /etc/rc.local 파일을 열고 다음 내용을 추가한다. (파일을 열어서 제일 하단의 'exit 0' 바로 위에 입력한다)
 ```
 # Turn up the CPU and GPU for max performance
-/usr/local/bin/maxPerformance.sh
+/usr/local/zed/scripts/jetson_max_l4t_updated.sh
 ```
   
-ZED 스테레오 카메라는 USB 3.0으로 통신하므로 TK1 보드가 USB 3.0포트를 사용할 수 있도록 아래 명령을 수행한다. (편집기로 /boot/extlinux/extlinux.conf 파일을 직접 열고 수정해도 무방하다)
+ZED 스테레오 카메라는 USB 3.0으로 통신하므로 TX2 보드가 USB 3.0포트를 사용할 수 있도록 수정한다. 
 ```
 $ sudo sed -i 's/usb_port_owner_info=0/usb_port_owner_info=2/' /boot/extlinux/extlinux.conf
 ```
