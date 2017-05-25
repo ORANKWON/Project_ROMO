@@ -179,9 +179,7 @@ roslaunch zed_wrapper zed.launch
 ```  
 
 ## Install Fast-RCNN with Caffe & pyCaffe support
-Jetson TK1에 설치하기가 제일 까다로웠던 부분이다. 아래 설명한 순서대로 진행하는 것을 추천한다.  
-  
-Caffe는 Berkeley 대학에서 관리하고 있는 딥러닝 라이브러리이며 google의 tensorflow와 함께 사용자층이 매우 두텁다. C++로 직접 구현할 수도 있고 Python과 Matlab 인터페이스도 잘 구현되어 있다. 먼저 아래와 같이 Caffe 구동에 필요한 라이브러리들을 설치한다.
+Jetson TX2에서 딥러닝을 위한 py-faster-rcnn을 설치한다. 설치하기가 제일 까다로웠던 부분이다. 먼저 필요한 라이브러리들을 설치한다.
 ```
 $ sudo apt-get install libprotobuf-dev protobuf-compiler gfortran libboost-dev libleveldb-dev libsnappy-dev libboost-thread-dev libboost-system-dev libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev  
 $ sudo apt-get install python-numpy python-setuptools python-pip cython python-opencv python-skimage python-protobuf
@@ -211,27 +209,36 @@ $ sed -i -e '1617s/__pyx_t_5numpy_int32_t/int/g' nms/gpu_nms.cpp
 $ make
 ```
     
-4. $FRCN내의 caffe 폴더로 이동한다.
+4.Caffe를 설치하는 과정에서 py-faster-rcnn에 딸려오는 수정된 버젼의 caffe가 아닌 버클리 대학에서 제공하는 원본 caffe 소스코드를 이용한다(이렇게 하는 이유는 cuDNN 버젼 문제(v5) 때문에 py-faster-rcnn에서 제공하는 caffe 빌드시 오류가 나기 때문이다). 먼저 임의의 경로에 caffe 소스코드를 다운로드하고 폴더로 이동한다.  
+```
+$ git clone https://github.com/BVLC/caffe.git
+$ cd caffe
+```
+  
+그리고 다음 경로에 있는 파일들을 $FRCN/caffe-fast-rcnn 폴더에 복사한다.
+```
+src/caffe/layers/:
+cudnn_conv_layer.cu
+cudnn_relu_layer.cpp
+cudnn_relu_layer.cu
+cudnn_sigmoid_layer.cpp
+cudnn_sigmoid_layer.cu
+cudnn_tanh_layer.cpp
+cudnn_tanh_layer.cu
+
+include/caffe/layers/:
+cudnn_relu_layer.hpp
+cudnn_sigmoid_layer.hpp
+cudnn_tanh_layer.hpp
+```
+    
+5.$FRCN/caffe-fast-rcnn 폴더로 이동하고 Makefile.config를 생성한다.
 ```
 $ cd $FRCN/caffe-fast-rcnn
-```
-  
-5. gcc 4.6버젼을 설치한다.
-```
-$ sudo apt-get install gcc-4.6 g++-4.6 gcc-4.6-multilib g++-4.6-multilib
-```
-  
-6. Makefile.config를 생성한다.
-```
 $ cp Makefile.config.example Makefile.config
 ```
   
-7. g++4.6을 사용하도록 설정한다.
-```
-$ sed -i "s/# CUSTOM_CXX := g++/CUSTOM_CXX := g++-4.6/" Makefile.config
-```
-  
-8.gedit와 같은 편집기로 Makefile.config 파일을 오픈하고 pycaffe 및 cuDNN을 사용하기 위해서 아래 부분을 찾아서 주석처리 되어 있는 부분을 해제한다.
+6.gedit와 같은 편집기로 Makefile.config 파일을 오픈하고 pycaffe 및 cuDNN을 사용하기 위해서 아래 부분을 찾아서 주석처리 되어 있는 부분을 해제한다.
 ```
 # In your Makefile.config, make sure to have this line uncommented
 WITH_PYTHON_LAYER := 1
@@ -240,9 +247,7 @@ WITH_PYTHON_LAYER := 1
 USE_CUDNN := 1
 ```
   
-9. $FRCN/caffe-fast-rcnn/src/caffe/util/db_lmdb.cpp파일을 열어서 LMDB_MAP_SIZE를 1099511627776에서 536870912로 수정한다.(참고: Aaron Schumacher의 글 [The NVIDIA Jetson TK1 with Caffe on MNIST](http://planspace.org/20150614-the_nvidia_jetson_tk1_with_caffe_on_mnist/) )  
-
-10. 변경후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 상당히 걸리므로 차 한잔~)
+7. 변경후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 상당히 걸리므로 차 한잔~)
 ```
 $ make all -j4
 $ make test -j4
