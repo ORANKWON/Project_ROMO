@@ -259,6 +259,7 @@ WITH_PYTHON_LAYER := 1
 # Unrelatedly, it's also recommended that you use CUDNN
 USE_CUDNN := 1
 
+# Whatever else you find you need goes here.
 INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/
 ```
   
