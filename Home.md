@@ -275,4 +275,4 @@ $ make pycaffe
 7. http://researchmap.jp/jojgwe7tm-2001408/
 8. https://github.com/rbgirshick/py-faster-rcnn/issues/236 (py-faster-rcnn 빌드 오류 해결)
 9. https://lastone9182.github.io/2016/09/16/aws-caffe.html
-10. https://github.com/joeking11829/py-faster-rcnn-tk1.git (Jetson tk1용 py-faster-rcnn)
+10. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/ (Jetson tx1: py-faster-rcnn용 caffe 빌드 오류 해결)
