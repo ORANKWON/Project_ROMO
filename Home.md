@@ -203,7 +203,7 @@ $ cd $FRCN/lib
 $ make
 ```
   
-* 빌드 도중에 에러가 발생하므로 gpu_nms.cpp 내용을 수정하고 다시 빌드..
+* 빌드 도중 gpu_nms.cpp 에서 에러 발생시 아래 내용으로 수정하고 다시 빌드..
 ```
 $ sed -i -e '1617s/__pyx_t_5numpy_int32_t/int/g' nms/gpu_nms.cpp
 $ make
