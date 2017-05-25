@@ -26,7 +26,7 @@ Jetson TX2의 flash방법은 [NVIDIA 공식문서](http://developer2.download.nv
 $ sudo ./flash.sh -S 28GiB jetson-tx2 mmcblk0p1
 ```  
   
-Flash작업이 종료되면 보드는 자동으로 재부팅을 시작하고 우분투 GUI화면이 표시될 것이다. 위에서 다운로드 받은 CUDA, OpenCV4Tegra, cuDNN 패키지 설치 파일을 USB 등을 이용해서 TX2 보드에 복사하고, 아래 명령으로 저장소를 추가한다.  
+Flash작업이 종료되면 보드는 자동으로 재부팅을 시작하고 우분투 GUI화면이 표시될 것이다. 아래 명령으로 저장소 추가한다.  
 ```
 $ sudo apt-add-repository universe
 $ sudo apt-add-repository multiverse
@@ -34,6 +34,8 @@ $ sudo apt-get update
 $ sudo apt-get upgrade
 ``` 
   
+위에서 다운로드 받은 CUDA, OpenCV4Tegra, cuDNN 패키지 설치 파일(*.deb)을 USB 등을 이용해서 TX2 보드에 복사하고,   
+
 [Note] 처음 설치된 경우 한글입력이 안되는 상태이므로 <http://ledgku.tistory.com/24>를 참고한다.  
   
 ## Install CUDA, OpenCV4Tegra, cuDNN  
