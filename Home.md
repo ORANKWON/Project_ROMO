@@ -200,7 +200,6 @@ $ git clone --recursive https://github.com/rbgirshick/py-faster-rcnn.git
 3.Cython을 빌드한다.  
 ```
 $ cd $FRCN/lib
-$ sed -i -e 's/lib64/lib/g' setup.py
 $ make
 ```
   
