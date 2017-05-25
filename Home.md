@@ -151,7 +151,7 @@ sudo sh -c 'for dev in /sys/bus/usb/devices/*/power/autosuspend; do echo -1 >$de
 /usr/local/bin/disableUSBAutosuspend.sh
 ```
   
-ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/)에서 확인할 수 있다.  SDK v1.2와 호환되는 ros-wrapper는 [GitHub](https://github.com/stereolabs/zed-ros-wrapper/releases/tag/v1.2.0)에서 다운로드할 수 있으며, 다운로드한 zed-ros-wrapper를 ~/catkin_ws/src 폴더에 복사하고 다음 명령을 수행한다.
+ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/)에서 확인할 수 있다.  SDK v2.0.1와 호환되는 ros-wrapper는 [GitHub](https://github.com/stereolabs/zed-ros-wrapper)에서 다운로드할 수 있으며, 다운로드한 zed-ros-wrapper를 ~/catkin_ws/src 폴더에 복사하고 다음 명령을 수행한다.
 ```
 $ cd ~/catkin_ws
 $ catkin_make
