@@ -238,16 +238,36 @@ $ cd $FRCN/caffe-fast-rcnn
 $ cp Makefile.config.example Makefile.config
 ```
   
-6.gedit와 같은 편집기로 Makefile.config 파일을 오픈하고 pycaffe 및 cuDNN을 사용하기 위해서 아래 부분을 찾아서 주석처리 되어 있는 부분을 해제한다.
+6.Makefile.config 파일을 열고 아래 내용과 다를 경우 동일하게 수정한다.
 ```
+# CUDA architecture setting: going with all of them.
+# For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
+# For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
+CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
+		-gencode arch=compute_20,code=sm_21 \
+		-gencode arch=compute_30,code=sm_30 \
+		-gencode arch=compute_35,code=sm_35 \
+		-gencode arch=compute_50,code=sm_50 \
+		-gencode arch=compute_50,code=compute_50 \
+		-gencode arch=compute_60,code=sm_60 \
+		-gencode arch=compute_61,code=sm_61 \
+		-gencode arch=compute_61,code=compute_61
+
 # In your Makefile.config, make sure to have this line uncommented
 WITH_PYTHON_LAYER := 1
 
 # Unrelatedly, it's also recommended that you use CUDNN
 USE_CUDNN := 1
+
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/
 ```
   
-7. 변경후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 상당히 걸리므로 차 한잔~)
+7.Makefile 파일을 오픈하고 다음과 같이 수정한다.
+```
+LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
+```
+
+8.변경후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 상당히 걸리므로 차 한잔~)
 ```
 $ make all -j4
 $ make test -j4
