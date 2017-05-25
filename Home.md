@@ -44,7 +44,7 @@ OpenCV4Tegra 2.4 (2.4.13)
 cuDNN v5.1
 ```
     
-앞서 다운로드 받은 CUDA, OpenCV4Tegra, cuDNN 패키지 설치 파일(*.deb)을 USB 등의 저장매체를 이용해 TX2 보드에 복사한다. 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
+앞서 다운로드 받은 CUDA, OpenCV4Tegra 패키지 설치 파일(*.deb)을 USB 등의 저장매체를 이용해 TX2 보드에 복사한다. 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 ```
 $ sudo dpkg -i cuda-repo-l4t-8-0-local_8.0.34-1_arm64.deb 
 $ sudo apt-get update
@@ -77,11 +77,13 @@ $ sudo apt-get update
 $ sudo apt-get install libopencv4tegra libopencv4tegra-dev
 ```  
   
-cuDNN은 별도의 패키지 다운로드 및 설치 과정이 없다. 다운로드한 파일의 압축을 풀고 라이브러리 및 헤더 파일이 포함된 폴더(cudnn-6.5-linux-ARMv7-v2)로 이동후에 CUDA가 설치된 폴더에 복사해두면 편리하다. 그 이유는 CUDA 설치 과정에서 LD_LIBRARY_PATH를 설정하기 때문이다.
+cuDNN은 별도의 설치 과정이 없다. [NVIDIA cuDNN 다운로드](https://developer.nvidia.com/rdp/cudnn-download) 페이지에서 cuDNN v5.1 Library for Linux를 선택하면 'cudnn-8.0-linux-x64-v5.1.tgz' 파일이 다운로드 된다. 이후 아래와 같이 설정하면 완료.
 ```
-$ cd cudnn-6.5-linux-ARMv7-v2
-$ sudo cp cudnn.h /usr/local/cuda-6.5/include
-$ sudo cp libcudnn* /usr/local/cuda-6.5/lib
+$ sudo tar -xzvf cudnn-8.0-linux-x64-v5.1.tgz  
+$ cd cuda  
+$ sudo cp include/cudnn.h /usr/local/cuda/include  
+$ sudo cp lib64/libcudnn* /usr/local/cuda/lib64  
+$ sudo chmod a+r /usr/local/cuda/lib64/libcudnn*  
 ```
     
 설치가 완료된 이후 업데이트를 진행한다.
