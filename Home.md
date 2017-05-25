@@ -155,6 +155,7 @@ ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https:/
 ```
 $ cd ~/catkin_ws
 $ catkin_make
+$ echo source $(pwd)/devel/setup.bash >> ~/.bashrc
 $ source ./devel/setup.bash
 ``` 
 
