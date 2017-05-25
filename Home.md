@@ -268,27 +268,23 @@ INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
 ```
 
-8.변경후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 상당히 걸리므로 차 한잔~)
+8.변경후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 걸리므로 차 한잔~)
 ```
-$ make all -j4
-$ make test -j4
-$ make runtest -j4
-```
-  
-Caffe가 제대로 동작하는지 확인하기 위해서 아래 명령으로 벤치마킹 테스트를 해본다. 출력되는 수행시간 결과는 10번의 iteration의 합이므로 10으로 나누어주면 한 이미지당 영상처리 시간을 구할 수 있다. (TK1의 경우 약 23ms 정도 나오는 듯 싶다)
-```
-$ build/tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
-```
-  
-pycaffe 설치는 아래 과정으로 진행한다.
-```
-$ cd caffe-for-cudnn-v2.5.48/python
-$ sudo apt-get install python-pip
-$ for req in $(cat requirements.txt); do sudo pip install $req; done
-$ cd ../
-$ make all
-$ sudo apt-get install python-numpy
+$ cd $FRCN
+$ make -j4
 $ make pycaffe
+```
+  
+9.사전 학습된 faster-RCNN detector를 다운로드 한다.
+```
+$ cd $FRCN
+$ ./data/scripts/fetch_faster_rcnn_models.sh
+```
+  
+10.데모를 실행해서 결과를 확인한다. 'demo.py' 기본 네트워크 모델은 VGG16으로 설정되어 있는데, 이걸 사용했을 때 GPU 메모리 에러가 발생한다면 ZF 네트워크 모델을 사용하도록 옵션을 주도록 한다(--net zf)
+```
+$ cd $FRCN_ROOT
+$ ./tools/demo.py
 ```
   
 ## 참고 사이트  
