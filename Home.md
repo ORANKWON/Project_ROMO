@@ -31,6 +31,7 @@ Flash작업이 종료되면 보드는 자동으로 재부팅을 시작하고 우
 $ sudo apt-add-repository universe
 $ sudo apt-add-repository multiverse
 $ sudo apt-get update
+$ sudo apt-get upgrade
 ``` 
   
 [Note] 처음 설치된 경우 한글입력이 안되는 상태이므로 <http://ledgku.tistory.com/24>를 참고한다.  
@@ -115,13 +116,13 @@ $ sudo apt-get update
   
 ## Install ZED SDK & ROS integration
 ![ZED - Stereolabs](https://www.stereolabs.com/img/product/ZED_product_main.jpg)  
-ZED 스테레오 카메라의 Jetson TX1 SDK-v2.0.1를 [다운로드](https://www.stereolabs.com/developers/release/2.0/#sdkdownloads_anchor) 한다. 
+ZED 스테레오 카메라의 Jetson TX2 SDK-v2.0.1를 [다운로드](https://www.stereolabs.com/developers/release/2.0/#sdkdownloads_anchor) 한다. 
 ```
-$ chmod +x ZED_SDK_JTK1_v*.run
-$ ./ZED_SDK_JTK1_v*.run
+$ chmod +x ZED_SDK_JTX2_v*.run
+$ ./ZED_SDK_JTX2_v*.run
 ```  
   
-ZED 스테레오 카메라는 리소스를 많이 사용하며 특히 Depth와 Point Cloud를 생성하기 위해선 GPU가속을 필요로 한다. 따라서 TK1 보드의 성능을 최대치로 개방(?)하기 위해서 'maxPerformance.sh'이라는 파일을 생성한다. (여기서는 gedit를 사용하였지만 아무 편집기(vim 등)를 사용해도 무방하다)
+ZED 스테레오 카메라는 리소스를 많이 사용하 따라서 TK1 보드의 성능을 최대치로 개방(?)하기 위해서 'maxPerformance.sh'이라는 파일을 생성한다. (여기서는 gedit를 사용하였지만 아무 편집기(vim 등)를 사용해도 무방하다)
 ```
 $ sudo gedit /usr/local/bin/maxPerformance.sh
 ```
