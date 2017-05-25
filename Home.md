@@ -181,17 +181,18 @@ Jetson TK1에 설치하기가 제일 까다로웠던 부분이다. 아래 설명
   
 Caffe는 Berkeley 대학에서 관리하고 있는 딥러닝 라이브러리이며 google의 tensorflow와 함께 사용자층이 매우 두텁다. C++로 직접 구현할 수도 있고 Python과 Matlab 인터페이스도 잘 구현되어 있다. 먼저 아래와 같이 Caffe 구동에 필요한 라이브러리들을 설치한다.
 ```
-$ sudo apt-get install libprotobuf-dev protobuf-compiler gfortran libboost-dev cmake 
-libleveldb-dev libsnappy-dev libboost-thread-dev libboost-system-dev  
-libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev  
-liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev  
+$ sudo apt-get install libprotobuf-dev protobuf-compiler gfortran libboost-dev libleveldb-dev libsnappy-dev libboost-thread-dev libboost-system-dev libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev  
+$ sudo apt-get install python-numpy python-setuptools python-pip cython python-opencv python-skimage python-protobuf
+$ sudo pip install easydict PyYAML
 ```
 
 다음은 py-faster-rcnn을 설치하는 과정이다.  
   
-1. Jetson TK1용으로 수정된 faster-rcnn을 git clone한다.
+1. py-faster-rcnn을 git clone한다.
 ```
-$ git clone https://github.com/joeking11829/py-faster-rcnn-tk1.git
+$ cd ~
+$ sudo apt install git
+$ git clone --recursive https://github.com/rbgirshick/py-faster-rcnn.git
 ```
   
 2.편의상 폴더명을 이후부터 $FRCN 이라 표시한다.  
