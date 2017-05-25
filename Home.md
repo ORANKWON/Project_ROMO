@@ -258,7 +258,7 @@ $ make pycaffe
 ```
   
 ## 참고 사이트  
-1. http://myzharbot.robot-home.it/blog/software/configuration-nvidia-jetson-tk1/  
+1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
 2. https://www.stereolabs.com/blog/index.php/2015/09/24/getting-started-with-jetson-tk1-and-zed/
 3. https://huangying-zhan.github.io/2016/08/16/Caffe-installation-and-practice-on-Jetson-TK1.html
 4. https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/
