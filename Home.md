@@ -188,7 +188,7 @@ $ sudo pip install easydict PyYAML
 
 다음은 py-faster-rcnn을 설치하는 과정이다.  
   
-1. py-faster-rcnn을 git clone한다.
+1.py-faster-rcnn을 git clone한다.
 ```
 $ cd ~
 $ sudo apt install git
@@ -197,12 +197,19 @@ $ git clone --recursive https://github.com/rbgirshick/py-faster-rcnn.git
   
 2.편의상 폴더명을 이후부터 $FRCN 이라 표시한다.  
   
-3. Cython을 빌드한다.  
+3.Cython을 빌드한다.  
 ```
 $ cd $FRCN/lib
+$ sed -i -e 's/lib64/lib/g' setup.py
 $ make
 ```
   
+* 빌드 도중에 에러가 발생하므로 gpu_nms.cpp 내용을 수정하고 다시 빌드..
+```
+$ sed -i -e '1617s/__pyx_t_5numpy_int32_t/int/g' nms/gpu_nms.cpp
+$ make
+```
+    
 4. $FRCN내의 caffe 폴더로 이동한다.
 ```
 $ cd $FRCN/caffe-fast-rcnn
