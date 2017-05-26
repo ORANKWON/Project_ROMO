@@ -298,3 +298,4 @@ $ ./tools/demo.py
 8. https://github.com/rbgirshick/py-faster-rcnn/issues/236 (py-faster-rcnn 빌드 오류 해결)
 9. https://lastone9182.github.io/2016/09/16/aws-caffe.html
 10. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/ (Jetson tx1: py-faster-rcnn용 caffe 빌드 오류 해결)
+11. https://github.com/rbgirshick/py-faster-rcnn/issues/155 (caffe test build 오류 해결)
