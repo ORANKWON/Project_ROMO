@@ -265,7 +265,9 @@ INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/
   
 7.Makefile 파일을 오픈하고 다음과 같이 수정한다.
 ```
-LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
+[LIN@ 181] LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
+
+[LINE 266] LIBRARIES += boost_thread stdc++ boost_regex
 ```
 
 8.변경후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 걸리므로 차 한잔~)
@@ -300,3 +302,4 @@ $ ./tools/demo.py
 10. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/ (Jetson tx1: py-faster-rcnn용 caffe 빌드 오류 해결)
 11. https://github.com/rbgirshick/py-faster-rcnn/issues/155 (caffe test build 오류 해결)
 12. https://myurasov.github.io/2016/11/27/ssd-tx1.html (Jetson TX1용 SSD 설치 및 실행)
+13. https://github.com/rbgirshick/fast-rcnn/issues/52 (caffe boost 빌드 오류, Makefile.config 수정) 
