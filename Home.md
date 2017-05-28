@@ -1,11 +1,11 @@
 # Welcome to the IdeaFestival2017 wiki!  
 기억력의 한계로.. 나중을 위해 개발 과정의 삽질 및 성공 내용 기록함.   
-## Jetson TX2 flash 방법  
-![Jetson TX2](https://news.developer.nvidia.com/wp-content/uploads/2017/03/NVIDIA-Jetson-TX2-Developer-Kit.png)  
+## Jetson TX1 flash 방법  
+![Jetson TX1](https://news.developer.nvidia.com/wp-content/uploads/2017/03/NVIDIA-Jetson-TX2-Developer-Kit.png)  
 준비사항: Ubuntu 14.04 or 16.04 버젼이 설치된 host PC(인터넷 연결 필요)  
 리눅스 pc가 없는 경우 윈도우즈 상에서 vmware나 virtualbox로도 가능하다.  
   
-먼저 NVIDIA 개발자 사이트에서 JetPack 3.0 설치 파일을 [다운로드](https://developer.nvidia.com/embedded/jetpack)한다. 그리고 아래와 같이 실행권한을 설정한 후 실행하면 아래와 같은 화면이 나오는데 여기서 TX2 보드를 선택한다.  
+먼저 NVIDIA 개발자 사이트에서 JetPack 3.0 설치 파일을 [다운로드](https://developer.nvidia.com/embedded/jetpack)한다. 그리고 아래와 같이 실행권한을 설정한 후 실행하면 아래와 같은 화면이 나오는데 여기서 TX1 보드를 선택한다.  
 ```
 $ chmod +x ./JetPack-L4T-3.0-linux-x64.run
 $ ./JetPack-L4T-3.0-linux-x64.run
@@ -21,9 +21,9 @@ $ ./JetPack-L4T-3.0-linux-x64.run
 * cuDNN  
 ![](https://cloud.githubusercontent.com/assets/23667624/26388554/f0e458fa-408f-11e7-89b3-d1c5420b2695.png)
 
-Jetson TX2의 flash방법은 [NVIDIA 공식문서](http://developer2.download.nvidia.com/embedded/L4T/r27_Release_v1.0/BSP/l4t_quick_start_guide.txt?2mqXqZYk2lRkqV54f6GeNyhy4RgV9594dHWPQAUAyCjGnRpw6TlhzRpg7OY7eI-bp4AZf-n3gc1x5-SRn0f1DbnSsgdymb93JSA_78ja9w6DJ1Np5VYzeh49E12qJO9W2p7x0GFUfJ0xCDq9FSv1GioO5-RF58lG64c)에 정리된 순서에 따라 진행하면 OK. 마지막 flash 단계에서 eMMC 32GB 용량을 모두 사용하고 싶으면 '-S 28GiB' 옵션을 추가할 것.
+Jetson TX2의 flash방법은 [NVIDIA 공식문서](http://developer2.download.nvidia.com/embedded/L4T/r27_Release_v1.0/BSP/l4t_quick_start_guide.txt?2mqXqZYk2lRkqV54f6GeNyhy4RgV9594dHWPQAUAyCjGnRpw6TlhzRpg7OY7eI-bp4AZf-n3gc1x5-SRn0f1DbnSsgdymb93JSA_78ja9w6DJ1Np5VYzeh49E12qJO9W2p7x0GFUfJ0xCDq9FSv1GioO5-RF58lG64c)에 정리된 순서에 따라 진행하면 OK. 마지막 flash 단계에서 eMMC 16GB 용량을 모두 사용하고 싶으면 '-S 28GiB' 옵션을 추가할 것.
 ```
-$ sudo ./flash.sh -S 28GiB jetson-tx2 mmcblk0p1
+$ sudo ./flash.sh -S 14580MiB jetson-tx1 mmcblk0p1
 ```  
   
 Flash작업이 종료되면 보드는 자동으로 재부팅을 시작하고 우분투 GUI화면이 표시될 것이다. 아래 명령으로 저장소 추가한다.  
@@ -37,14 +37,14 @@ $ sudo apt-get upgrade
 [Note] 한글 입력을 사용하고 싶은 경우 <http://hochulshin.com/ubuntu-1604-hangul/>를 참고한다.  
   
 ## Install CUDA, OpenCV4Tegra, cuDNN  
-Jetson TX2 JetPack 3.0에서 지원하는 라이브러리 버젼은 다음과 같다.  
+Jetson TX1 JetPack 3.0에서 지원하는 라이브러리 버젼은 다음과 같다.  
 ```
 CUDA 8.0 (8.0.33)
 OpenCV4Tegra 2.4 (2.4.13)
 cuDNN v5.1
 ```
     
-앞서 다운로드 받은 CUDA, OpenCV4Tegra 패키지 설치 파일(*.deb)을 USB 등의 저장매체를 이용해 TX2 보드에 복사한다. 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
+앞서 다운로드 받은 CUDA, OpenCV4Tegra 패키지 설치 파일(*.deb)을 USB 등의 저장매체를 이용해 TX1 보드에 복사한다. 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 ```
 $ sudo dpkg -i cuda-repo-l4t-8-0-local_8.0.34-1_arm64.deb 
 $ sudo apt-get update
@@ -98,7 +98,7 @@ ARM 버젼의 ROS Kinetic [설치가이드](http://wiki.ros.org/indigo/Installat
 $ sudo apt-get install ros-indigo-desktop ros-indigo-pcl-ros
 ```  
   
-Jetson TX2보드에서 rviz를 실행하기 위해 아래 옵션을 설정한다.
+Jetson TX1보드에서 rviz를 실행하기 위해 아래 옵션을 설정한다.
 ```
 $ echo "# for using RVIZ" >> ~/.bashrc
 $ echo "unset GTK_IM_MODULE" >> ~/.bashrc
@@ -118,10 +118,10 @@ $ sudo apt-get update
   
 ## Install ZED SDK & ROS integration
 ![ZED - Stereolabs](https://www.stereolabs.com/img/product/ZED_product_main.jpg)  
-ZED 스테레오 카메라의 Jetson TX2 SDK-v2.0.1를 [다운로드](https://www.stereolabs.com/developers/release/2.0/#sdkdownloads_anchor) 한다. 
+ZED 스테레오 카메라의 Jetson TX1 SDK-v2.0.1를 [다운로드](https://www.stereolabs.com/developers/release/2.0/#sdkdownloads_anchor) 한다. 
 ```
-$ chmod +x ZED_SDK_JTX2_v*.run
-$ ./ZED_SDK_JTX2_v*.run
+$ chmod +x ZED_SDK_JTX1_v*.run
+$ ./ZED_SDK_JTX1_v*.run
 ```  
   
 ZED 스테레오 카메라의 성능을 최대로 끌어내기 위해서 ZED SDK에서 제공하는 스크립트를 부팅때 자동으로 실행시키도록 설정한다. 편집기로 /etc/rc.local 파일을 열고 다음 내용을 추가한다. (파일을 열어서 제일 하단의 'exit 0' 바로 위에 입력한다)
@@ -173,13 +173,13 @@ roslaunch zed_wrapper zed.launch
 ## You have to update the firmware with the latest version (v1142) using the ZED Explorer
 ```  
   
-이 경우에는 메시지에 나와 있듯이 ZED Explorer를 우선 실행시키고 우측 상단의 톱니바퀴 형태의 아이콘을 클릭 > Firmware 탭에서 업데이트 시켜준다. (확인결과 펌웨어 업데이트는 Jetson TK1에서 할 수 없고 Windows나 Ubuntu같은 데스크탑 환경에서만 가능하다) 업데이트에 필요한 바이너리 파일(zed_fw_vXXXX_spi.bin)은 ZED SDK가 설치된 아래 경로에서 찾을 수 있다.  
+이 경우에는 메시지에 나와 있듯이 ZED Explorer를 우선 실행시키고 우측 상단의 톱니바퀴 형태의 아이콘을 클릭 > Firmware 탭에서 업데이트 시켜준다. (확인결과 펌웨어 업데이트는 Jetson 보드상에서는 할 수 없고 Windows나 Ubuntu같은 데스크탑 환경에서만 가능하다) 업데이트에 필요한 바이너리 파일(zed_fw_vXXXX_spi.bin)은 ZED SDK가 설치된 아래 경로에서 찾을 수 있다.  
 ```
 /usr/local/zed/firmware
 ```  
 
 ## Install Fast-RCNN with Caffe & pyCaffe support
-Jetson TX2에서 딥러닝을 위한 py-faster-rcnn을 설치한다. 설치하기가 제일 까다로웠던 부분이다. 먼저 필요한 라이브러리들을 설치한다.
+Jetson TX1에서 딥러닝을 위한 py-faster-rcnn을 설치한다. 설치하기가 제일 까다로웠던 부분이다. 먼저 필요한 라이브러리들을 설치한다.
 ```
 $ sudo apt-get install libprotobuf-dev protobuf-compiler gfortran libboost-dev libleveldb-dev libsnappy-dev libboost-thread-dev libboost-system-dev libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev  
 $ sudo apt-get install python-numpy python-setuptools python-pip cython python-opencv python-skimage python-protobuf
@@ -299,3 +299,4 @@ $ ./tools/demo.py
 9. https://lastone9182.github.io/2016/09/16/aws-caffe.html
 10. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/ (Jetson tx1: py-faster-rcnn용 caffe 빌드 오류 해결)
 11. https://github.com/rbgirshick/py-faster-rcnn/issues/155 (caffe test build 오류 해결)
+12. https://myurasov.github.io/2016/11/27/ssd-tx1.html (Jetson TX1용 SSD 설치 및 실행)
