@@ -327,4 +327,4 @@ $ ./install.sh
 11. https://github.com/rbgirshick/py-faster-rcnn/issues/155 (caffe test build 오류 해결)
 12. https://myurasov.github.io/2016/11/27/ssd-tx1.html (Jetson TX1용 SSD 설치 및 실행)
 13. https://github.com/rbgirshick/fast-rcnn/issues/52 (caffe boost 빌드 오류, Makefile.config 수정) 
-14. http://blog.naver.com/PostView.nhn?blogId=msyang59&logNo=220975692080&categoryNo=0&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView
+14. https://diyprojects.io/install-arduino-ide-linux-arm-raspberry-pi-orange-pi-odroid/
