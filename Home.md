@@ -289,30 +289,27 @@ $ ./tools/demo.py
 ```
   
 ## Arduino with rosserial
-아두이노 패키지를 설치한다.
+아두이노 패키지와 rosserial 패키지를 설치한다.
 ```
 $ sudo apt-get install arduino
+$ sudo apt-get install ros-kinetic-rosserial-arduino ros-kinetic-rosserial
 ```
   
-아두이노 IDE를 TX1에 설치하기 위해 ARM용 최신 버젼을 다운로드한다(2017.6월 기준: 1.8.2).
+catkin_ws로 이동하여 드라이버를 다운로드 받고 컴파일 및 설치한다.
 ```
-$ wget https://downloads.ardunio.cc/arduino-1.8.2-linuxarm.tar.xz 
-$ tar xvf arduino-1.8.2-linuxarm.tar.xz 
-$ cd /arduino-1.8.2
-```
-  
-install.sh 파일이 잘못되어 있어서(아직까지 고치지 않는 이유를 모르겠음;) 설치시 오류가 나기 때문에 'RESOURCE_NAME' 부분을 찾아서 바꿔준다.
-```
-# Resource name to use (including vendor prefix)
-# RESOURCE_NAME=cc.arduino.arduinoide
-RESOURCE_NAME=arduino-arduinoide
+$ cd catkin_ws/src
+$ git clone https://github.com/ros-drivers/rosserial.git
+$ cd ..
+$ catkin_make
+$ catkin_make install
 ```
   
-install.sh 파일을 실행하면 설치 완료.
+이 시점에서 Arduino IDE를 한번도 실행하지 않았다면 실행한다(한번 실행하면 Home디렉토리에 sketchbook폴더가 자동 생성된다). 
 ```
-$ ./install.sh
+$ cd ~/sketchbook/libraries
+$ rosrun rosserial_arduino make_libraries.py .
 ```
-
+  
 ## 참고 사이트  
 1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
 2. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/
