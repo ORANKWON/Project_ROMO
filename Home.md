@@ -178,7 +178,7 @@ roslaunch zed_wrapper zed.launch
 /usr/local/zed/firmware
 ```  
 
-## Install Fast-RCNN with Caffe & pyCaffe support
+## Install Fast-RCNN with Caffe & pyCaffe support (작성중)
 Jetson TX1에서 딥러닝을 위한 py-faster-rcnn을 설치한다. 설치하기가 제일 까다로웠던 부분이다. 먼저 필요한 라이브러리들을 설치한다.
 ```
 $ sudo apt-get install libprotobuf-dev protobuf-compiler gfortran libboost-dev libleveldb-dev libsnappy-dev libboost-thread-dev libboost-system-dev libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev libopenblas-dev  
@@ -244,14 +244,13 @@ $ cp Makefile.config.example Makefile.config
 # For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
 # For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
 CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
-		-gencode arch=compute_20,code=sm_21 \
-		-gencode arch=compute_30,code=sm_30 \
-		-gencode arch=compute_35,code=sm_35 \
-		-gencode arch=compute_50,code=sm_50 \
-		-gencode arch=compute_50,code=compute_50 \
-		-gencode arch=compute_60,code=sm_60 \
-		-gencode arch=compute_61,code=sm_61 \
-		-gencode arch=compute_61,code=compute_61
+             -gencode arch=compute_20,code=sm_21 \
+             -gencode arch=compute_30,code=sm_30 \
+             -gencode arch=compute_35,code=sm_35 \
+             -gencode arch=compute_50,code=sm_50 \
+             -gencode arch=compute_52,code=sm_52 \
+             -gencode arch=compute_53,code=sm_53 \
+             -gencode arch=compute_61,code=sm_61
 
 # In your Makefile.config, make sure to have this line uncommented
 WITH_PYTHON_LAYER := 1
@@ -289,6 +288,27 @@ $ cd $FRCN_ROOT
 $ ./tools/demo.py
 ```
   
+## Arduino with rosserial
+아두이노 IDE를 TX1에 설치하기 위해 ARM용 최신 버젼을 다운로드한다(2017.6월 기준: 1.8.2).
+```
+$ wget https://downloads.ardunio.cc/arduino-1.8.2-linuxarm.tar.xz 
+$ tar -Jxvf arduino-1.8.2-linuxarm.tar.xz 
+$ cd arduino-1.8.2
+```
+  
+install.sh 파일이 잘못되어 있어서 설치시 오류가 나기 때문에 'RESOURCE_NAME' 부분을 찾아서 바꿔준다.
+```
+# Resource name to use (including vendor prefix)
+# RESOURCE_NAME=cc.arduino.arduinoide
+RESOURCE_NAME=arduino-arduinoide
+```
+  
+install.sh 파일에 쓰기 권한을 부여하고 실행하면 설치 완료.
+```
+$ chmod +x install.sh
+$ ./install.sh
+```
+
 ## 참고 사이트  
 1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
 2. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/
@@ -303,3 +323,4 @@ $ ./tools/demo.py
 11. https://github.com/rbgirshick/py-faster-rcnn/issues/155 (caffe test build 오류 해결)
 12. https://myurasov.github.io/2016/11/27/ssd-tx1.html (Jetson TX1용 SSD 설치 및 실행)
 13. https://github.com/rbgirshick/fast-rcnn/issues/52 (caffe boost 빌드 오류, Makefile.config 수정) 
+14. http://blog.naver.com/PostView.nhn?blogId=msyang59&logNo=220975692080&categoryNo=0&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView
