@@ -289,14 +289,20 @@ $ ./tools/demo.py
 ```
   
 ## Arduino with rosserial
+아두이노 패키지를 설치한다.
+```
+$ sudo apt-get install arduino
+```
+  
 아두이노 IDE를 TX1에 설치하기 위해 ARM용 최신 버젼을 다운로드한다(2017.6월 기준: 1.8.2).
 ```
 $ wget https://downloads.ardunio.cc/arduino-1.8.2-linuxarm.tar.xz 
 $ tar -Jxvf arduino-1.8.2-linuxarm.tar.xz 
-$ cd arduino-1.8.2
+$ sudo mv arduino-1.8.2 /opt 
+$ cd /opt/arduino-1.8.2
 ```
   
-install.sh 파일이 잘못되어 있어서 설치시 오류가 나기 때문에 'RESOURCE_NAME' 부분을 찾아서 바꿔준다.
+install.sh 파일이 잘못되어 있어서(아직까지 고치지 않는 이유를 모르겠음;) 설치시 오류가 나기 때문에 'RESOURCE_NAME' 부분을 찾아서 바꿔준다.
 ```
 # Resource name to use (including vendor prefix)
 # RESOURCE_NAME=cc.arduino.arduinoide
@@ -306,7 +312,7 @@ RESOURCE_NAME=arduino-arduinoide
 install.sh 파일에 쓰기 권한을 부여하고 실행하면 설치 완료.
 ```
 $ chmod +x install.sh
-$ ./install.sh
+$ sudo ./install.sh
 ```
 
 ## 참고 사이트  
