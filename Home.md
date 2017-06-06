@@ -95,7 +95,7 @@ $ sudo apt-get upgrade
 ## Install ROS - Kinetic  
 ARM 버젼의 ROS Kinetic [설치가이드](http://wiki.ros.org/indigo/Installation/UbuntuARM)에 따라 순서대로 설치를 진행한다. 설치할 ROS 패키지는 아래와 같다. 
 ```
-$ sudo apt-get install ros-indigo-desktop ros-indigo-pcl-ros
+$ sudo apt-get install ros-indigo-desktop ros-indigo-pcl-ros ros-kinetic-teleop-twist-keyboard
 ```  
   
 Jetson TX1보드에서 rviz를 실행하기 위해 아래 옵션을 설정한다.
