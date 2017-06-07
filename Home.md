@@ -304,7 +304,7 @@ $ catkin_make
 $ catkin_make install
 ```
   
-이 시점에서 Arduino IDE를 한번도 실행하지 않았다면 실행한다(한번 실행하면 Home디렉토리에 sketchbook폴더가 자동 생성된다). 
+이 시점에서 Arduino IDE를 한번도 실행하지 않았다면 실행하고(한번 실행하면 Home디렉토리에 sketchbook폴더가 자동 생성된다) 다음 명령을 수행한다. 
 ```
 $ cd ~/sketchbook/libraries
 $ rosrun rosserial_arduino make_libraries.py .
