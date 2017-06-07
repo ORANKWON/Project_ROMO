@@ -21,7 +21,7 @@ $ ./JetPack-L4T-3.0-linux-x64.run
 * cuDNN  
 ![](https://cloud.githubusercontent.com/assets/23667624/26388554/f0e458fa-408f-11e7-89b3-d1c5420b2695.png)
 
-Jetson TX2의 flash방법은 [NVIDIA 공식문서](http://developer2.download.nvidia.com/embedded/L4T/r27_Release_v1.0/BSP/l4t_quick_start_guide.txt?2mqXqZYk2lRkqV54f6GeNyhy4RgV9594dHWPQAUAyCjGnRpw6TlhzRpg7OY7eI-bp4AZf-n3gc1x5-SRn0f1DbnSsgdymb93JSA_78ja9w6DJ1Np5VYzeh49E12qJO9W2p7x0GFUfJ0xCDq9FSv1GioO5-RF58lG64c)에 정리된 순서에 따라 진행하면 OK. 마지막 flash 단계에서 eMMC 16GB 용량을 모두 사용하고 싶으면 '-S 28GiB' 옵션을 추가할 것.
+Jetson TX2의 flash방법은 [NVIDIA 공식문서](http://developer2.download.nvidia.com/embedded/L4T/r27_Release_v1.0/BSP/l4t_quick_start_guide.txt?2mqXqZYk2lRkqV54f6GeNyhy4RgV9594dHWPQAUAyCjGnRpw6TlhzRpg7OY7eI-bp4AZf-n3gc1x5-SRn0f1DbnSsgdymb93JSA_78ja9w6DJ1Np5VYzeh49E12qJO9W2p7x0GFUfJ0xCDq9FSv1GioO5-RF58lG64c)에 정리된 순서에 따라 진행하면 OK. 마지막 flash 단계에서 eMMC 16GB 용량을 모두 사용하고 싶으면 '-S 14580MiB' 옵션을 추가할 것.
 ```
 $ sudo ./flash.sh -S 14580MiB jetson-tx1 mmcblk0p1
 ```  
