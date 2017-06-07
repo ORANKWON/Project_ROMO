@@ -130,7 +130,7 @@ ZED 스테레오 카메라의 성능을 최대로 끌어내기 위해서 ZED SDK
 /usr/local/zed/scripts/jetson_max_l4t_updated.sh
 ```
   
-ZED 스테레오 카메라는 USB 3.0으로 통신하므로 TX2 보드가 USB 3.0포트를 사용할 수 있도록 수정한다. 
+ZED 스테레오 카메라는 USB 3.0으로 통신하므로 TX1 보드가 USB 3.0포트를 사용할 수 있도록 수정한다. 
 ```
 $ sudo sed -i 's/usb_port_owner_info=0/usb_port_owner_info=2/' /boot/extlinux/extlinux.conf
 ```
