@@ -105,7 +105,7 @@ $ echo "unset GTK_IM_MODULE" >> ~/.bashrc
 $ source ~/.bashrc
 ```
   
-만약 위와 같이 설정했음에도 rviz 실행시 Segmentation Fault 메시지가 발생한다면 rviz가 업데이트 되면서 libpcre 라이브러리와 충돌하는 문제이므로 아래 패키지를 다운로드하여 업데이트 한다.  
+만약 위와 같이 설정했음에도 rviz 실행시 Segmentation Fault 메시지가 발생한다면 rviz가 업데이트 되면서 libpcre 라이브러리와 충돌하는 문제이므로 아래 패키지를 다운로드하여 업데이트 한다(Jetson TK1에서 나타나는 증상).  
 ```
 $ wget http://launchpadlibrarian.net/182261128/libpcre3_8.35-3ubuntu1_armhf.deb
 $ wget http://launchpadlibrarian.net/182261132/libpcre3-dev_8.35-3ubuntu1_armhf.deb
@@ -114,8 +114,13 @@ $ wget http://launchpadlibrarian.net/182261131/libpcrecpp0_8.35-3ubuntu1_armhf.d
 $ sudo dpkg -i libpcre*8.35*.deb
 $ sudo apt-get update
 ```  
- 
   
+## Install MoveIt with ROS-kinetic
+로봇팔 제어와 시뮬레이션을 위해 'MoveIt' 소프트웨어를 사용한다. 먼저 아래 명령으로 kinetic 버젼용 moveit 패키지를 설치한다.
+```
+$ sudo apt-get install ros-kinetic-moveit
+```
+
 ## Install ZED SDK & ROS integration
 ![ZED - Stereolabs](https://www.stereolabs.com/img/product/ZED_product_main.jpg)  
 ZED 스테레오 카메라의 Jetson TX1 SDK-v2.0.1를 [다운로드](https://www.stereolabs.com/developers/release/2.0/#sdkdownloads_anchor) 한다. 
@@ -178,7 +183,7 @@ roslaunch zed_wrapper zed.launch
 /usr/local/zed/firmware
 ```  
 
-## Install Fast-RCNN with Caffe & pyCaffe support (작성중)
+## Install Fast-RCNN with Caffe & pyCaffe support
 Jetson TX1에서 딥러닝을 위한 py-faster-rcnn을 설치한다. 설치하기가 제일 까다로웠던 부분이다. 먼저 필요한 라이브러리들을 설치한다.
 ```
 $ sudo apt-get install libprotobuf-dev protobuf-compiler gfortran libboost-dev libleveldb-dev libsnappy-dev libboost-thread-dev libboost-system-dev libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev libopenblas-dev  
@@ -327,3 +332,4 @@ $ rosrun rosserial_arduino make_libraries.py .
 14. https://diyprojects.io/install-arduino-ide-linux-arm-raspberry-pi-orange-pi-odroid/
 15. https://forum.arduino.cc/index.php?topic=400808.0 (ARM ubuntu 16.04에 arduino ide 설치 방법)
 16. https://github.com/headmelted/codebuilds/issues/15
+17. http://docs.ros.org/kinetic/api/moveit_tutorials/html (ROS-kinetic Moveit 문서)
