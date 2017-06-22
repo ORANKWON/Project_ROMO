@@ -72,9 +72,11 @@ Cuda compilation tools, release 8.0, V8.0.33
   
 다음 명령어로 OpenCV4Tegra를 설치한다.  
 ```
-$ sudo dpkg -i libopencv4tegra-repo_2.4.13-17-g5317135_arm64_l4t-r24.deb
-$ sudo apt-get update
-$ sudo apt-get install libopencv4tegra libopencv4tegra-dev
+$ git clone https://github.com/jetsonhacks/buildOpenCVTX2.git
+$ cd buildOpenCVTX2
+$ ./buildOpenCV.sh
+$ cd ~/opencv/build
+$ sudo make install 
 ```  
   
 cuDNN은 별도의 설치 과정이 없다. [NVIDIA cuDNN 다운로드](https://developer.nvidia.com/rdp/cudnn-download) 페이지에서 cuDNN v5.1 Library for Linux를 선택하면 'cudnn-8.0-linux-x64-v5.1.tgz' 파일이 다운로드 된다. 이후 아래와 같이 설정하면 완료.
