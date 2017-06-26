@@ -119,8 +119,27 @@ $ sudo apt-get update
 로봇팔 제어와 시뮬레이션을 위해 'MoveIt' 소프트웨어를 사용한다. 먼저 아래 명령으로 kinetic 버젼용 moveit 패키지를 설치한다.
 ```
 $ sudo apt-get install ros-kinetic-moveit
+$ sudo apt-get dist-upgrade
+```
+  
+Install dependencies(clang is optional)
+```
+$ sudo apt-get install python-wstool python-catkin-tools clang-format-3.8
 ```
 
+Build from source
+```
+$ mkdir ws_moveit && cd ws_moveit 
+$ mkdir src && cd src
+$ wstool init .
+$ wstool merge https://raw.githubusercontent.com/ros-planning/moveit/kinetic-devel/moveit.rosinstall
+$ wstool update
+$ rosdep install --from-paths . --ignore-src --rosdistro kinetic
+$ cd ..
+$ catkin config --extend /opt/ros/kinetic --cmake-args -DCMAKE_BUILD_TYPE=Release
+$ catkin build
+```
+  
 ## Install ZED SDK & ROS integration
 ![ZED - Stereolabs](https://www.stereolabs.com/img/product/ZED_product_main.jpg)  
 ZED 스테레오 카메라의 Jetson TX1 SDK-v2.0.1를 [다운로드](https://www.stereolabs.com/developers/release/2.0/#sdkdownloads_anchor) 한다. 
