@@ -202,7 +202,22 @@ roslaunch zed_wrapper zed.launch
 /usr/local/zed/firmware
 ```  
 
-## Install Fast-RCNN with Caffe & pyCaffe support
+## Deep Learning framework building from source on Jetson TX1/TX2
+```
+$ git clone http://github.com/dusty-nv/jetson-inference
+$ cd jetson-inference
+$ mkdir build
+$ cd build
+$ cmake ../
+```
+  
+Compile the project..
+```
+$ cd jetson-inference/build	
+$ make
+``` 
+  
+
 Jetson TX1에서 딥러닝을 위한 py-faster-rcnn을 설치한다. 설치하기가 제일 까다로웠던 부분이다. 먼저 필요한 라이브러리들을 설치한다.
 ```
 $ sudo apt-get install libprotobuf-dev protobuf-compiler gfortran libboost-dev libleveldb-dev libsnappy-dev libboost-thread-dev libboost-system-dev libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev libopenblas-dev  
@@ -352,3 +367,4 @@ $ rosrun rosserial_arduino make_libraries.py .
 15. https://forum.arduino.cc/index.php?topic=400808.0 (ARM ubuntu 16.04에 arduino ide 설치 방법)
 16. https://github.com/headmelted/codebuilds/issues/15
 17. http://docs.ros.org/kinetic/api/moveit_tutorials/html (ROS-kinetic Moveit 문서)
+18. https://github.com/dusty-nv/jetson-inference#building-from-source-on-jetson
