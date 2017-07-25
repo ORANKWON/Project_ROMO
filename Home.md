@@ -185,7 +185,20 @@ roslaunch zed_wrapper zed.launch
   
 ## Install Sweep LiDAR SDK & ROS Integration 
 ![SWEEP LiDAR](http://scanse.io/sites/default/files/media/image/Sweep%20Packaging.jpg)
+  
+Sweep LiDAR는 Scanse사에서 개발한 초소형 360도 레이저스캐너이다. C/C++ SDK 뿐만 아니라 아두이노 및 ROS용 드라이버도 제공하고 있다. ROS와 연동하기 전에 먼저 아래 방법으로 SDK 및 드라이버를 설치한다.
+```
+$ git clone https://github.com/scanse/sweep-sdk
+$ cd sweep-sdk/libsweep
+$ mkdir -p build
+$ cd build
 
+$ cmake .. -DCMAKE_BUILD_TYPE=Release
+$ cmake --build .
+$ sudo cmake --build . --target install
+$ sudo ldconfig
+```
+  
 ## Deep Learning framework building from source on Jetson TX1/TX2
 ```
 $ git clone http://github.com/dusty-nv/jetson-inference
