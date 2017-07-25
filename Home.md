@@ -89,6 +89,11 @@ ARM 버전의 ROS Kinetic [설치가이드](http://wiki.ros.org/kinetic/Installa
 $ sudo apt-get install ros-kinetic-desktop 
 ```  
   
+만일 rosdep init 과정에서 오류가 발생하면 다음을 실행한다.
+```
+$ sudo c_rehash /etc/ssl/certs
+```
+
 Jetson TX2보드에서 rviz를 실행하기 위해 아래 옵션을 설정한다.
 ```
 $ echo "# for using RVIZ" >> ~/.bashrc
