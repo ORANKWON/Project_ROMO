@@ -375,3 +375,4 @@ $ rosrun rosserial_arduino make_libraries.py .
 16. https://github.com/headmelted/codebuilds/issues/15
 17. http://docs.ros.org/kinetic/api/moveit_tutorials/html (ROS-kinetic Moveit 문서)
 18. https://github.com/dusty-nv/jetson-inference#building-from-source-on-jetson
+19. https://devtalk.nvidia.com/default/topic/1000106/jetson-tx2/opencv-convertto-failure/post/5171055/#5171055 (opencv4tegra 2.4.13 install on TX2)
