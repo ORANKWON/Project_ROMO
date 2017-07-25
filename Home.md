@@ -209,8 +209,8 @@ roslaunch zed_wrapper zed.launch
 /usr/local/zed/firmware
 ```  
   
-## Sweep LiDAR Intagration with ROS 
-![SWEEP LiDAR](http://scanse.io/sites/default/files/freeform/images/Updated%20header_sweep_tall_4-18.png)
+## Install Sweep LiDAR SDK & ROS Integration 
+![SWEEP LiDAR](http://scanse.io/sites/default/files/media/image/Sweep%20Packaging.jpg)
 
 ## Deep Learning framework building from source on Jetson TX1/TX2
 ```
