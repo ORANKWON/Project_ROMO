@@ -84,28 +84,18 @@ $ ./build_opencv2.4.13.sh <path/you/want/to/install>
   
 ## Install ROS - Kinetic  
 ARM 버전의 ROS Kinetic [설치가이드](http://wiki.ros.org/kinetic/Installation/Ubuntu)에 따라 순서대로 설치를 진행한다. 패키지
- 설치 단계에서 데스크탑용 전체 패키지를 설치한다. 
+ 설치 단계에서 데스크탑용 패키지를 설치한다. (추가로 필요한 패키지가 생길 경우에는 'apt-cache search ros-kinetic' 명령으로 필요한 패키지를 찾아서 설치하면 된다)
 ```
 $ sudo apt-get install ros-kinetic-desktop 
 ```  
   
-Jetson TX1보드에서 rviz를 실행하기 위해 아래 옵션을 설정한다.
+Jetson TX2보드에서 rviz를 실행하기 위해 아래 옵션을 설정한다.
 ```
 $ echo "# for using RVIZ" >> ~/.bashrc
 $ echo "unset GTK_IM_MODULE" >> ~/.bashrc
 $ source ~/.bashrc
 ```
-  
-만약 위와 같이 설정했음에도 rviz 실행시 Segmentation Fault 메시지가 발생한다면 rviz가 업데이트 되면서 libpcre 라이브러리와 충돌하는 문제이므로 아래 패키지를 다운로드하여 업데이트 한다(Jetson TK1에서 나타나는 증상).  
-```
-$ wget http://launchpadlibrarian.net/182261128/libpcre3_8.35-3ubuntu1_armhf.deb
-$ wget http://launchpadlibrarian.net/182261132/libpcre3-dev_8.35-3ubuntu1_armhf.deb
-$ wget http://launchpadlibrarian.net/182261135/libpcre3-dbg_8.35-3ubuntu1_armhf.deb
-$ wget http://launchpadlibrarian.net/182261131/libpcrecpp0_8.35-3ubuntu1_armhf.deb
-$ sudo dpkg -i libpcre*8.35*.deb
-$ sudo apt-get update
-```  
-  
+    
 ## Install MoveIt with ROS-kinetic
 로봇팔 제어와 시뮬레이션을 위해 'MoveIt' 소프트웨어를 사용한다. 먼저 아래 명령으로 kinetic 버젼용 moveit 패키지를 설치한다.
 ```
