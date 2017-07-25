@@ -1,11 +1,11 @@
 # Welcome to the wiki!  
 기억력의 한계로.. 나중을 위해 개발 과정의 삽질 및 성공 내용 기록함.   
-## Jetson TX1 flash 방법  
-![Jetson TX1](https://news.developer.nvidia.com/wp-content/uploads/2017/03/NVIDIA-Jetson-TX2-Developer-Kit.png)  
-준비사항: Ubuntu 14.04 or 16.04 버젼이 설치된 host PC(인터넷 연결 필요)  
+## Jetson TX2 flash 방법  
+![Jetson TX2](https://news.developer.nvidia.com/wp-content/uploads/2017/03/NVIDIA-Jetson-TX2-Developer-Kit.png)  
+준비사항: Ubuntu 14.04 버젼이 설치된 host PC(인터넷 연결 필요, 16.04도 가능하나 Nidia에서 추천하지 않음)  
 리눅스 pc가 없는 경우 윈도우즈 상에서 vmware나 virtualbox로도 가능하다.  
   
-먼저 NVIDIA 개발자 사이트에서 JetPack 3.0 설치 파일을 [다운로드](https://developer.nvidia.com/embedded/jetpack)한다. 그리고 아래와 같이 실행권한을 설정한 후 실행하면 아래와 같은 화면이 나오는데 여기서 TX1 보드를 선택한다.  
+먼저 NVIDIA 개발자 사이트에서 JetPack 3.0 설치 파일을 [다운로드](https://developer.nvidia.com/embedded/jetpack)한다. 그리고 아래와 같이 실행권한을 설정한 후 실행하면 아래와 같은 화면이 나오는데 여기서 TX2 보드를 선택한다.  
 ```
 $ chmod +x ./JetPack-L4T-3.0-linux-x64.run
 $ ./JetPack-L4T-3.0-linux-x64.run
@@ -21,9 +21,9 @@ $ ./JetPack-L4T-3.0-linux-x64.run
 * cuDNN  
 ![](https://cloud.githubusercontent.com/assets/23667624/26388554/f0e458fa-408f-11e7-89b3-d1c5420b2695.png)
 
-Jetson TX2의 flash방법은 [NVIDIA 공식문서](http://developer2.download.nvidia.com/embedded/L4T/r27_Release_v1.0/BSP/l4t_quick_start_guide.txt?2mqXqZYk2lRkqV54f6GeNyhy4RgV9594dHWPQAUAyCjGnRpw6TlhzRpg7OY7eI-bp4AZf-n3gc1x5-SRn0f1DbnSsgdymb93JSA_78ja9w6DJ1Np5VYzeh49E12qJO9W2p7x0GFUfJ0xCDq9FSv1GioO5-RF58lG64c)에 정리된 순서에 따라 진행하면 OK. 마지막 flash 단계에서 eMMC 16GB 용량을 모두 사용하고 싶으면 '-S 14580MiB' 옵션을 추가할 것.
+Jetson TX2의 flash방법은 [NVIDIA 공식문서](http://developer2.download.nvidia.com/embedded/L4T/r27_Release_v1.0/BSP/l4t_quick_start_guide.txt?2mqXqZYk2lRkqV54f6GeNyhy4RgV9594dHWPQAUAyCjGnRpw6TlhzRpg7OY7eI-bp4AZf-n3gc1x5-SRn0f1DbnSsgdymb93JSA_78ja9w6DJ1Np5VYzeh49E12qJO9W2p7x0GFUfJ0xCDq9FSv1GioO5-RF58lG64c)에 정리된 순서에 따라 진행하면 OK. 마지막 flash 단계에서 eMMC 32GB 용량을 모두 사용하고 싶으면 '-S 28GiB' 옵션을 추가할 것.
 ```
-$ sudo ./flash.sh -S 14580MiB jetson-tx1 mmcblk0p1
+$ sudo ./flash.sh -S 28GiB jetson-tx2 mmcblk0p1
 ```  
   
 Flash작업이 종료되면 보드는 자동으로 재부팅을 시작하고 우분투 GUI화면이 표시될 것이다. 아래 명령으로 저장소 추가한다.  
