@@ -77,7 +77,7 @@ $ sudo dpkg -i libcudnn5-doc_5.1.10-1+cuda8.0_arm64.deb
 $ sudo apt-get update  
 ```
   
-OpenCV4Tegra(2.4.13) 설치를 위해서 Nvidai에서 제공하는 스크립트를 활용한다. 스크립트를 [다운로드](https://devtalk.nvidia.com/cmd/default/download-comment-attachment/73046/OpenCV4Tegra)하고 압축을 해제하면 'build_opencv2.4.13.sh' 파일이 나오며 다음 명령으로 설치를 진행할 수 있다.
+OpenCV4Tegra(2.4.13) 설치를 위해서 Nvidia에서 제공하는 스크립트를 활용한다. 스크립트를 [다운로드](https://devtalk.nvidia.com/cmd/default/download-comment-attachment/73046/OpenCV4Tegra)하고 압축을 해제하면 'build_opencv2.4.13.sh' 파일이 나오며 다음 명령으로 설치를 진행할 수 있다.
 ```
 $ ./build_opencv2.4.13.sh <path/you/want/to/install>
 ```  
