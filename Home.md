@@ -36,6 +36,13 @@ $ sudo apt-get upgrade
   
 [Note] 한글 입력을 사용하고 싶은 경우 <http://hochulshin.com/ubuntu-1604-hangul/>를 참고한다.  
   
+## Build Kernel and Modules
+```
+$ git clone https://github.com/jetsonhacks/buildJetsonTX2Kernel.git
+$ cd buildJetsonTX2Kernel
+$ ./getKernelSources.sh
+```
+  
 ## Install CUDA, OpenCV4Tegra, cuDNN  
 Jetson TX1 JetPack 3.0에서 지원하는 라이브러리 버젼은 다음과 같다.  
 ```
