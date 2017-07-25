@@ -83,9 +83,10 @@ $ ./build_opencv2.4.13.sh <path/you/want/to/install>
 ```  
   
 ## Install ROS - Kinetic  
-ARM 버젼의 ROS Kinetic [설치가이드](http://wiki.ros.org/indigo/Installation/UbuntuARM)에 따라 순서대로 설치를 진행한다. 설치할 ROS 패키지는 아래와 같다. 
+ARM 버전의 ROS Kinetic [설치가이드](http://wiki.ros.org/kinetic/Installation/Ubuntu)에 따라 순서대로 설치를 진행한다. 패키지
+ 설치 단계에서 데스크탑용 전체 패키지를 설치한다. 
 ```
-$ sudo apt-get install ros-indigo-desktop ros-indigo-pcl-ros ros-kinetic-teleop-twist-keyboard
+$ sudo apt-get install ros-kinetic-desktop 
 ```  
   
 Jetson TX1보드에서 rviz를 실행하기 위해 아래 옵션을 설정한다.
