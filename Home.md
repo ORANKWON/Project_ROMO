@@ -2,7 +2,7 @@
 기억력의 한계로.. 나중을 위해 개발 과정의 삽질 및 성공 내용 기록함.   
 ## Jetson TX2 flash 방법  
 ![Jetson TX2](https://news.developer.nvidia.com/wp-content/uploads/2017/03/NVIDIA-Jetson-TX2-Developer-Kit.png)  
-준비사항: Ubuntu 14.04 버젼이 설치된 host PC(인터넷 연결 필요, 16.04도 가능하나 Nidia에서 추천하지 않음) 리눅스 pc가 없는 경우 윈도우즈 상에서 vmware나 virtualbox로도 가능하다.  
+준비사항: Ubuntu 14.04 버젼이 설치된 host PC(인터넷 연결 필요, 16.04도 가능하나 Nvidia에서 추천하지 않음) 리눅스 pc가 없는 경우 윈도우즈 상에서 vmware나 virtualbox로도 가능하다.  
   
 먼저 NVIDIA 개발자 사이트에서 JetPack 3.0 설치 파일을 [다운로드](https://developer.nvidia.com/embedded/jetpack)한다. 그리고 아래와 같이 실행권한을 설정한 후 실행하면 아래와 같은 화면이 나오는데 여기서 TX2 보드를 선택한다.  
 ```
