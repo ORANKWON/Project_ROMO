@@ -139,7 +139,7 @@ ZED 스테레오 카메라의 성능을 최대로 끌어내기 위해서 ZED SDK
 $ sudo chmod +x /etc/rc.local
 ```
   
-ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/)에서 확인할 수 있다.  SDK v2.0.1와 호환되는 ros-wrapper는 [GitHub](https://github.com/stereolabs/zed-ros-wrapper)에서 다운로드할 수 있다.
+ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식매뉴얼](https://www.stereolabs.com/documentation/guides/using-zed-with-ros/introduction.html)에서 확인할 수 있다.  SDK v2.0.1와 호환되는 ros-wrapper는 [GitHub](https://github.com/stereolabs/zed-ros-wrapper)에서 다운로드할 수 있다.
 ```
 $ cd ~/catkin_ws/src
 $ git clone  https://github.com/stereolabs/zed-ros-wrapper.git
