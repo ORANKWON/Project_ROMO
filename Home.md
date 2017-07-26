@@ -181,6 +181,20 @@ $ sudo cmake --build . --target install
 $ sudo ldconfig
 ```
   
+ROS와 연동하기 위한 wrapper 노드를 설치한다.
+```
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/scanse/sweep-ros.git
+$ cd ..
+$ catkin_make --pkg sweep_ros
+$ source ./devel/setup.bash
+```
+
+다음 launch파일을 실행하면 rviz상에서 sweep lidar 데이터를 확인할 수 있다. 퍼블리시되는 토픽은 laserscan 타입과 pointcloud2 타입중에서 선택 가능하다(아래는 pointcloud2 타입).
+```
+$ roslaunch sweep_ros view_sweep_pc2.launch
+```
+
 ## Install MoveIt with ROS-kinetic
 로봇팔 제어와 시뮬레이션을 위해 'MoveIt' 소프트웨어를 사용한다. 먼저 아래 명령으로 kinetic 버젼용 moveit 패키지를 설치한다.
 ```
