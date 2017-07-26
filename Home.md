@@ -89,58 +89,27 @@ ARM 버전의 ROS Kinetic [설치가이드](http://wiki.ros.org/kinetic/Installa
 $ sudo apt-get install ros-kinetic-desktop 
 ```  
   
-만일 rosdep init 과정에서 오류가 발생하면 다음을 실행한다.
+* 만일 rosdep init 과정에서 오류가 발생하면 아래 명령을 실행하고 다시 시도해본다.
 ```
 $ sudo c_rehash /etc/ssl/certs
 ```
 
-Jetson TX2보드에서 rviz를 실행하기 위해 아래 옵션을 설정한다.
+Catkin workspace 생성을 위해서 다음을 실행한다.
 ```
-$ echo "# for using RVIZ" >> ~/.bashrc
-$ echo "unset GTK_IM_MODULE" >> ~/.bashrc
-$ source ~/.bashrc
+$ mkdir -p ~/catkin_ws/src
+$ cd ~/catkin_ws
+$ catkin_make
 ```
     
-## Install MoveIt with ROS-kinetic
-로봇팔 제어와 시뮬레이션을 위해 'MoveIt' 소프트웨어를 사용한다. 먼저 아래 명령으로 kinetic 버젼용 moveit 패키지를 설치한다.
-```
-$ sudo apt-get install ros-kinetic-moveit
-$ sudo apt-get dist-upgrade
-```
-  
-Install dependencies(clang is optional)
-```
-$ sudo apt-get install python-wstool python-catkin-tools clang-format-3.8
-```
-
-Build from source
-```
-$ mkdir ws_moveit && cd ws_moveit 
-$ mkdir src && cd src
-$ wstool init .
-$ wstool merge https://raw.githubusercontent.com/ros-planning/moveit/kinetic-devel/moveit.rosinstall
-$ wstool update
-$ rosdep install --from-paths . --ignore-src --rosdistro kinetic
-$ cd ..
-$ catkin config --extend /opt/ros/kinetic --cmake-args -DCMAKE_BUILD_TYPE=Release
-$ catkin build
-```
-  
 ## Install ZED SDK & ROS integration
 ![ZED - Stereolabs](https://www.stereolabs.com/img/product/ZED_product_main.jpg)  
-ZED 스테레오 카메라의 Jetson TX1 SDK-v2.0.1를 [다운로드](https://www.stereolabs.com/developers/release/2.0/#sdkdownloads_anchor) 한다. 
+ZED 스테레오 카메라의 Jetson TX2 SDK-v2.0.1를 [다운로드](https://www.stereolabs.com/developers/release/2.0/#sdkdownloads_anchor) 한다. 
 ```
-$ chmod +x ZED_SDK_JTX1_v*.run
-$ ./ZED_SDK_JTX1_v*.run
+$ chmod +x ZED_SDK_JTX2_v*.run
+$ ./ZED_SDK_JTX2_v*.run
 ```  
   
-ZED 스테레오 카메라의 성능을 최대로 끌어내기 위해서 ZED SDK에서 제공하는 스크립트를 부팅때 자동으로 실행시키도록 설정한다. 편집기로 /etc/rc.local 파일을 열고 다음 내용을 추가한다. (파일을 열어서 제일 하단의 'exit 0' 바로 위에 입력한다)
-```
-# Turn up the CPU and GPU for max performance
-/usr/local/zed/scripts/jetson_max_l4t_updated.sh
-```
-  
-ZED 스테레오 카메라는 USB 3.0으로 통신하므로 TX1 보드가 USB 3.0포트를 사용할 수 있도록 수정한다. 
+ZED 스테레오 카메라는 USB 3.0으로 통신하므로 TX2 보드가 USB 3.0포트를 사용할 수 있도록 수정한다. 
 ```
 $ sudo sed -i 's/usb_port_owner_info=0/usb_port_owner_info=2/' /boot/extlinux/extlinux.conf
 ```
@@ -153,25 +122,33 @@ $ sudo gedit /usr/local/bin/disableUSBAutosuspend.sh
 파일이 열리면 아래의 내용을 추가후 저장하고 닫는다.
 ```
 #!/bin/sh
-
 sudo sh -c 'for dev in /sys/bus/usb/devices/*/power/autosuspend; do echo -1 >$dev; done'
 ```
-  
-부팅후 스크립트가 자동적으로 실행하기 위해서 /etc/rc.local 파일의 제일 하단('exit 0' 바로 위)에 아래 내용을 입력한다.
+
+ZED 스테레오 카메라의 성능을 최대로 끌어내기 위해서 ZED SDK에서 제공하는 스크립트를 부팅때 자동으로 실행시킨다. 추가로 위에서 작성한 쉘스크립트를 실행하도록 하는 내용도 추가하자. 편집기로 /etc/rc.local 파일을 열고 다음과 같이 입력을 하면 된다. (파일을 열어서 제일 하단의 'exit 0' 바로 위에 입력한다)
 ```
+# Turn up the CPU and GPU for max performance
+/usr/local/zed/scripts/jetson_max_l4t_updated.sh
+
 # disable USB autosuspend
 /usr/local/bin/disableUSBAutosuspend.sh
 ```
   
-ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/)에서 확인할 수 있다.  SDK v2.0.1와 호환되는 ros-wrapper는 [GitHub](https://github.com/stereolabs/zed-ros-wrapper)에서 다운로드할 수 있으며, 다운로드한 zed-ros-wrapper를 ~/catkin_ws/src 폴더에 복사하고 다음 명령을 수행한다.
+수정한 파일에 실행권한을 부여하자.
 ```
-$ cd ~/catkin_ws
+$ sudo chmod +x /etc/rc.local
+```
+  
+ZED를 ROS와 연동하기 위한 방법은 Stereolabs [공식사이트](https://www.stereolabs.com/blog/index.php/2015/09/07/use-your-zed-camera-with-ros/)에서 확인할 수 있다.  SDK v2.0.1와 호환되는 ros-wrapper는 [GitHub](https://github.com/stereolabs/zed-ros-wrapper)에서 다운로드할 수 있다.
+```
+$ cd ~/catkin_ws/src
+$ git clone  https://github.com/stereolabs/zed-ros-wrapper.git
+$ cd ..
 $ catkin_make
-$ echo source $(pwd)/devel/setup.bash >> ~/.bashrc
-$ source ./devel/setup.bash
+$ $ source ./devel/setup.bash
 ``` 
 
-성공적으로 컴파일이 되었다면 아래 명령으로 어플리케이션을 실행시켜 본다.  
+다음 명령으로 ZED 카메라의 데이터를 ROS 토픽으로 브로드캐스트 할 수 있다.  
 ```
 roslaunch zed_wrapper zed.launch
 ```  
@@ -202,6 +179,31 @@ $ cmake .. -DCMAKE_BUILD_TYPE=Release
 $ cmake --build .
 $ sudo cmake --build . --target install
 $ sudo ldconfig
+```
+  
+## Install MoveIt with ROS-kinetic
+로봇팔 제어와 시뮬레이션을 위해 'MoveIt' 소프트웨어를 사용한다. 먼저 아래 명령으로 kinetic 버젼용 moveit 패키지를 설치한다.
+```
+$ sudo apt-get install ros-kinetic-moveit
+$ sudo apt-get dist-upgrade
+```
+  
+Install dependencies(clang is optional)
+```
+$ sudo apt-get install python-wstool python-catkin-tools clang-format-3.8
+```
+
+Build from source
+```
+$ mkdir ws_moveit && cd ws_moveit 
+$ mkdir src && cd src
+$ wstool init .
+$ wstool merge https://raw.githubusercontent.com/ros-planning/moveit/kinetic-devel/moveit.rosinstall
+$ wstool update
+$ rosdep install --from-paths . --ignore-src --rosdistro kinetic
+$ cd ..
+$ catkin config --extend /opt/ros/kinetic --cmake-args -DCMAKE_BUILD_TYPE=Release
+$ catkin build
 ```
   
 ## Deep Learning framework building from source on Jetson TX1/TX2
