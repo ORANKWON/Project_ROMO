@@ -18,6 +18,8 @@ $ ./JetPack-L4T-3.0-linux-x64.run
 * CUDA Toolkit
 * OpenCV 4 Tegra
 * cuDNN  
+* TensorRT  
+  
 ![](https://cloud.githubusercontent.com/assets/23667624/26388554/f0e458fa-408f-11e7-89b3-d1c5420b2695.png)
 
 Jetson TX2의 flash방법은 [NVIDIA 공식문서](http://developer2.download.nvidia.com/embedded/L4T/r27_Release_v1.0/BSP/l4t_quick_start_guide.txt?2mqXqZYk2lRkqV54f6GeNyhy4RgV9594dHWPQAUAyCjGnRpw6TlhzRpg7OY7eI-bp4AZf-n3gc1x5-SRn0f1DbnSsgdymb93JSA_78ja9w6DJ1Np5VYzeh49E12qJO9W2p7x0GFUfJ0xCDq9FSv1GioO5-RF58lG64c)에 정리된 순서에 따라 진행하면 OK. 마지막 flash 단계에서 eMMC 32GB 용량을 모두 사용하고 싶으면 '-S 28GiB' 옵션을 추가할 것.
@@ -35,12 +37,13 @@ $ sudo apt-get upgrade
   
 [Note] 한글 입력을 사용하고 싶은 경우 <http://hochulshin.com/ubuntu-1604-hangul/>를 참고한다.  
   
-## Install CUDA, OpenCV4Tegra, cuDNN  
-Jetson TX1 JetPack 3.0에서 지원하는 라이브러리 버젼은 다음과 같다.  
+## Install CUDA, OpenCV4Tegra, cuDNN, TensorRT  
+Jetson TX2 JetPack 3.1에서 지원하는 라이브러리 버젼은 다음과 같다.  
 ```
 CUDA 8.0 (8.0.33)
 OpenCV4Tegra 2.4 (2.4.13)
-cuDNN v5.1
+cuDNN v6.0
+TensorRT v2.1
 ```
     
 앞서 다운로드 받은 CUDA, OpenCV4Tegra 패키지 설치 파일(*.deb)을 USB 등의 저장매체를 이용해 TX1 보드에 복사한다. 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
@@ -81,6 +84,13 @@ OpenCV4Tegra(2.4.13) 설치를 위해서 Nvidia에서 제공하는 스크립트�
 ```
 $ ./build_opencv2.4.13.sh <path/you/want/to/install>
 ```  
+  
+TensorRT를 설치하는 과정은 다음과 같다.
+```
+$ sudo dpkg -i nv-gie-repo-ubuntu1604-ga-cuda8.0-trt2.1-20170614_1-1_arm64.deb
+$ sudo apt-get update
+$ sudo apt-get install libgie-dev
+```
   
 ## Install ROS - Kinetic  
 ARM 버전의 ROS Kinetic [설치가이드](http://wiki.ros.org/kinetic/Installation/Ubuntu)에 따라 순서대로 설치를 진행한다. 패키지
