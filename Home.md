@@ -204,7 +204,10 @@ $ source ./devel/setup.bash
 ```
 $ roslaunch sweep_ros view_sweep_pc2.launch
 ```
-
+## Obstacle detection package
+  
+https://github.com/tysik/obstacle_detector
+  
 ## Install MoveIt with ROS-kinetic
 로봇팔 제어와 시뮬레이션을 위해 'MoveIt' 소프트웨어를 사용한다. 먼저 아래 명령으로 kinetic 버젼용 moveit 패키지를 설치한다.
 ```
