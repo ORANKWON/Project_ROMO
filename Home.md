@@ -191,8 +191,10 @@ $ sudo cmake --build . --target install
 $ sudo ldconfig
 ```
   
-ROS와 연동하기 위한 wrapper 노드를 설치한다.
+ROS와 연동하기 위해 필요한 패키지 및 wrapper 노드를 설치한다.
 ```
+$ sudo apt-get install ros-kinetic-tf2-sensor-msgs ros-kinetic-pointcloud-to-laserscan
+
 $ cd ~/catkin_ws/src
 $ git clone https://github.com/scanse/sweep-ros.git
 $ cd ..
