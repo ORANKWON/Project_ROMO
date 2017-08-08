@@ -191,14 +191,15 @@ $ sudo cmake --build . --target install
 $ sudo ldconfig
 ```
   
-ROS와 연동하기 위해 필요한 패키지 및 wrapper 노드를 설치한다.
+ROS와 연동하기 위해 필요한 의존성 패키지(pointcloud_to_laserscan 패키지는 소스빌드) 및 wrapper 노드를 설치한다.
 ```
-$ sudo apt-get install ros-kinetic-tf2-sensor-msgs ros-kinetic-pointcloud-to-laserscan
+$ sudo apt-get install ros-kinetic-tf2-sensor-msgs
 
 $ cd ~/catkin_ws/src
+$ git clone https://github.com/ros-perception/pointcloud_to_laserscan.git
 $ git clone https://github.com/scanse/sweep-ros.git
 $ cd ..
-$ catkin_make --pkg sweep_ros
+$ catkin_make
 $ source ./devel/setup.bash
 ```
 
