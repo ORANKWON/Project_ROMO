@@ -4,10 +4,10 @@
 ![Jetson TX2](https://news.developer.nvidia.com/wp-content/uploads/2017/03/NVIDIA-Jetson-TX2-Developer-Kit.png)  
 준비사항: Ubuntu 14.04 버젼이 설치된 host PC(인터넷 연결 필요, 16.04도 가능하나 Nvidia에서 추천하지 않음) 리눅스 pc가 없는 경우 윈도우즈 상에서 vmware나 virtualbox로도 가능하다.  
   
-먼저 NVIDIA 개발자 사이트에서 JetPack 3.0 설치 파일을 [다운로드](https://developer.nvidia.com/embedded/jetpack)한다. 그리고 아래와 같이 실행권한을 설정한 후 실행하면 아래와 같은 화면이 나오는데 여기서 TX2 보드를 선택한다.  
+먼저 NVIDIA 개발자 사이트에서 JetPack 3.1 설치 파일을 [다운로드](https://developer.nvidia.com/embedded/jetpack)한다. 그리고 아래와 같이 실행권한을 설정한 후 실행하면 아래와 같은 화면이 나오는데 여기서 TX2 보드를 선택한다.  
 ```
-$ chmod +x ./JetPack-L4T-3.0-linux-x64.run
-$ ./JetPack-L4T-3.0-linux-x64.run
+$ chmod +x ./JetPack-L4T-3.1-linux-x64.run
+$ ./JetPack-L4T-3.1-linux-x64.run
 ```  
   
 ![](https://cloud.githubusercontent.com/assets/23667624/26388538/dddc23be-408f-11e7-92f7-813072f17998.png)
@@ -48,7 +48,7 @@ TensorRT v2.1
     
 앞서 다운로드 받은 CUDA, cuDNN, TensorRT 패키지 설치 파일(*.deb)을 USB 등의 저장매체를 이용해 TX2 보드에 복사한다. 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 ```
-$ sudo dpkg -i cuda-repo-l4t-8-0-local_8.0.34-1_arm64.deb 
+$ sudo dpkg -i cuda-repo-l4t-8-0-local_8.0.84-1_arm64.deb 
 $ sudo apt-get update
 $ sudo apt-get install cuda-toolkit-8-0 -y
 $ sudo usermod -a -G video $USER
@@ -74,9 +74,9 @@ Cuda compilation tools, release 8.0, V8.0.72
   
 cuDNN은 아래와 같이 설정하면 완료.
 ```
-$ sudo dpkg -i libcudnn5_5.1.10-1+cuda8.0_arm64.deb
-$ sudo dpkg -i libcudnn5-dev_5.1.10-1+cuda8.0_arm64.deb 
-$ sudo dpkg -i libcudnn5-doc_5.1.10-1+cuda8.0_arm64.deb 
+$ sudo dpkg -i libcudnn6_6.0.21-1+cuda8.0_arm64.deb
+$ sudo dpkg -i libcudnn6-dev_6.0.21-1+cuda8.0_arm64.deb 
+$ sudo dpkg -i libcudnn6-doc_6.0.21-1+cuda8.0_arm64.deb 
 $ sudo apt-get update  
 ```
   
