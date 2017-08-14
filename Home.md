@@ -290,6 +290,44 @@ $ cd ~/sketchbook/libraries
 $ rosrun rosserial_arduino make_libraries.py .
 ```
   
+## Run roslaunch at startup on Ubuntu 16.04
+ - Case of: "Sweep LiDAR"
+```
+$ sudo gedit /etc/systemd/system/run-sweep-lidar.service
+```
+  
+Make service unit as follow:
+```
+[Unit]
+Restart=on-abort
+After=mysql.service
+
+[Service]
+ExecStart=/usr/local/bin/run-sweep-lidar.sh
+
+[Install]
+WantedBy=default.target
+```
+  
+Create shell script
+```
+$ sudo gedit /usr/local/bin/run-sweep-lidar.sh
+```
+  
+Write shell script as follow:
+```
+#!/usr/bin/env bash
+bash -c "source /home/nvidia/catkin_ws/devel/setup.bash && roslaunch sweep_ros sweep2scan.launch"
+```
+  
+We need to make our script executable. Also, install systemd service unit and enable it so it will be executed at the boot time:
+```
+$ sudo chmod 744 /usr/local/bin/run-sweep-lidar.sh
+$ sudo chmod 664 /etc/systemd/system/run-sweep-lidar.service
+$ sudo systemctl daemon-reload
+$ sudo systemctl enable run-sweep-lidar.service
+```
+  
 ## 참고 사이트  
 1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
 2. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/
@@ -311,3 +349,4 @@ $ rosrun rosserial_arduino make_libraries.py .
 18. https://github.com/dusty-nv/jetson-inference#building-from-source-on-jetson
 19. https://devtalk.nvidia.com/default/topic/1000106/jetson-tx2/opencv-convertto-failure/post/5171055/#5171055 (opencv4tegra 2.4.13 install on TX2)
 20. https://askubuntu.com/questions/825354/unity-ubuntu-16-04-no-menu-bar-launcher-top-bar-dash-window-borders-disapp(unity - Ubuntu 16.04 no menu bar, launcher, top bar, dash, window borders disappeared)
+21. https://answers.ros.org/question/245089/systemd-roslaunch/ (auto start roslaunch at boot) 
