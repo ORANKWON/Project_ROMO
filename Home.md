@@ -42,6 +42,13 @@ $ sudo apt-get upgrade
 sudo apt purge libreoffice*
 ```
   
+[Note] If you lost desktop menu bar, top bar, launcher and windows borders, try this:, 
+```
+$ cd .cache
+$ mv compizconfig-1 compizconfig-1_renamed
+$ sudo reboot 
+```
+  
 ## Install CUDA, OpenCV4Tegra, cuDNN, TensorRT  
 Jetson TX2 JetPack 3.1에서 지원하는 라이브러리 버젼은 다음과 같다.  
 ```
@@ -288,3 +295,4 @@ $ rosrun rosserial_arduino make_libraries.py .
 17. http://docs.ros.org/kinetic/api/moveit_tutorials/html (ROS-kinetic Moveit 문서)
 18. https://github.com/dusty-nv/jetson-inference#building-from-source-on-jetson
 19. https://devtalk.nvidia.com/default/topic/1000106/jetson-tx2/opencv-convertto-failure/post/5171055/#5171055 (opencv4tegra 2.4.13 install on TX2)
+20. https://askubuntu.com/questions/825354/unity-ubuntu-16-04-no-menu-bar-launcher-top-bar-dash-window-borders-disapp(unity - Ubuntu 16.04 no menu bar, launcher, top bar, dash, window borders disappeared)
