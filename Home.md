@@ -68,8 +68,8 @@ nvcc -V
 ```
 nvcc: NVIDIA (R) Cuda compiler driver
 Copyright (c) 2005-2016 NVIDIA Corporation
-Built on Fri_Jul_15_14:52:12_CDT_2016
-Cuda compilation tools, release 8.0, V8.0.33
+Built on Mon_Mar_20_17:07:33_CDT_2017
+Cuda compilation tools, release 8.0, V8.0.72
 ```
   
 cuDNN은 아래와 같이 설정하면 완료.
