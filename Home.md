@@ -46,7 +46,7 @@ cuDNN v6.0
 TensorRT v2.1
 ```
     
-앞서 다운로드 받은 CUDA, OpenCV4Tegra 패키지 설치 파일(*.deb)을 USB 등의 저장매체를 이용해 TX1 보드에 복사한다. 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
+앞서 다운로드 받은 CUDA, cuDNN, TensorRT 패키지 설치 파일(*.deb)을 USB 등의 저장매체를 이용해 TX2 보드에 복사한다. 다음 명령으로 CUDA ToolKit을 설치하고 라이브러리 및 포함 경로를 설정한다.  
 ```
 $ sudo dpkg -i cuda-repo-l4t-8-0-local_8.0.34-1_arm64.deb 
 $ sudo apt-get update
@@ -80,17 +80,17 @@ $ sudo dpkg -i libcudnn5-doc_5.1.10-1+cuda8.0_arm64.deb
 $ sudo apt-get update  
 ```
   
-OpenCV4Tegra(2.4.13) 설치를 위해서 Nvidia에서 제공하는 스크립트를 활용한다. 스크립트를 [다운로드](https://devtalk.nvidia.com/cmd/default/download-comment-attachment/73046/OpenCV4Tegra)하고 압축을 해제하면 'build_opencv2.4.13.sh' 파일이 나오며 다음 명령으로 설치를 진행할 수 있다.
-```
-$ ./build_opencv2.4.13.sh <path/you/want/to/install>
-```  
-  
 TensorRT를 설치하는 과정은 다음과 같다.
 ```
 $ sudo dpkg -i nv-gie-repo-ubuntu1604-ga-cuda8.0-trt2.1-20170614_1-1_arm64.deb
 $ sudo apt-get update
 $ sudo apt-get install libgie-dev
 ```
+  
+OpenCV4Tegra(2.4.13) 설치를 위해서 Nvidia에서 제공하는 스크립트를 활용한다. 스크립트를 [다운로드](https://devtalk.nvidia.com/cmd/default/download-comment-attachment/73046/OpenCV4Tegra)하고 압축을 해제하면 'build_opencv2.4.13.sh' 파일이 나오며 다음 명령으로 설치를 진행할 수 있다.
+```
+$ ./build_opencv2.4.13.sh <path/you/want/to/install>
+```  
   
 ## Install ROS - Kinetic  
 ARM 버전의 ROS Kinetic [설치가이드](http://wiki.ros.org/kinetic/Installation/Ubuntu)에 따라 순서대로 설치를 진행한다. 패키지
@@ -239,116 +239,6 @@ Compile the project..
 $ cd jetson-inference/build	
 $ make
 ``` 
-  
-
-Jetson TX1에서 딥러닝을 위한 py-faster-rcnn을 설치한다. 설치하기가 제일 까다로웠던 부분이다. 먼저 필요한 라이브러리들을 설치한다.
-```
-$ sudo apt-get install libprotobuf-dev protobuf-compiler gfortran libboost-dev libleveldb-dev libsnappy-dev libboost-thread-dev libboost-system-dev libatlas-base-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev liblmdb-dev gcc-4.7 g++-4.7 libboost-all-dev libopenblas-dev  
-$ sudo apt-get install python-numpy python-setuptools python-pip cython python-opencv python-skimage python-protobuf
-$ sudo pip install easydict PyYAML
-```
-
-다음은 py-faster-rcnn을 설치하는 과정이다.  
-  
-1.py-faster-rcnn을 git clone한다.
-```
-$ cd ~
-$ sudo apt install git
-$ git clone --recursive https://github.com/rbgirshick/py-faster-rcnn.git
-```
-  
-2.편의상 폴더명을 이후부터 $FRCN 이라 표시한다.  
-  
-3.Cython을 빌드한다.  
-```
-$ cd $FRCN/lib
-$ make
-```
-  
-* 빌드 도중 gpu_nms.cpp 에서 에러 발생시 아래 내용으로 수정하고 다시 빌드..
-```
-$ sed -i -e '1617s/__pyx_t_5numpy_int32_t/int/g' nms/gpu_nms.cpp
-$ make
-```
-    
-4.Caffe를 설치하는 과정에서 py-faster-rcnn에 딸려오는 수정된 버젼의 caffe가 아닌 버클리 대학에서 제공하는 원본 caffe 소스코드를 이용한다(이렇게 하는 이유는 cuDNN 버젼 문제(v5) 때문에 py-faster-rcnn에서 제공하는 caffe 빌드시 오류가 나기 때문이다). 먼저 임의의 경로에 caffe 소스코드를 다운로드하고 폴더로 이동한다.  
-```
-$ git clone https://github.com/BVLC/caffe.git
-$ cd caffe
-```
-  
-그리고 다음 경로에 있는 파일들을 $FRCN/caffe-fast-rcnn 폴더에 복사한다.
-```
-src/caffe/layers/:
-cudnn_conv_layer.cu
-cudnn_relu_layer.cpp
-cudnn_relu_layer.cu
-cudnn_sigmoid_layer.cpp
-cudnn_sigmoid_layer.cu
-cudnn_tanh_layer.cpp
-cudnn_tanh_layer.cu
-
-include/caffe/layers/:
-cudnn_relu_layer.hpp
-cudnn_sigmoid_layer.hpp
-cudnn_tanh_layer.hpp
-```
-    
-5.$FRCN/caffe-fast-rcnn 폴더로 이동하고 Makefile.config를 생성한다.
-```
-$ cd $FRCN/caffe-fast-rcnn
-$ cp Makefile.config.example Makefile.config
-```
-  
-6.Makefile.config 파일을 열고 아래 내용과 다를 경우 동일하게 수정한다.
-```
-# CUDA architecture setting: going with all of them.
-# For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
-# For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
-CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
-             -gencode arch=compute_20,code=sm_21 \
-             -gencode arch=compute_30,code=sm_30 \
-             -gencode arch=compute_35,code=sm_35 \
-             -gencode arch=compute_50,code=sm_50 \
-             -gencode arch=compute_52,code=sm_52 \
-             -gencode arch=compute_53,code=sm_53 \
-             -gencode arch=compute_61,code=sm_61
-
-# In your Makefile.config, make sure to have this line uncommented
-WITH_PYTHON_LAYER := 1
-
-# Unrelatedly, it's also recommended that you use CUDNN
-USE_CUDNN := 1
-
-# Whatever else you find you need goes here.
-INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/
-```
-  
-7.Makefile 파일을 오픈하고 다음과 같이 수정한다.
-```
-LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
-
-LIBRARIES += boost_thread stdc++ boost_regex
-```
-
-8.변경후 파일을 닫고 아래 명령으로 컴파일한다. (시간이 걸리므로 차 한잔~)
-```
-$ cd $FRCN
-$ make -j4
-$ make pycaffe
-```
-  
-9.사전 학습된 faster-RCNN detector를 다운로드 한다.
-```
-$ cd $FRCN
-$ ./data/scripts/fetch_faster_rcnn_models.sh
-```
-  
-10.데모를 실행해서 결과를 확인한다. 'demo.py' 기본 네트워크 모델은 VGG16으로 설정되어 있는데, 이걸 사용했을 때 GPU 메모리 에러가 발생한다면 ZF 네트워크 모델을 사용하도록 옵션을 주도록 한다(--net zf)
-```
-$ cd $FRCN_ROOT
-$ ./tools/demo.py
-```
   
 ## Arduino with rosserial
 아두이노 패키지와 rosserial 패키지를 설치한다.
