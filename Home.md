@@ -220,11 +220,24 @@ $ source ./devel/setup.bash
 $ roslaunch sweep_ros view_sweep_pc2.launch
 ```
   
-2D LiDAR based [obstacle_detector](https://github.com/tysik/obstacle_detector) package is used to detect and track object with laser scanner. Armadillo C++ library is required. 
+2D LiDAR based [obstacle_detector](https://github.com/tysik/obstacle_detector) package is used to detect and track object with laser scanner. [Armadillo C++](http://arma.sourceforge.net/download.html) library is required. 
 ```
-$ 
+$ cd ~
+$ tar -xvf armadillo-7.960.1.tar.xz
+$ cd armadillo-7.960.1
+$ mkdir build && cd build
+$ cmake ..
+$ make && sudo make install
 ```
-
+  
+Cloning 'obstacle_detector' package and compile.
+```
+$ cd catkin_ws/src
+$ git clone https://github.com/tysik/obstacle_detector.git
+$ cd ..
+$ catkin_make --pkg obstacle_detector
+$ source devel/setup.bash
+```
   
 ## Install MoveIt with ROS-kinetic
 로봇팔 제어와 시뮬레이션을 위해 'MoveIt' 소프트웨어를 사용한다. 먼저 아래 명령으로 kinetic 버젼용 moveit 패키지를 설치한다.
