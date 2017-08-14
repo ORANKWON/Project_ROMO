@@ -40,7 +40,7 @@ $ sudo apt-get upgrade
 ## Install CUDA, OpenCV4Tegra, cuDNN, TensorRT  
 Jetson TX2 JetPack 3.1에서 지원하는 라이브러리 버젼은 다음과 같다.  
 ```
-CUDA 8.0 (8.0.33)
+CUDA 8.0 (8.0.84)
 OpenCV4Tegra 2.4 (2.4.13)
 cuDNN v6.0
 TensorRT v2.1
