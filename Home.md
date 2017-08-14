@@ -42,7 +42,7 @@ $ sudo apt-get upgrade
 sudo apt purge libreoffice*
 ```
   
-[Note] If you lost desktop menu bar, top bar, launcher and windows borders, try this:, 
+[Note] If you lost desktop menu bar, top bar, launcher and windows borders after Ubuntu upgrade, try this: 
 ```
 $ cd .cache
 $ mv compizconfig-1 compizconfig-1_renamed
