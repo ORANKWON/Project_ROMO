@@ -253,7 +253,7 @@ $ sudo apt-get install python-wstool python-catkin-tools clang-format-3.8
 ```
 
   
-## TensorRT on Jetson TX1/TX2
+## TensorRT(Deep Learning) on Jetson TX1/TX2
 ```
 $ git clone http://github.com/dusty-nv/jetson-inference
 $ cd jetson-inference
@@ -267,6 +267,10 @@ Compile the project..
 $ cd jetson-inference/build	
 $ make
 ``` 
+  
+Using zed camera image topic for detectnet-camera
+```
+```
   
 ## Arduino with rosserial
 아두이노 패키지와 rosserial 패키지를 설치한다.
@@ -350,3 +354,4 @@ $ sudo systemctl enable run-sweep-lidar.service
 19. https://devtalk.nvidia.com/default/topic/1000106/jetson-tx2/opencv-convertto-failure/post/5171055/#5171055 (opencv4tegra 2.4.13 install on TX2)
 20. https://askubuntu.com/questions/825354/unity-ubuntu-16-04-no-menu-bar-launcher-top-bar-dash-window-borders-disapp(unity - Ubuntu 16.04 no menu bar, launcher, top bar, dash, window borders disappeared)
 21. https://answers.ros.org/question/245089/systemd-roslaunch/ (auto start roslaunch at boot) 
+22. https://github.com/lucasw/ros-virtual-cam
