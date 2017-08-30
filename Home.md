@@ -354,4 +354,4 @@ $ sudo systemctl enable run-sweep-lidar.service
 19. https://devtalk.nvidia.com/default/topic/1000106/jetson-tx2/opencv-convertto-failure/post/5171055/#5171055 (opencv4tegra 2.4.13 install on TX2)
 20. https://askubuntu.com/questions/825354/unity-ubuntu-16-04-no-menu-bar-launcher-top-bar-dash-window-borders-disapp(unity - Ubuntu 16.04 no menu bar, launcher, top bar, dash, window borders disappeared)
 21. https://answers.ros.org/question/245089/systemd-roslaunch/ (auto start roslaunch at boot) 
-22. https://github.com/lucasw/ros-virtual-cam
+22. http://neurorobotictech.com/Products/Jetduino/ArduinoDueonJetsonTK1.aspx (Arduino IDE on Jetson)
