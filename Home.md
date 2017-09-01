@@ -286,6 +286,38 @@ Run the rosserial python node that forwards your Arduino messages to the rest of
 $ rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200
 ```
   
+You can find and test 'blink' example as described [ros wiki](http://wiki.ros.org/rosserial_arduino/Tutorials/Blink)
+```
+/*
+ * rosserial Subscriber Example
+ * Blinks an LED on callback
+ */
+
+#include <ros.h>
+#include <std_msgs/Empty.h>
+
+ros::NodeHandle nh;
+
+void messageCb( const std_msgs::Empty& toggle_msg){
+  digitalWrite(13, HIGH-digitalRead(13));   // blink the led
+}
+
+ros::Subscriber<std_msgs::Empty> sub("toggle_led", &messageCb );
+
+void setup()
+{
+  pinMode(13, OUTPUT);
+  nh.initNode();
+  nh.subscribe(sub);
+}
+ 
+void loop()
+{
+  nh.spinOnce();
+  delay(1);
+}
+```
+  
 ## Run roslaunch at startup on Ubuntu 16.04
  - Case of: "Sweep LiDAR"
 ```
