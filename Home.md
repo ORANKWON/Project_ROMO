@@ -281,13 +281,9 @@ rosserial for arduino 패키지를 설치한다.
 $ sudo apt-get install ros-kinetic-rosserial-arduino ros-kinetic-rosserial
 ```
   
-catkin_ws로 이동하여 드라이버를 다운로드 받고 컴파일 및 설치한다.
+Run the rosserial python node that forwards your Arduino messages to the rest of ROS. Make sure to use the correct serial port and baud rate.
 ```
-$ cd catkin_ws/src
-$ git clone https://github.com/ros-drivers/rosserial.git
-$ cd ..
-$ catkin_make
-$ catkin_make install
+$ rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200
 ```
   
 이 시점에서 Arduino IDE를 한번도 실행하지 않았다면 실행하고(한번 실행하면 Home디렉토리에 sketchbook폴더가 자동 생성된다) 다음 명령을 수행한다. 
