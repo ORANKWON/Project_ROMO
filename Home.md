@@ -276,9 +276,8 @@ Using zed camera image topic for detectnet-camera
 ```
   
 ## Arduino with rosserial
-아두이노 패키지와 rosserial 패키지를 설치한다.
+rosserial for arduino 패키지를 설치한다.
 ```
-$ sudo apt-get install arduino
 $ sudo apt-get install ros-kinetic-rosserial-arduino ros-kinetic-rosserial
 ```
   
