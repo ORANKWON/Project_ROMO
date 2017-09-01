@@ -50,7 +50,7 @@ $ sudo reboot
 ```
   
 ## Build Kernel and ttyACM Module(Jetson TX2)
-To support USB ACM devices such as Arduino, Kernel should be rebuild. Follows [Jetnsonhacks](http://www.jetsonhacks.com/2017/07/31/build-kernel-ttyacm-module-nvidia-jetson-tx2/) instruction.
+To support USB ACM devices such as Arduino, Kernel should be rebuild. Follows [Jetnsonhacks](http://www.jetsonhacks.com/2017/07/31/build-kernel-ttyacm-module-nvidia-jetson-tx2/) instruction(Tested with L4T R28.1, JetPack 3.1)
 
 ## Install CUDA, OpenCV4Tegra, cuDNN, TensorRT  
 Jetson TX2 JetPack 3.1에서 지원하는 라이브러리 버젼은 다음과 같다.  
