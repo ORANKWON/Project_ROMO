@@ -41,6 +41,7 @@ $ sudo apt-get upgrade
 2. System Settings > Language Support: install 'Korean'
 3. Keyboard input method system:ibus -> fcitx
 4. reboot
+5. All Settings > Text Entry : Add 'Hangul(fcitx)'
 ```
   
 [Note] Uninstall libreoffice
