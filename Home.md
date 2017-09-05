@@ -35,7 +35,13 @@ $ sudo apt-get update
 $ sudo apt-get upgrade
 ``` 
   
-[Note] 한글 입력을 사용하고 싶은 경우 <http://hochulshin.com/ubuntu-1604-hangul/>를 참고한다.  
+[Note] 한글 입력을 사용하고 싶은 경우 <http://hochulshin.com/ubuntu-1604-hangul/>를 참고한다.
+```
+1. sudo apt-get install fcitx-hangul
+2. System Settings > Language Support
+3. Keyboard input method system:ibus -> fcitx
+4. reboot
+```
   
 [Note] Uninstall libreoffice
 ```
