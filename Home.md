@@ -325,6 +325,13 @@ void loop()
 }
 ```
   
+## Turtlebot - Mapping and Navigation
+```
+$ sudo apt-get install ros-kinetic-turtlebot-bringup
+$ sudo apt-get install ros-kinetic-turtlebot-navigation 
+$ sudo apt-get install ros-kinetic-rtabmap-ros
+```
+
 ## Run roslaunch at startup on Ubuntu 16.04
  - Case of: "Sweep LiDAR"
 ```
