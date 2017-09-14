@@ -267,7 +267,10 @@ $ sudo apt-get install ros-kinetic-industrial-core
 $ sudo apt-get install ros-kinetic-dynamixel-sdk
 $ sudo apt-get install ros-kinetic-robotis-math
 $ sudo apt-get install ros-kinetic-qt-build
-$ 
+$ sudo apt-get install ros-kinetic-gazebo-ros-control
+$ sudo apt-get install ros-kinetic-gazebo-ros-pkgs
+$ sudo apt-get install ros-kinetic-ros-control
+$ sudo apt-get install ros-kinetic-ros-controllers
 ```
   
 ## TensorRT on Jetson TX1/TX2
