@@ -252,8 +252,7 @@ $ source devel/setup.bash
 ## Install MoveIt with ROS-kinetic
 로봇팔 제어와 시뮬레이션을 위해 'MoveIt' 소프트웨어를 사용한다. 먼저 아래 명령으로 kinetic 버젼용 moveit 패키지를 설치한다.
 ```
-$ sudo apt-get install ros-kinetic-moveit
-$ sudo apt-get install ros-kinetic-moveit-visual-tools
+$ sudo apt-get install ros-kinetic-moveit*
 $ sudo apt-get dist-upgrade
 ```
   
@@ -261,9 +260,18 @@ Install dependencies(clang is optional)
 ```
 $ sudo apt-get install python-wstool python-catkin-tools clang-format-3.8
 ```
-
   
-## TensorRT(Deep Learning) on Jetson TX1/TX2
+다이나믹셀 서보모터를 활용한 로봇팔 제어를 위해 아래 패키지를 설치한다.
+```
+$ sudo apt-get install ros-kinetic-industrial-core
+$ sudo apt-get install ros-kinetic-dynamixel-sdk
+$ sudo apt-get install ros-kinetic-robotis-math
+$ sudo apt-get install ros-kinetic-qt-build
+$ 
+```
+  
+## TensorRT on Jetson TX1/TX2
+텐서플로우는 구글에서 개발한 딥러닝용 프레임워크이다. Jetson TX1/TX2용으로 TensorRT를 제공하고 있으며 아래 과정으로 소스 다운로드 받고 빌드하면 된다.  
 ```
 $ git clone http://github.com/dusty-nv/jetson-inference
 $ cd jetson-inference
