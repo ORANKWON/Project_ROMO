@@ -273,6 +273,11 @@ $ sudo apt-get install ros-kinetic-ros-control
 $ sudo apt-get install ros-kinetic-ros-controllers
 ```
   
+[xacro](http://wiki.ros.org/xacro)를 이용한 urdf 모델 생성
+```
+$ rosrun xacro xacro robot_model.xacro > robot_model.urdf
+```
+  
 ## TensorRT on Jetson TX1/TX2
 텐서플로우는 구글에서 개발한 딥러닝용 프레임워크이다. Jetson TX1/TX2용으로 TensorRT를 제공하고 있으며 아래 과정으로 소스 다운로드 받고 빌드하면 된다.  
 ```
