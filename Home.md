@@ -278,6 +278,12 @@ $ sudo apt-get install ros-kinetic-ros-controllers
 $ rosrun xacro xacro robot_model.xacro > robot_model.urdf
 ```
   
+[Note] MoveIt 0.7.3+ 버젼에서 “Invalid Trajectory: start point deviates from current robot state more than …“ 에러가 발생하는 경우 trajectory_execution.launch.xml파일을 찾아서 allowed_start_tolerance를 0으로 아래와 같이 수정하도록 한다.
+```
+<!-- Allowed joint-value tolerance for validation that trajectory's first point matches current robot state -->
+  <param name="trajectory_execution/allowed_start_tolerance" value="0.0"/> <!-- default 0.01 -->
+```
+    
 ## TensorRT on Jetson TX1/TX2
 텐서플로우는 구글에서 개발한 딥러닝용 프레임워크이다. Jetson TX1/TX2용으로 TensorRT를 제공하고 있으며 아래 과정으로 소스 다운로드 받고 빌드하면 된다.  
 ```
@@ -410,3 +416,4 @@ $ sudo systemctl enable run-sweep-lidar.service
 21. https://answers.ros.org/question/245089/systemd-roslaunch/ (auto start roslaunch at boot) 
 22. http://neurorobotictech.com/Products/Jetduino/ArduinoDueonJetsonTK1.aspx (Arduino IDE on Jetson)
 23. http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html (Java Kit 8)
+24. http://moveit.ros.org/moveit!/ros/2017/01/03/firstIndigoRelease.html (MoveIt error)
