@@ -278,10 +278,10 @@ $ sudo apt-get install ros-kinetic-ros-controllers
 $ rosrun xacro xacro robot_model.xacro > robot_model.urdf
 ```
   
-[Note] MoveIt 0.7.3+ 버젼에서 “Invalid Trajectory: start point deviates from current robot state more than …“ 에러가 발생하는 경우 trajectory_execution.launch.xml파일을 찾아서 allowed_start_tolerance를 0으로 아래와 같이 수정하도록 한다.
+[Note] MoveIt 0.7.3+ 버젼에서 “Invalid Trajectory: start point deviates from current robot state more than …“ 에러가 발생하는 경우 trajectory_execution.launch.xml파일을 찾아서 allowed_start_tolerance를 0으로 수정하도록 한다.
 ```
 <!-- Allowed joint-value tolerance for validation that trajectory's first point matches current robot state -->
-  <param name="trajectory_execution/allowed_start_tolerance" value="0.0"/> <!-- default 0.01 -->
+<param name="trajectory_execution/allowed_start_tolerance" value="0.0"/> <!-- default 0.01 -->
 ```
     
 ## TensorRT on Jetson TX1/TX2
