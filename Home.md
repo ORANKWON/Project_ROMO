@@ -416,7 +416,24 @@ $ udevadm info -a /dev/ttyUSB0 | grep '{serial}'
 ```
 $ sudo gedit /etc/udev/rules.d/99-usb-serial.rules
 ```
-
+  
+아래 내용을 입력한다. 단, SYMLINK는 본인이 원하는 이름으로 설정하면 된다.
+```
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="12345678", MODE="0666", SYMLINK+="ttyMyUSB"
+```
+  
+아래 명령으로 규칙을 설정한다.
+```
+$ sudo udevadm control --reload-rules
+```
+  
+정상적으로 적용되었는지 확인하기 위해서 USB장치를 뽑은 후 다시 연결하고 확인한다.
+```
+$ ls /dev/tty* -al
+lrwxrwxrwx 1 root   root          7 Oct  8 10:32 /dev/ttyMyUSB -> ttyUSB0
+crw-rw-rw- 1 root   dialout 188,  0 Oct  8 10:32 /dev/ttyUSB0
+```
+  
 ## 참고 사이트  
 1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
 2. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/
