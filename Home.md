@@ -392,6 +392,31 @@ $ sudo systemctl daemon-reload
 $ sudo systemctl enable run-sweep-lidar.service
 ```
   
+## USB Symbolic link
+리눅스에서 여러 대의 usb장치를 사용할 경우 ttyUSBx의 링크 번호가 매번 변경이 되는데 이를 강제적으로 고정하기 위해서 심볼릭 링크를 사용할 수 있는데 아래 세가지 정보를 확인해야 한다.  
+```
+1. Vendor ID
+2. Product ID
+3. Serial Number
+```
+  
+우선 lsusb 명령을 통해 VendorID와 ProductID를 확인한다. lsusb 명령을 통해 아래와 같은 출력을 얻었다면, VendorID는 0403, ProductID는 6001이 된다.
+```
+$ lsusb
+Bus 001 Device 013: ID 0403:6001 Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
+```
+  
+Serial Number를 확인하기 위해서 아래 명령을 입력한다. 여기서는 12345678이 Serial Number가 된다.
+```
+$ udevadm info -a /dev/ttyUSB0 | grep '{serial}'
+   ATTRS{serial}=="12345678"
+```
+  
+리눅스 udev에서 사용할 rules를 추가하기 위해서 아래와 같이 에디터를 연다.
+```
+$ sudo gedit /etc/udev/rules.d/99-usb-serial.rules
+```
+
 ## 참고 사이트  
 1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
 2. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/
@@ -417,3 +442,4 @@ $ sudo systemctl enable run-sweep-lidar.service
 22. http://neurorobotictech.com/Products/Jetduino/ArduinoDueonJetsonTK1.aspx (Arduino IDE on Jetson)
 23. http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html (Java Kit 8)
 24. http://moveit.ros.org/moveit!/ros/2017/01/03/firstIndigoRelease.html (MoveIt error)
+25. http://hintshop.ludvig.co.nz/show/persistent-names-usb-serial-devices (Persistent names for usb-serial devices)
