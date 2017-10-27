@@ -114,6 +114,23 @@ OpenCV4Tegra(2.4.13) 설치를 위해서 Nvidia에서 제공하는 스크립트�
 $ ./build_opencv2.4.13.sh <path/you/want/to/install>
 ```  
   
+## Cloning Jetson TX2  
+Using the L4T tools, it is possible to create a carbon copy of Jetson TX1 by backing-up and restoring the eMMC partitions. The Jetson must be connected to a remote PC over USB and entered into recovery mode.  
+  
+### Cloning the image  
+cd into the directory containing the L4T installation package on the host PC. The command below will save the TX2's eMMC image to the specified file on the host. 
+```
+$ sudo ./flash.sh -r -k APP -G system.img jetson-tx2 mmcblk0p1
+```
+  
+In this case, we call the file system.img, so the same flash.sh script can be re-used to format and flash other Jetson's with the image.  
+  
+### Restoring the image  
+The recommended way to restore multiple units with different serial numbers is to save the image above as "system.img" and use the head L4T flashing script, flash.sh, with the -r option (to reuse your backed-up system.img without rebuilding the vanilla image from scratch):  
+```
+$ sudo ./flash.sh -r jetson-tx2 mmcblk0p1
+```
+  
 ## Install ROS - Kinetic  
 ARM 버전의 ROS Kinetic [설치가이드](http://wiki.ros.org/kinetic/Installation/Ubuntu)에 따라 순서대로 설치를 진행한다. 패키지
  설치 단계에서 데스크탑용 패키지를 설치한다. (추가로 필요한 패키지가 생길 경우에는 'apt-cache search ros-kinetic' 명령으로 필요한 패키지를 찾아서 설치하면 된다)
