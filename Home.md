@@ -452,11 +452,11 @@ crw-rw-rw- 1 root   dialout 188,  0 Oct  8 10:32 /dev/ttyUSB0
 ```
   
 # Qt with Jetson TX2
-You can configure cross compile environment for Jetson TX2 from [this] link (https://www.innovative-dsp.com/ftp/jetson/Configure%20Cross%20Compiling%20for%20Nvidia%20Jetson%20TX2%20on%20Ubuntu%2064%20bit.pdf). Also, we can directly install Qt creator on Jetson TX2(tested with Qt-5.9.2 & Qt Creator 4.4.1).  
+You can configure cross compile environment for Jetson TX2 from [this](https://www.innovative-dsp.com/ftp/jetson/Configure%20Cross%20Compiling%20for%20Nvidia%20Jetson%20TX2%20on%20Ubuntu%2064%20bit.pdf). Also, we can directly install Qt creator on Jetson TX2(tested with Qt-5.9.2 & Qt Creator 4.4.1) link.  
   
-1. Download & compile Qt 5.9.2 (http://doc.qt.io/qt-5/linux-building.html)
-2. Download Qt Creator source from [here](http://download.qt.io/official_releases/qtcreator/4.4/4.4.1/qt-creator-opensource-src-4.4.1.tar.gz)
-3. Before compile, modify sources as pointed [here](https://devtalk.nvidia.com/default/topic/988568/qt-5-7-or-later-on-tx1-local-or-cross-/)
+1.Download & compile Qt 5.9.2 (http://doc.qt.io/qt-5/linux-building.html)
+2.Download Qt Creator source from [here](http://download.qt.io/official_releases/qtcreator/4.4/4.4.1/qt-creator-opensource-src-4.4.1.tar.gz).
+3.Before compile, modify sources as pointed [here](https://devtalk.nvidia.com/default/topic/988568/qt-5-7-or-later-on-tx1-local-or-cross-/). You should modify 2 files, botan.cpp & botan.h
 
 
 ## 참고 사이트  
