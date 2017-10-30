@@ -451,8 +451,8 @@ lrwxrwxrwx 1 root   root          7 Oct  8 10:32 /dev/ttyMyUSB -> ttyUSB0
 crw-rw-rw- 1 root   dialout 188,  0 Oct  8 10:32 /dev/ttyUSB0
 ```
   
-# Qt with Jetson TX2
-You can configure cross compile environment for Jetson TX2 from [this](https://www.innovative-dsp.com/ftp/jetson/Configure%20Cross%20Compiling%20for%20Nvidia%20Jetson%20TX2%20on%20Ubuntu%2064%20bit.pdf). Also, we can directly install Qt creator on Jetson TX2(tested with Qt-5.9.2 & Qt Creator 4.4.1) link.  
+# Qt with Jetson TX2  
+You can configure cross compile environment for Jetson TX2 from [this](https://www.innovative-dsp.com/ftp/jetson/Configure%20Cross%20Compiling%20for%20Nvidia%20Jetson%20TX2%20on%20Ubuntu%2064%20bit.pdf). Also, we can directly install Qt creator on Jetson TX2(tested with Qt-5.9.2 & Qt Creator 4.4.1).  
   
 1. Download Qt 5.9.2 source from [here](http://download.qt.io/official_releases/qt/5.9/5.9.2/single/qt-everywhere-opensource-src-5.9.2.tar.xz).
 2. Following compile steps as described [here](http://doc.qt.io/qt-5/linux-building.html).
