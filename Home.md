@@ -458,6 +458,12 @@ You can configure cross compile environment for Jetson TX2 from [this](https://w
 2. Following compile steps as described [here](http://doc.qt.io/qt-5/linux-building.html).
 3. Download Qt Creator source from [here](http://download.qt.io/official_releases/qtcreator/4.4/4.4.1/qt-creator-opensource-src-4.4.1.tar.gz).
 4. Before compile, modify sources as pointed [here](https://devtalk.nvidia.com/default/topic/988568/qt-5-7-or-later-on-tx1-local-or-cross-/). You should modify 2 files, src/libs/3rdparty/botan/botan.cpp and botan.h 
+5. Modify "botan.cpp" file to restrict link to X86 architectures as follow :
+```
+#if defined(BOTAN_TARGET_CPU_IS_X86_FAMILY)
+  #include <cpuid.h> // cpuid.h does not exist under ARM64
+#endif
+```
   
 ## 참고 사이트  
 1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
