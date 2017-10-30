@@ -451,6 +451,14 @@ lrwxrwxrwx 1 root   root          7 Oct  8 10:32 /dev/ttyMyUSB -> ttyUSB0
 crw-rw-rw- 1 root   dialout 188,  0 Oct  8 10:32 /dev/ttyUSB0
 ```
   
+# Qt with Jetson TX2
+You can configure cross compile environment for Jetson TX2 from [this] link (https://www.innovative-dsp.com/ftp/jetson/Configure%20Cross%20Compiling%20for%20Nvidia%20Jetson%20TX2%20on%20Ubuntu%2064%20bit.pdf). Also, we can directly install Qt creator on Jetson TX2(tested with Qt-5.9.2 & Qt Creator 4.4.1).  
+  
+1. Download & compile Qt 5.9.2 (http://doc.qt.io/qt-5/linux-building.html)
+2. Download Qt Creator source from [here](http://download.qt.io/official_releases/qtcreator/4.4/4.4.1/qt-creator-opensource-src-4.4.1.tar.gz)
+3. Before compile, modify sources as pointed [here](https://devtalk.nvidia.com/default/topic/988568/qt-5-7-or-later-on-tx1-local-or-cross-/)
+
+
 ## 참고 사이트  
 1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
 2. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/
@@ -477,3 +485,4 @@ crw-rw-rw- 1 root   dialout 188,  0 Oct  8 10:32 /dev/ttyUSB0
 23. http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html (Java Kit 8)
 24. http://moveit.ros.org/moveit!/ros/2017/01/03/firstIndigoRelease.html (MoveIt error)
 25. http://hintshop.ludvig.co.nz/show/persistent-names-usb-serial-devices (Persistent names for usb-serial devices)
+26. https://devtalk.nvidia.com/default/topic/988568/qt-5-7-or-later-on-tx1-local-or-cross-/ (qt install issue)
