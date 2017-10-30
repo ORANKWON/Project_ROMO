@@ -454,11 +454,11 @@ crw-rw-rw- 1 root   dialout 188,  0 Oct  8 10:32 /dev/ttyUSB0
 # Qt with Jetson TX2
 You can configure cross compile environment for Jetson TX2 from [this](https://www.innovative-dsp.com/ftp/jetson/Configure%20Cross%20Compiling%20for%20Nvidia%20Jetson%20TX2%20on%20Ubuntu%2064%20bit.pdf). Also, we can directly install Qt creator on Jetson TX2(tested with Qt-5.9.2 & Qt Creator 4.4.1) link.  
   
-1.Download & compile Qt 5.9.2 (http://doc.qt.io/qt-5/linux-building.html)
-2.Download Qt Creator source from [here](http://download.qt.io/official_releases/qtcreator/4.4/4.4.1/qt-creator-opensource-src-4.4.1.tar.gz).
-3.Before compile, modify sources as pointed [here](https://devtalk.nvidia.com/default/topic/988568/qt-5-7-or-later-on-tx1-local-or-cross-/). You should modify 2 files, botan.cpp & botan.h
-
-
+1. Download Qt 5.9.2 source from [here](http://download.qt.io/official_releases/qt/5.9/5.9.2/single/qt-everywhere-opensource-src-5.9.2.tar.xz).
+2. Following compile steps as described [here](http://doc.qt.io/qt-5/linux-building.html).
+3. Download Qt Creator source from [here](http://download.qt.io/official_releases/qtcreator/4.4/4.4.1/qt-creator-opensource-src-4.4.1.tar.gz).
+4. Before compile, modify sources as pointed [here](https://devtalk.nvidia.com/default/topic/988568/qt-5-7-or-later-on-tx1-local-or-cross-/). You should modify 2 files, src/libs/3rdparty/botan/botan.cpp and botan.h 
+  
 ## 참고 사이트  
 1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
 2. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/
