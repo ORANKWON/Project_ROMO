@@ -465,6 +465,14 @@ You can configure cross compile environment for Jetson TX2 from [this](https://w
 #endif
 ```
   
+# CAN Communication with Jetpack 3.1(R28.1)
+You can load CAN bus driver in two ways, manually or automatically. You can enable CAN bus driver using following command.
+```
+$ sudo modprobe mttcan
+```
+  
+if you want to enable CAN bus driver automatically, comment the "blacklist mttcan" in /etc/modprobe.d/blacklist-mttcan.conf.  
+  
 ## 참고 사이트  
 1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
 2. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/
@@ -492,3 +500,4 @@ You can configure cross compile environment for Jetson TX2 from [this](https://w
 24. http://moveit.ros.org/moveit!/ros/2017/01/03/firstIndigoRelease.html (MoveIt error)
 25. http://hintshop.ludvig.co.nz/show/persistent-names-usb-serial-devices (Persistent names for usb-serial devices)
 26. https://devtalk.nvidia.com/default/topic/988568/qt-5-7-or-later-on-tx1-local-or-cross-/ (qt install issue)
+27. https://devtalk.nvidia.com/default/topic/1025010/how-to-use-can-on-jetson-tx2-/?offset=2 (CAN setup)
