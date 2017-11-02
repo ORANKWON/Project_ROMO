@@ -471,7 +471,7 @@ You can load CAN bus driver in two ways, manually or automatically. You can enab
 $ sudo modprobe mttcan
 ```
   
-if you want to enable CAN bus driver automatically, comment the "blacklist mttcan" in /etc/modprobe.d/blacklist-mttcan.conf.  
+if you want to enable CAN bus driver automatically, comment the "blacklist mttcan" in /etc/modprobe.d/blacklist-mttcan.conf. Steps described [here](https://devtalk.nvidia.com/default/topic/1025010/how-to-use-can-on-jetson-tx2-/?offset=2) can be followed to achieve proper CAN communication.  
   
 ## 참고 사이트  
 1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
