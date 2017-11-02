@@ -473,6 +473,8 @@ $ sudo modprobe mttcan
   
 if you want to enable CAN bus driver automatically, comment the "blacklist mttcan" in /etc/modprobe.d/blacklist-mttcan.conf. Steps described [here](https://devtalk.nvidia.com/default/topic/1025010/how-to-use-can-on-jetson-tx2-/?offset=2) can be followed to achieve proper CAN communication.  
   
+For a quick setup please check the below J26 pin description on Jetson TX1/TX2.
+![jetson-j26-pinout](https://user-images.githubusercontent.com/23667624/32313155-4d5e57e2-bf99-11e7-92be-8f5d0ca79acf.jpg)
 ## 참고 사이트  
 1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
 2. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/
