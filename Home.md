@@ -503,3 +503,4 @@ For a quick setup please check the below J26 pin description on Jetson TX1/TX2.
 25. http://hintshop.ludvig.co.nz/show/persistent-names-usb-serial-devices (Persistent names for usb-serial devices)
 26. https://devtalk.nvidia.com/default/topic/988568/qt-5-7-or-later-on-tx1-local-or-cross-/ (qt install issue)
 27. https://devtalk.nvidia.com/default/topic/1025010/how-to-use-can-on-jetson-tx2-/?offset=2 (CAN setup)
+28. https://code.google.com/archive/p/slide-33/downloads (Dynamixel library for arduino)
