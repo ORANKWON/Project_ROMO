@@ -469,12 +469,15 @@ You can configure cross compile environment for Jetson TX2 from [this](https://w
 You can load CAN bus driver in two ways, manually or automatically. You can enable CAN bus driver using following command.
 ```
 $ sudo modprobe mttcan
+$ sudo ip link set can0 up type can bitrate 500000
+$ sudo ifconfig can0 up
 ```
   
 if you want to enable CAN bus driver automatically, comment the "blacklist mttcan" in /etc/modprobe.d/blacklist-mttcan.conf. Steps described [here](https://devtalk.nvidia.com/default/topic/1025010/how-to-use-can-on-jetson-tx2-/?offset=2) can be followed to achieve proper CAN communication.  
   
 For a quick setup please check the below J26 pin description on Jetson TX1/TX2.
-![jetson-j26-pinout](https://user-images.githubusercontent.com/23667624/32313155-4d5e57e2-bf99-11e7-92be-8f5d0ca79acf.jpg)
+![jetson-j26-pinout](https://user-images.githubusercontent.com/23667624/32313155-4d5e57e2-bf99-11e7-92be-8f5d0ca79acf.jpg)  
+  
 ## 참고 사이트  
 1. http://qiita.com/kndt84/items/a32d07350ad8184ea25e
 2. https://devtalk.nvidia.com/default/topic/974063/jetson-tx1/caffe-failed-with-py-faster-rcnn-demo-py-on-tx1/
@@ -504,3 +507,4 @@ For a quick setup please check the below J26 pin description on Jetson TX1/TX2.
 26. https://devtalk.nvidia.com/default/topic/988568/qt-5-7-or-later-on-tx1-local-or-cross-/ (qt install issue)
 27. https://devtalk.nvidia.com/default/topic/1025010/how-to-use-can-on-jetson-tx2-/?offset=2 (CAN setup)
 28. https://code.google.com/archive/p/slide-33/downloads (Dynamixel library for arduino)
+29. https://github.com/ipa-mdl/ros_canopen/tree/feature/can-filter (ros_canopen filter
