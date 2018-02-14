@@ -102,7 +102,7 @@ $ sudo dpkg -i libcudnn6-doc_6.0.21-1+cuda8.0_arm64.deb
 $ sudo apt-get update  
 ```
   
-TensorRT를 설치하는 과정은 다음과 같다.
+TensorRT를 설치하는 과정은 다음과 같다.([참고](http://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html))
 ```
 $ sudo dpkg -i nv-gie-repo-ubuntu1604-ga-cuda8.0-trt2.1-20170614_1-1_arm64.deb
 $ sudo apt-get update
