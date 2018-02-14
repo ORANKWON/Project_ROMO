@@ -31,6 +31,7 @@ Flash작업이 종료되면 보드는 자동으로 재부팅을 시작하고 우
 ```
 $ sudo apt-add-repository universe
 $ sudo apt-add-repository multiverse
+$ sudo apt-add-repository restricted
 $ sudo apt-get update
 $ sudo apt-get upgrade
 ``` 
